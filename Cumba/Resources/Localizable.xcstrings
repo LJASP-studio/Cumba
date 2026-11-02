@@ -848,6 +848,17 @@
         }
       }
     },
+    "Citrus" : {
+      "comment" : "Built-in theme name",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Narenciye"
+          }
+        }
+      }
+    },
     "Click to Show the Camera" : {
       "localizations" : {
         "tr" : {

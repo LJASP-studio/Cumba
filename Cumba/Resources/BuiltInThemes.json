@@ -132,5 +132,25 @@
     "secondary" : "#8A90B8",
     "shadow" : true,
     "tint" : "#1E3A8A"
+  },
+  {
+    "accent" : "#D4E157",
+    "animation" : {
+      "damping" : 0.86,
+      "response" : 0.38
+    },
+    "background" : "#0A0B04",
+    "cornerRadius" : 26,
+    "fontDesign" : "rounded",
+    "foreground" : "#FAFBE6",
+    "glow" : "#F4E96B",
+    "gradient" : "#283009",
+    "id" : "citrus",
+    "indicatorColor" : "theme",
+    "material" : "solid",
+    "name" : "Citrus",
+    "secondary" : "#B5BC86",
+    "shadow" : true,
+    "tint" : "#1E3A8A"
   }
 ]

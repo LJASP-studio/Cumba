@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- A Citrus theme: a fresh yellow-green on dark olive, with a lemon edge and rounded text.
 - A new Settings window, laid out like System Settings: a searchable sidebar with pages in three groups (General, Appearance, Displays, Behavior, Indicators and Permissions; Widgets, with a page for each widget that has settings; Agents and Connections). Each page starts with its icon, title and what it's for, rows explain themselves with an ⓘ, and switches sit on the right.
 - Notes is your Apple Notes: the most recent notes like Apple's Notes widget, a click opens one in Notes, and a new note can be typed in the panel. Cumba reads Notes through AppleScript (Automation access, asked once), starts Notes in the background when needed and never changes an existing note. The note kept by earlier versions moves to Apple Notes once.
 - A To-dos widget for Apple Reminders: a list's open reminders with round checkboxes, overdue dates in red, and a line to add one. Ticks and new reminders sync to your other devices through Reminders.
@@ -20,7 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Agent notifications: when Claude Code or Codex asks a question, wants a plan approved, needs permission, finishes or stops with an error, a notification opens under the notch. It shows the agent's mark with a badge, a title that says what happened ("Claude is asking a question"), the project, one line of detail and **Open**, which brings the app the agent runs in to the front (or opens the panel). It then folds into the agent's mark and a badge beside the notch; questions and requests stay there until answered. Resting the pointer on a notification keeps it open.
 - Clipboard History shows your recent copies as cards, like a clipboard manager: text, links, images and files, each with the app it came from and when. Click a card to copy it again; right-click to remove it. Optionally, new screenshots are added as macOS saves them (Settings > Widgets > Clipboard History > Add new screenshots; macOS asks once for access to the screenshot folder).
-- Volume and brightness levels have their own color in each theme: the theme's colors, white, blue, green, orange, pink or purple (Appearance > Colors > Volume and brightness). Classic, Glass and Midnight use white; Neon Tokyo, Sakura, Synthwave and Violet Night use their own colors.
+- Volume and brightness levels have their own color in each theme: the theme's colors, white, blue, green, orange, pink or purple (Appearance > Colors > Volume and brightness). Classic, Glass and Midnight use white; Neon Tokyo, Sakura, Synthwave, Violet Night and Citrus use their own colors.
 - A low battery (20% or less, on battery) stays beside the notch as a red ring and the percentage until the charger is plugged in. Turn it off in Settings > General > Indicators.
 
 ### Changed

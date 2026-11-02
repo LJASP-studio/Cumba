@@ -159,6 +159,7 @@ extension Theme {
     case Theme.synthwave.id: String(localized: "Synthwave", comment: "Built-in theme name")
     case Theme.violetNight.id:
       String(localized: "Violet Night", comment: "Built-in theme name")
+    case Theme.citrus.id: String(localized: "Citrus", comment: "Built-in theme name")
     default:
       name.isEmpty ? String(localized: "Untitled Theme", comment: "Theme without a name") : name
     }

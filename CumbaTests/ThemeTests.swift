@@ -44,7 +44,7 @@ struct ThemeTests {
       #expect(theme.indicatorColor == .white)
       #expect(theme.indicatorColors == [.white])
     }
-    for theme in [Theme.neonTokyo, .sakura, .synthwave, .violetNight] {
+    for theme in [Theme.neonTokyo, .sakura, .synthwave, .violetNight, .citrus] {
       #expect(theme.indicatorColor == .theme)
     }
     #expect(Theme.neonTokyo.indicatorColors.count == 2)
