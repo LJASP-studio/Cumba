@@ -16,7 +16,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/LJASP-studio/Cumba?color=111111" alt="MIT lisansı"></a>
 </p>
 
-<p align="center"><a href="README.md">English</a></p>
+<p align="center"><a href="https://cumbanotch.com">cumbanotch.com</a> · <a href="README.md">English</a></p>
 
 macOS için ücretsiz ve açık kaynak bir notch uygulaması. MacBook notch'unu, imleci üzerinde tuttuğunuzda kamera yuvasından büyüyen bir panele çevirir: her uygulamadan müzik ve video, yapay zeka kodlama ajanlarınızın (Claude Code ve Codex) ne yaptığı ve bir dizi widget; hepsi size göre ayarlanabilen bir görünümle.
 
@@ -40,7 +40,7 @@ macOS için ücretsiz ve açık kaynak bir notch uygulaması. MacBook notch'unu,
 
 ## İndirme ve kurulum
 
-1. [Son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
+1. [cumbanotch.com](https://cumbanotch.com) ya da [son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
 2. **Açmadan önce dosyayı doğrulayın.** SHA-256 değeri, sürüm sayfasındaki `SHA256SUMS.txt` ile aynı olmalı:
    ```bash
    shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg
