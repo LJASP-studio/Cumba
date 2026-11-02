@@ -16,7 +16,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/LJASP-studio/Cumba?color=111111" alt="MIT license"></a>
 </p>
 
-<p align="center"><a href="README.tr.md">Türkçe</a></p>
+<p align="center"><a href="https://cumbanotch.com">cumbanotch.com</a> · <a href="README.tr.md">Türkçe</a></p>
 
 A free, open source notch app for macOS. It turns the MacBook notch into a panel that grows out of the camera housing when you rest the pointer on it: whatever is playing, what your AI coding agents (Claude Code and Codex) are doing, and a set of widgets, all in a look you can make your own.
 
@@ -38,7 +38,7 @@ A *cumba* is the small bay window that juts out from the upper floor of old Turk
 
 ## Download and install
 
-1. Get `Cumba-vX.Y.Z.dmg` (or the `.zip`) from the [latest release](https://github.com/LJASP-studio/Cumba/releases/latest).
+1. Get `Cumba-vX.Y.Z.dmg` (or the `.zip`) from [cumbanotch.com](https://cumbanotch.com) or the [latest release](https://github.com/LJASP-studio/Cumba/releases/latest).
 2. **Check the download before opening it.** Its SHA-256 must match the one in `SHA256SUMS.txt` on the release page:
    ```bash
    shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg
