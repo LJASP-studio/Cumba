@@ -1,6 +1,11 @@
 <p align="center"><img src="docs/banner.png" alt="Notch'un altında açılmış Cumba paneli ve mini oynatıcı"></p>
 
-<h1 align="center">Cumba</h1>
+<h1 align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/cumba-dark.svg">
+    <img src="docs/cumba-light.svg" alt="Cumba" width="300">
+  </picture>
+</h1>
 
 <p align="center"><sub>by LJASP · eski adıyla cumbaNotch</sub></p>
 

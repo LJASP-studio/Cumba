@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- The README's title and banner show the name written in script, as on the website, in the light or dark version that fits GitHub's theme.
 - The repository moved to [github.com/LJASP-studio/Cumba](https://github.com/LJASP-studio/Cumba), the home of LJASP's projects. Old links redirect, and the update check uses the new address.
 - Tabs slide like pages: a two-finger swipe drags the open tab with your fingers while the next one comes in beside it, the page being left fades, and letting go far enough opens the next tab. Clicking a tab slides the pages the same way.
 - The closed notch reaches a little past the camera housing, so you can see it's there. Set how far in Appearance > Panel Size (Closed notch width and height); the panel closes while you drag them, so you see the result. Music, timers and other things beside the notch are as tall as the closed notch, and at zero both are exactly the size of the camera housing.
