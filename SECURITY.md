@@ -6,8 +6,8 @@ Cumba runs a local HTTP/WebSocket server on `127.0.0.1` and receives Claude Code
 
 **Please do not open a public issue.** Report it privately through GitHub instead:
 
-1. Go to the [Security tab](https://github.com/muazfurkan/Cumba/security) of this repository.
-2. Click **Report a vulnerability**, or open [a new advisory](https://github.com/muazfurkan/Cumba/security/advisories/new) directly.
+1. Go to the [Security tab](https://github.com/ljasp-studio/Cumba/security) of this repository.
+2. Click **Report a vulnerability**, or open [a new advisory](https://github.com/ljasp-studio/Cumba/security/advisories/new) directly.
 
 Please include the app version, your macOS version and steps to reproduce. Never include real tokens, Claude Code payloads or personal file paths.
 

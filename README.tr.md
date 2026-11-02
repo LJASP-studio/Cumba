@@ -5,10 +5,10 @@
 <p align="center"><sub>by LJASP · eski adıyla ljaspNotch</sub></p>
 
 <p align="center">
-  <a href="https://github.com/muazfurkan/Cumba/releases/latest"><img src="https://img.shields.io/github/v/release/muazfurkan/Cumba?label=download&color=DCB669" alt="Son sürüm"></a>
-  <a href="https://github.com/muazfurkan/Cumba/actions/workflows/build.yml"><img src="https://github.com/muazfurkan/Cumba/actions/workflows/build.yml/badge.svg?branch=main" alt="Derleme durumu"></a>
+  <a href="https://github.com/ljasp-studio/Cumba/releases/latest"><img src="https://img.shields.io/github/v/release/ljasp-studio/Cumba?label=download&color=DCB669" alt="Son sürüm"></a>
+  <a href="https://github.com/ljasp-studio/Cumba/actions/workflows/build.yml"><img src="https://github.com/ljasp-studio/Cumba/actions/workflows/build.yml/badge.svg?branch=main" alt="Derleme durumu"></a>
   <img src="https://img.shields.io/badge/macOS-26%2B-111111?logo=apple" alt="macOS 26 veya üstü">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/muazfurkan/Cumba?color=111111" alt="MIT lisansı"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/ljasp-studio/Cumba?color=111111" alt="MIT lisansı"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a></p>
@@ -35,7 +35,7 @@ macOS için ücretsiz ve açık kaynak bir notch uygulaması. MacBook notch'unu,
 
 ## İndirme ve kurulum
 
-1. [Son sürümden](https://github.com/muazfurkan/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
+1. [Son sürümden](https://github.com/ljasp-studio/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
 2. **Açmadan önce dosyayı doğrulayın.** SHA-256 değeri, sürüm sayfasındaki `SHA256SUMS.txt` ile aynı olmalı:
    ```bash
    shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg
@@ -69,7 +69,7 @@ Xcode 26 veya üstü ve [Homebrew](https://brew.sh) gerekir.
 
 ```bash
 brew install xcodegen
-git clone https://github.com/muazfurkan/Cumba.git
+git clone https://github.com/ljasp-studio/Cumba.git
 cd Cumba
 cp Local.xcconfig.example Local.xcconfig   # ardından DEVELOPMENT_TEAM değerini gir
 xcodegen generate
@@ -181,7 +181,7 @@ Açıldığında eklenti sunucusu yalnızca `127.0.0.1` adresini dinler, yalnız
 
 ## Katkı
 
-Sorular ve fikirler için [Discussions](https://github.com/muazfurkan/Cumba/discussions) bölümünü kullanabilirsiniz. Katkılara da açığız; lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
+Sorular ve fikirler için [Discussions](https://github.com/ljasp-studio/Cumba/discussions) bölümünü kullanabilirsiniz. Katkılara da açığız; lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
 
 ## Lisans
 

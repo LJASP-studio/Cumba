@@ -5,10 +5,10 @@
 <p align="center"><sub>by LJASP · formerly ljaspNotch</sub></p>
 
 <p align="center">
-  <a href="https://github.com/muazfurkan/Cumba/releases/latest"><img src="https://img.shields.io/github/v/release/muazfurkan/Cumba?label=download&color=DCB669" alt="Latest release"></a>
-  <a href="https://github.com/muazfurkan/Cumba/actions/workflows/build.yml"><img src="https://github.com/muazfurkan/Cumba/actions/workflows/build.yml/badge.svg?branch=main" alt="Build status"></a>
+  <a href="https://github.com/ljasp-studio/Cumba/releases/latest"><img src="https://img.shields.io/github/v/release/ljasp-studio/Cumba?label=download&color=DCB669" alt="Latest release"></a>
+  <a href="https://github.com/ljasp-studio/Cumba/actions/workflows/build.yml"><img src="https://github.com/ljasp-studio/Cumba/actions/workflows/build.yml/badge.svg?branch=main" alt="Build status"></a>
   <img src="https://img.shields.io/badge/macOS-26%2B-111111?logo=apple" alt="macOS 26 or later">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/muazfurkan/Cumba?color=111111" alt="MIT license"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/ljasp-studio/Cumba?color=111111" alt="MIT license"></a>
 </p>
 
 <p align="center"><a href="README.tr.md">Türkçe</a></p>
@@ -33,7 +33,7 @@ A *cumba* is the small bay window that juts out from the upper floor of old Turk
 
 ## Download and install
 
-1. Get `Cumba-vX.Y.Z.dmg` (or the `.zip`) from the [latest release](https://github.com/muazfurkan/Cumba/releases/latest).
+1. Get `Cumba-vX.Y.Z.dmg` (or the `.zip`) from the [latest release](https://github.com/ljasp-studio/Cumba/releases/latest).
 2. **Check the download before opening it.** Its SHA-256 must match the one in `SHA256SUMS.txt` on the release page:
    ```bash
    shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg
@@ -67,7 +67,7 @@ You need Xcode 26 or later and [Homebrew](https://brew.sh).
 
 ```bash
 brew install xcodegen
-git clone https://github.com/muazfurkan/Cumba.git
+git clone https://github.com/ljasp-studio/Cumba.git
 cd Cumba
 cp Local.xcconfig.example Local.xcconfig   # then set your DEVELOPMENT_TEAM
 xcodegen generate
@@ -175,7 +175,7 @@ When turned on, the extension server listens only on `127.0.0.1`, accepts only t
 
 ## Contributing
 
-Questions and ideas are welcome in [Discussions](https://github.com/muazfurkan/Cumba/discussions). Contributions are welcome too; please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately as described in [SECURITY.md](SECURITY.md).
+Questions and ideas are welcome in [Discussions](https://github.com/ljasp-studio/Cumba/discussions). Contributions are welcome too; please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## License
 

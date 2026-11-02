@@ -86,7 +86,7 @@ struct ClaudeCodeSettingsView: View {
           Link(
             "Set up by hand",
             destination: URL(
-              string: "https://github.com/muazfurkan/Cumba/blob/main/docs/claude-code-setup.md"
+              string: "https://github.com/ljasp-studio/Cumba/blob/main/docs/claude-code-setup.md"
             ) ?? URL(filePath: "/"))
           Spacer()
           Button("Copy Hook Token") { SecretCopy.copy(server.hookToken) }

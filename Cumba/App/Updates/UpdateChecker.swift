@@ -21,7 +21,7 @@ final class UpdateChecker {
   @ObservationIgnored private let session: URLSession
 
   private static let releasesURL = URL(
-    string: "https://api.github.com/repos/muazfurkan/Cumba/releases?per_page=20")
+    string: "https://api.github.com/repos/ljasp-studio/Cumba/releases?per_page=20")
 
   init(settings: AppSettings) {
     self.settings = settings
