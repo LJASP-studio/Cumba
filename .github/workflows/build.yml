@@ -52,6 +52,20 @@ jobs:
       - name: Check string catalog
         run: python3 scripts/check-strings.py build
 
+      # The release workflow builds Release for both architectures, and Swift's data race
+      # checks can fail there while the Debug test build passes. Catch that before a tag.
+      - name: Release build
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Cumba.xcodeproj \
+            -scheme Cumba \
+            -configuration Release \
+            -destination 'generic/platform=macOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee -a xcodebuild.log | xcbeautify --renderer github-actions
+
       # xcbeautify can hide compiler errors; print the raw ones when the build fails.
       - name: Show compiler errors
         if: failure()
