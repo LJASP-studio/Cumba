@@ -56,9 +56,10 @@ enum AgentStep {
   }
 }
 
-/// Reads the two things the notch shows from a Claude Code transcript: how full the context
-/// window was at the last answer, and the session's summary title. It reads only the last
-/// 256 KB, only files under ~/.claude/projects, and never on the main thread.
+/// Reads what the notch needs from a Claude Code transcript: how full the context window was
+/// at the last answer, the session's summary title, and whether the last turn was
+/// interrupted. It reads only the end of the file, only files under ~/.claude/projects, and
+/// never on the main thread.
 enum TranscriptReader {
   struct Summary: Equatable, Sendable {
     /// Tokens in the context at the last answer.
@@ -84,12 +85,41 @@ enum TranscriptReader {
   }
 
   static func read(_ url: URL) -> Summary? {
+    tail(of: url, bytes: tailSize).map(parse)
+  }
+
+  /// True when the transcript ends with Claude Code's line for a turn you interrupted, which
+  /// comes without a Stop hook. Reads only the last 64 KB.
+  static func endsInInterrupt(_ url: URL) -> Bool {
+    tail(of: url, bytes: 64 * 1024).map(endsInInterrupt) ?? false
+  }
+
+  /// The last message, yours or the agent's, is the interrupt line.
+  static func endsInInterrupt(_ text: String) -> Bool {
+    for line in text.split(separator: "\n").reversed() {
+      guard let data = line.data(using: .utf8),
+        let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+        let type = object["type"] as? String, type == "user" || type == "assistant",
+        object["isMeta"] as? Bool != true
+      else { continue }
+      guard type == "user", let message = object["message"] as? [String: Any] else {
+        return false
+      }
+      let texts =
+        (message["content"] as? String).map { [$0] }
+        ?? (message["content"] as? [[String: Any]] ?? []).compactMap { $0["text"] as? String }
+      return texts.contains { $0.hasPrefix("[Request interrupted by user") }
+    }
+    return false
+  }
+
+  private static func tail(of url: URL, bytes: Int) -> String? {
     guard let handle = try? FileHandle(forReadingFrom: url) else { return nil }
     defer { try? handle.close() }
     let size = (try? handle.seekToEnd()) ?? 0
-    try? handle.seek(toOffset: size > UInt64(tailSize) ? size - UInt64(tailSize) : 0)
+    try? handle.seek(toOffset: size > UInt64(bytes) ? size - UInt64(bytes) : 0)
     guard let data = try? handle.readToEnd() else { return nil }
-    return parse(String(decoding: data, as: UTF8.self))
+    return String(decoding: data, as: UTF8.self)
   }
 
   static func parse(_ text: String) -> Summary {

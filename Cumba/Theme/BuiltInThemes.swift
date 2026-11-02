@@ -87,5 +87,23 @@ extension Theme {
     return theme
   }()
 
-  static let builtIns = [classic, glass, midnight, neonTokyo, sakura, synthwave, violetNight]
+  /// A fresh yellow-green, like the citrus finish of Apple's colorful laptops, on dark olive.
+  static let citrus: Theme = {
+    var theme = Theme(id: "citrus", name: "Citrus")
+    theme.background = HexColor(red: 0x0A, green: 0x0B, blue: 0x04)
+    theme.gradient = HexColor(red: 0x28, green: 0x30, blue: 0x09)
+    theme.foreground = HexColor(red: 0xFA, green: 0xFB, blue: 0xE6)
+    theme.secondary = HexColor(red: 0xB5, green: 0xBC, blue: 0x86)
+    theme.accent = HexColor(red: 0xD4, green: 0xE1, blue: 0x57)
+    theme.glow = HexColor(red: 0xF4, green: 0xE9, blue: 0x6B)
+    theme.cornerRadius = 26
+    theme.spring = Spring(response: 0.38, damping: 0.86)
+    theme.fontDesign = .rounded
+    theme.indicatorColor = .theme
+    return theme
+  }()
+
+  static let builtIns = [
+    classic, glass, midnight, neonTokyo, sakura, synthwave, violetNight, citrus,
+  ]
 }

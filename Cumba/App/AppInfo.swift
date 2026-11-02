@@ -6,6 +6,10 @@ enum AppInfo {
   static var version: String { string(for: "CFBundleShortVersionString") }
   static var build: String { string(for: "CFBundleVersion") }
 
+  /// True while the app hosts unit tests. Xcode sets this variable in the test host only.
+  static let isRunningTests =
+    ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+
   /// True when the app runs from /Applications or ~/Applications. Run from Downloads, a
   /// downloaded app is moved by macOS to a random read-only path (App Translocation).
   static func isInApplicationsFolder(

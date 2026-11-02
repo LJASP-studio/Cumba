@@ -14,6 +14,8 @@ final class ClaudeCodeService {
       case waitingInput
       case done
       case failed(String)
+      /// The turn ended without a Stop: interrupted, or silent too long.
+      case stopped
       case ended
     }
 
@@ -47,6 +49,10 @@ final class ClaudeCodeService {
   @ObservationIgnored let liveActivities: LiveActivityCenter
   @ObservationIgnored private var removalTasks: [String: Task<Void, Never>] = [:]
   @ObservationIgnored private var transcriptReads: [String: Date] = [:]
+  /// For a turn that ends without a hook (QuietTurns.swift).
+  @ObservationIgnored var transcripts: [String: URL] = [:]
+  @ObservationIgnored var watchers: [String: TranscriptWatcher] = [:]
+  @ObservationIgnored var silenceTasks: [String: Task<Void, Never>] = [:]
   /// The session and notice the status activity shows.
   @ObservationIgnored var shownNotice: (session: String, notice: AgentNotice)?
 
@@ -125,17 +131,23 @@ final class ClaudeCodeService {
       return .askInTerminal
     }
     let detail = payload.permissionDetail
-    let toolName = SafeText(payload.toolName ?? "?").text
+    // The folder and tool names are shown above the Allow button too.
+    let project = SafeText(payload.project)
+    let tool = SafeText(payload.toolName ?? "?")
+    let isSuspicious = detail.isSuspicious || project.isSuspicious || tool.isSuspicious
     let request = PermissionBroker.Request(
-      id: UUID(), sessionID: payload.sessionID, project: payload.project, toolName: toolName,
-      detail: detail.text, isSuspicious: detail.isSuspicious,
-      canAllow: !detail.isSuspicious && notchApprovals.allows(toolName: toolName),
+      id: UUID(), sessionID: payload.sessionID, project: project.text, toolName: tool.text,
+      detail: detail.text, isSuspicious: isSuspicious,
+      canAllow: !isSuspicious && notchApprovals.allows(toolName: tool.text),
       receivedAt: Date())
     update(payload.sessionID, payload, state: .waitingPermission)
     tag(payload.sessionID, with: agent, app: app)
     updateWorkingActivity()
     let decision = await permissions.decide(request)
-    if !permissions.hasPending(in: payload.sessionID) {
+    // A session stopped meanwhile stays stopped.
+    if !permissions.hasPending(in: payload.sessionID),
+      sessions.first(where: { $0.id == payload.sessionID })?.state == .waitingPermission
+    {
       update(payload.sessionID, payload, state: .working, step: AgentStep.thinking)
       updateWorkingActivity()
     }
@@ -174,6 +186,21 @@ final class ClaudeCodeService {
     session.updatedAt = Date()
     sessions.removeAll { $0.id == id }
     sessions.insert(session, at: 0)
+    if let url = TranscriptReader.allowedURL(payload.transcriptPath) {
+      transcripts[id] = url
+    }
+    followTurn(of: id)
+  }
+
+  /// The turn ended without telling the app (QuietTurns.swift).
+  func markStopped(_ id: String) {
+    stopFollowing(id)
+    guard let index = sessions.firstIndex(where: { $0.id == id }), sessions[index].isActive
+    else { return }
+    sessions[index].state = .stopped
+    sessions[index].step = nil
+    permissions.resolveAll(in: id)
+    updateWorkingActivity()
   }
 
   /// Reads the context use and title from the transcript, at most every 5 seconds per
@@ -207,7 +234,7 @@ final class ClaudeCodeService {
 
   /// A ring beside the notch while any session works. A question stays beside the notch
   /// until its session moves on.
-  private func updateWorkingActivity() {
+  func updateWorkingActivity() {
     if let shown = shownNotice, shown.notice.waitsForUser,
       sessions.first(where: { $0.id == shown.session })?.state != .waitingInput
     {
@@ -233,8 +260,12 @@ final class ClaudeCodeService {
       } catch {
         return
       }
-      self?.sessions.removeAll { $0.id == id && $0.state == .ended }
-      self?.removalTasks[id] = nil
+      guard let self else { return }
+      if self.sessions.contains(where: { $0.id == id && $0.state == .ended }) {
+        self.sessions.removeAll { $0.id == id }
+        self.transcripts[id] = nil
+      }
+      self.removalTasks[id] = nil
     }
   }
 }

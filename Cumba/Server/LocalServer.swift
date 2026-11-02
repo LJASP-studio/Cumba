@@ -3,9 +3,9 @@ import Foundation
 import Observation
 
 /// The app's two local servers. Each runs only while its feature is in use:
-/// - HTTP/WebSocket on 127.0.0.1 for the Chrome extension (`/media`), checking Host,
+/// - WebSocket on 127.0.0.1 for the Chrome extension (`MediaSocketServer`), checking Host,
 ///   Origin and the extension token. Only while turned on in Settings > Connections.
-/// - HTTP on a Unix socket for Claude Code hooks (`/claude/hook`, hook token) and, when
+/// - HTTP (FlyingFox) on a Unix socket for Claude Code hooks (`/claude/hook`, hook token) and, when
 ///   turned on, script activities (`/activity`, script token). Only while hooks are
 ///   installed or script activities are on. The socket's folder is readable only by this user,
 ///   so no other user or app can answer Claude Code in the app's place, not even while the
@@ -78,22 +78,13 @@ final class LocalServer {
   func startExtensionServer(port: UInt16) {
     stopExtensionServer()
     guard !extensionToken.isEmpty else { return }
-    let token = extensionToken
-    let hub = browserHub
-    let make: @MainActor () async throws -> HTTPServer = {
-      let server = HTTPServer(
-        address: try sockaddr_in.inet(ip4: "127.0.0.1", port: port),
-        timeout: Self.requestTimeout, logger: .disabled)
-      await server.appendRoute(
-        "GET /media", to: MediaSocketRoute(port: port, token: token, hub: hub))
-      return server
-    }
+    let server = MediaSocketServer(port: port, token: extensionToken, hub: browserHub)
     mediaTask = supervise(
       running: .running(port: port),
       failure: String(
         localized: "Port \(String(port)) is in use or unavailable. Choose another port.",
         comment: "Local server error"),
-      update: { [weak self] in self?.status = $0 }, make: make)
+      update: { [weak self] in self?.status = $0 }, run: server.run(onListening:))
   }
 
   func stopExtensionServer() {
@@ -143,10 +134,20 @@ final class LocalServer {
           token: scriptToken, isEnabled: isEnabled, liveActivities: liveActivities))
       return server
     }
+    let run: @MainActor (@escaping @Sendable () -> Void) async throws -> Void = { onListening in
+      let server = try await make()
+      let watcher = Task {
+        if (try? await server.waitUntilListening(timeout: 5)) != nil {
+          onListening()
+        }
+      }
+      defer { watcher.cancel() }
+      try await server.run()
+    }
     hookTask = supervise(
       running: .running(port: 0),
       failure: String(localized: "The Claude Code socket couldn't be opened."),
-      update: { [weak self] in self?.hookStatus = $0 }, make: make)
+      update: { [weak self] in self?.hookStatus = $0 }, run: run)
   }
 
   private func stopHookServer() {
@@ -170,29 +171,36 @@ final class LocalServer {
   }
 
   /// Runs a server and starts it again after a failure, waiting longer each time (up to a
-  /// minute). Cancelling the task stops the server.
+  /// minute). `run` calls its argument once the server listens. Cancelling the task stops
+  /// the server.
   private func supervise(
     running: Status, failure: String, update: @escaping @MainActor (Status) -> Void,
-    make: @escaping @MainActor () async throws -> HTTPServer
+    run:
+      @escaping @MainActor (_ onListening: @escaping @Sendable () -> Void) async throws ->
+      Void
   ) -> Task<Void, Never> {
     Task {
       var delay = Duration.seconds(2)
       while !Task.isCancelled {
         do {
-          let server = try await make()
-          let watcher = Task {
-            if (try? await server.waitUntilListening(timeout: 5)) != nil {
-              update(running)
-            }
-          }
-          defer { watcher.cancel() }
-          try await server.run()
+          try await run { Task { @MainActor in update(running) } }
         } catch is CancellationError {
           return
         } catch {
           guard !Task.isCancelled else { return }
-          Log.server.error("Server failed: \(String(describing: error), privacy: .public)")
-          update(.failed(failure))
+          // Errors from preparing the socket's folder hold its path, with the user name.
+          let code = error as NSError
+          Log.server.error(
+            "Server failed: \(code.domain, privacy: .public) \(code.code, privacy: .public) \(String(describing: error), privacy: .private)"
+          )
+          update(
+            .failed(
+              error is HookSocketInUse
+                ? String(
+                  localized:
+                    "Another copy of Cumba is using the Claude Code socket. Quit it to use this one.",
+                  comment: "Local server error")
+                : failure))
         }
         do {
           try await Task.sleep(for: delay)
@@ -203,6 +211,10 @@ final class LocalServer {
       }
     }
   }
+
+  /// Another copy of the app answers on the hook socket. Taking the socket over would leave
+  /// that copy deaf to Claude Code, so this one waits until it quits.
+  struct HookSocketInUse: Error {}
 
   /// Creates the private folder and removes a stale socket file. Returns the socket path.
   nonisolated static func prepareHookSocket() throws -> String {
@@ -215,7 +227,23 @@ final class LocalServer {
     try manager.createDirectory(
       atPath: folder, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
     try manager.setAttributes([.posixPermissions: 0o700], ofItemAtPath: folder)
+    if isListening(at: path) { throw HookSocketInUse() }
     unlink(path)
     return path
+  }
+
+  /// True when a process accepts connections on the Unix socket at `path`. A file left
+  /// behind by a copy that quit refuses them.
+  nonisolated static func isListening(at path: String) -> Bool {
+    let fd = socket(AF_UNIX, SOCK_STREAM, 0)
+    guard fd >= 0 else { return false }
+    defer { close(fd) }
+    let address = sockaddr_un.unix(path: path)
+    let result = withUnsafePointer(to: address) {
+      $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+        connect(fd, $0, socklen_t(MemoryLayout<sockaddr_un>.size))
+      }
+    }
+    return result == 0
   }
 }
