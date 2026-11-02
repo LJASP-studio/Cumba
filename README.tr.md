@@ -5,10 +5,10 @@
 <p align="center"><sub>by LJASP · eski adıyla ljaspNotch</sub></p>
 
 <p align="center">
-  <a href="https://github.com/muazfurkan/Cumba/releases/latest"><img src="https://img.shields.io/github/v/release/muazfurkan/Cumba?label=download&color=DCB669" alt="Son sürüm"></a>
-  <a href="https://github.com/muazfurkan/Cumba/actions/workflows/build.yml"><img src="https://github.com/muazfurkan/Cumba/actions/workflows/build.yml/badge.svg?branch=main" alt="Derleme durumu"></a>
+  <a href="https://github.com/LJASP-studio/Cumba/releases/latest"><img src="https://img.shields.io/github/v/release/LJASP-studio/Cumba?label=download&color=DCB669" alt="Son sürüm"></a>
+  <a href="https://github.com/LJASP-studio/Cumba/actions/workflows/build.yml"><img src="https://github.com/LJASP-studio/Cumba/actions/workflows/build.yml/badge.svg?branch=main" alt="Derleme durumu"></a>
   <img src="https://img.shields.io/badge/macOS-26%2B-111111?logo=apple" alt="macOS 26 veya üstü">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/muazfurkan/Cumba?color=111111" alt="MIT lisansı"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/LJASP-studio/Cumba?color=111111" alt="MIT lisansı"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a></p>
@@ -35,15 +35,16 @@ macOS için ücretsiz ve açık kaynak bir notch uygulaması. MacBook notch'unu,
 
 ## İndirme ve kurulum
 
-1. [Son sürümden](https://github.com/muazfurkan/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
+1. [Son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
 2. **Açmadan önce dosyayı doğrulayın.** SHA-256 değeri, sürüm sayfasındaki `SHA256SUMS.txt` ile aynı olmalı:
    ```bash
    shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg
    ```
    1.1.0'dan itibaren sürümler ayrıca değiştirilemezdir (yayımlandıktan sonra dosyaları ve etiketi değişemez) ve imzalı derleme kaynağı (build provenance) taşır. [GitHub CLI](https://cli.github.com) ile dosyanın bu reponun yayın iş akışında derlendiğini doğrulayabilirsiniz:
    ```bash
-   gh attestation verify ~/Downloads/Cumba-vX.Y.Z.dmg --repo muazfurkan/Cumba
+   gh attestation verify ~/Downloads/Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba
    ```
+   1.1.0, depo LJASP-studio'ya taşınmadan önce derlendi; onu `--repo` yerine `--owner muazfurkan` ile doğrulayın.
 3. Disk görüntüsünü açın ve Cumba'yı Uygulamalar klasörüne sürükleyin.
 4. Cumba Apple tarafından notarize edilmedi, çünkü bu ücretli bir geliştirici hesabı gerektiriyor; bu yüzden macOS ilk açılışı engeller. Bir kez açmayı deneyin, ardından **Sistem Ayarları > Gizlilik ve Güvenlik**'te **Yine de Aç**'a tıklayın. İndirilmiş bir derlemeyi hiç çalıştırmak istemezseniz [kaynaktan derleyin](#kaynaktan-derleme).
 5. Kısa bir karşılama penceresi paneli denemenizi sağlar. Cumba menü çubuğunda yaşar; simgesi notch'un arkasında kalırsa Ayarlar için notch'a sağ tıklayın.
@@ -69,7 +70,7 @@ Xcode 26 veya üstü ve [Homebrew](https://brew.sh) gerekir.
 
 ```bash
 brew install xcodegen
-git clone https://github.com/muazfurkan/Cumba.git
+git clone https://github.com/LJASP-studio/Cumba.git
 cd Cumba
 cp Local.xcconfig.example Local.xcconfig   # ardından DEVELOPMENT_TEAM değerini gir
 xcodegen generate
@@ -181,7 +182,7 @@ Açıldığında eklenti sunucusu yalnızca `127.0.0.1` adresini dinler, yalnız
 
 ## Katkı
 
-Sorular ve fikirler için [Discussions](https://github.com/muazfurkan/Cumba/discussions) bölümünü kullanabilirsiniz. Katkılara da açığız; lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
+Sorular ve fikirler için [Discussions](https://github.com/LJASP-studio/Cumba/discussions) bölümünü kullanabilirsiniz. Katkılara da açığız; lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
 
 ## Lisans
 
