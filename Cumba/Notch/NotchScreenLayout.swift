@@ -20,18 +20,22 @@ enum NotchScreenLayout {
     let fallback = settings.usesVirtualNotch ? NSScreen.screens.first : nil
     guard let screen = chosen ?? fallback else { return nil }
     var layout = baseLayout(settings: settings, host: host)
-    func geometry() -> NotchGeometry {
-      screen.notchGeometry(layout: layout) ?? screen.virtualNotchGeometry(layout: layout)
-    }
+    // Not a nested function: one capturing the screen made Swift 6.2's data race check
+    // fail the release build ("sending 'screen' risks causing data races").
     size(
-      &layout, on: screen, notchHeight: geometry().notchRect.height, settings: settings,
-      host: host, layoutStore: layoutStore)
+      &layout, on: screen, notchHeight: geometry(of: screen, layout: layout).notchRect.height,
+      settings: settings, host: host, layoutStore: layoutStore)
     if let minimumPanelWidth, let width = layout.panelWidth, width < minimumPanelWidth {
       layout.panelWidth = minimumPanelWidth
       let largest = layout.largestPanel?.width ?? 0
       layout.largestPanel?.width = max(largest, minimumPanelWidth)
     }
-    return (screen, geometry())
+    return (screen, geometry(of: screen, layout: layout))
+  }
+
+  /// The real notch's geometry, or a drawn one where the screen has none.
+  private static func geometry(of screen: NSScreen, layout: NotchLayout) -> NotchGeometry {
+    screen.notchGeometry(layout: layout) ?? screen.virtualNotchGeometry(layout: layout)
   }
 
   /// The layout before the open tab sizes the panel: the settings, the tab bar and what the
