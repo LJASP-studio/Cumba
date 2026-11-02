@@ -6,8 +6,8 @@ Cumba runs a local HTTP/WebSocket server on `127.0.0.1` and receives Claude Code
 
 **Please do not open a public issue.** Report it privately through GitHub instead:
 
-1. Go to the [Security tab](https://github.com/ljasp-studio/Cumba/security) of this repository.
-2. Click **Report a vulnerability**, or open [a new advisory](https://github.com/ljasp-studio/Cumba/security/advisories/new) directly.
+1. Go to the [Security tab](https://github.com/LJASP-studio/Cumba/security) of this repository.
+2. Click **Report a vulnerability**, or open [a new advisory](https://github.com/LJASP-studio/Cumba/security/advisories/new) directly.
 
 Please include the app version, your macOS version and steps to reproduce. Never include real tokens, Claude Code payloads or personal file paths.
 
@@ -59,8 +59,10 @@ shasum -a 256 Cumba-vX.Y.Z.dmg
 From 1.1.0 on, releases are immutable and carry signed build provenance, which ties the file to this repository, the tagged commit and the workflow run:
 
 ```bash
-gh attestation verify Cumba-vX.Y.Z.dmg --repo muazfurkan/Cumba
+gh attestation verify Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba
 ```
+
+1.1.0 was built before the repository moved to LJASP-studio, so check it with `--owner muazfurkan` instead of `--repo`.
 
 If a check fails, don't open the app, and please report it privately. To avoid trusting a prebuilt binary at all, build from source as described in the README.
 

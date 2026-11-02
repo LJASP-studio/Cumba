@@ -16,9 +16,9 @@ struct UpdateCheckerTests {
   @Test func picksTheNewestAllowedRelease() throws {
     let json = """
       [
-        { "tag_name": "v1.1.0-beta", "html_url": "https://github.com/ljasp-studio/Cumba/releases/tag/v1.1.0-beta", "prerelease": true, "draft": false },
-        { "tag_name": "v1.0.1", "html_url": "https://github.com/ljasp-studio/Cumba/releases/tag/v1.0.1", "prerelease": false, "draft": false },
-        { "tag_name": "v0.9.0", "html_url": "https://github.com/ljasp-studio/Cumba/releases/tag/v0.9.0", "prerelease": true },
+        { "tag_name": "v1.1.0-beta", "html_url": "https://github.com/LJASP-studio/Cumba/releases/tag/v1.1.0-beta", "prerelease": true, "draft": false },
+        { "tag_name": "v1.0.1", "html_url": "https://github.com/LJASP-studio/Cumba/releases/tag/v1.0.1", "prerelease": false, "draft": false },
+        { "tag_name": "v0.9.0", "html_url": "https://github.com/LJASP-studio/Cumba/releases/tag/v0.9.0", "prerelease": true },
         { "tag_name": "v9.9.9", "html_url": "https://evil.example/download", "prerelease": false }
       ]
       """

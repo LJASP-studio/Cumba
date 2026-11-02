@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- The repository moved to [github.com/ljasp-studio/Cumba](https://github.com/ljasp-studio/Cumba), the home of LJASP's projects. Old links redirect, and the update check uses the new address.
+- The repository moved to [github.com/LJASP-studio/Cumba](https://github.com/LJASP-studio/Cumba), the home of LJASP's projects. Old links redirect, and the update check uses the new address.
 - Tabs slide like pages: a two-finger swipe drags the open tab with your fingers while the next one comes in beside it, the page being left fades, and letting go far enough opens the next tab. Clicking a tab slides the pages the same way.
 - The closed notch reaches a little past the camera housing, so you can see it's there. Set how far in Appearance > Panel Size (Closed notch width and height); the panel closes while you drag them, so you see the result. Music, timers and other things beside the notch are as tall as the closed notch, and at zero both are exactly the size of the camera housing.
 - Built-in themes can be changed again (material, colors, font, shape, animation). They keep their names, your changes are saved with them, and **Restore Defaults** brings back the original. They can't be deleted.
@@ -194,13 +194,13 @@ Fixes from a security review of the code, done with AI assistance (not an extern
 - CI workflow (build, test, swift-format lint) and a release workflow that publishes an ad-hoc signed zip.
 - Contributor docs: README in Turkish, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue and pull request templates.
 
-[Unreleased]: https://github.com/ljasp-studio/Cumba/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/ljasp-studio/Cumba/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/ljasp-studio/Cumba/compare/v0.7.0...v1.0.0
-[0.7.0]: https://github.com/ljasp-studio/Cumba/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/ljasp-studio/Cumba/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/ljasp-studio/Cumba/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/ljasp-studio/Cumba/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/ljasp-studio/Cumba/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/ljasp-studio/Cumba/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/ljasp-studio/Cumba/releases/tag/v0.1.0
+[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/LJASP-studio/Cumba/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/LJASP-studio/Cumba/compare/v0.7.0...v1.0.0
+[0.7.0]: https://github.com/LJASP-studio/Cumba/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/LJASP-studio/Cumba/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/LJASP-studio/Cumba/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/LJASP-studio/Cumba/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/LJASP-studio/Cumba/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/LJASP-studio/Cumba/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/LJASP-studio/Cumba/releases/tag/v0.1.0

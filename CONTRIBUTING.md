@@ -1,6 +1,6 @@
 # Contributing to Cumba
 
-Thanks for your interest! This is a small personal project, so please open an issue to discuss larger changes before you start working on them. Questions and loose ideas go to [Discussions](https://github.com/ljasp-studio/Cumba/discussions).
+Thanks for your interest! This is a small personal project, so please open an issue to discuss larger changes before you start working on them. Questions and loose ideas go to [Discussions](https://github.com/LJASP-studio/Cumba/discussions).
 
 ## Setup
 
