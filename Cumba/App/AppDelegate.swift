@@ -57,6 +57,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationDidFinishLaunching(_ notification: Notification) {
+    // The test host is a second copy of the app. Started, it would take the hook socket
+    // from the copy the user runs and leave that copy deaf to Claude Code.
+    guard !AppInfo.isRunningTests else { return }
     notchWindow.openSettings = { [settingsWindow] in settingsWindow.show() }
     NSApp.mainMenu = MainMenu.make()
     menuBar = MenuBarController(settings: settings, updates: updates) { [settingsWindow] in

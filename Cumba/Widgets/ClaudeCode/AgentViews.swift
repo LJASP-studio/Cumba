@@ -203,6 +203,7 @@ struct AgentPanel: View {
     case .waitingInput: String(localized: "Waiting for you", comment: "AI agent needs input")
     case .done: String(localized: "Done", comment: "Claude Code finished")
     case .failed(let error): String(localized: "Error: \(error)", comment: "AI agent failed")
+    case .stopped: String(localized: "Stopped")
     case .ended: String(localized: "Session ended", comment: "AI agent session closed")
     }
   }
@@ -214,6 +215,7 @@ struct AgentPanel: View {
     case .waitingInput: "bubble.left.fill"
     case .done: "checkmark.circle.fill"
     case .failed: "exclamationmark.triangle.fill"
+    case .stopped: "stop.circle.fill"
     case .ended: "stop.circle"
     }
   }

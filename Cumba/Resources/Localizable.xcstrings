@@ -584,6 +584,17 @@
         }
       }
     },
+    "Another copy of Cumba is using the Claude Code socket. Quit it to use this one." : {
+      "comment" : "Local server error",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code soketini başka bir Cumba kopyası kullanıyor. Bunu kullanmak için o kopyadan çıkın."
+          }
+        }
+      }
+    },
     "Answer in Claude Code instead" : {
       "localizations" : {
         "tr" : {

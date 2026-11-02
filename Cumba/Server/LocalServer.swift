@@ -193,7 +193,14 @@ final class LocalServer {
           Log.server.error(
             "Server failed: \(code.domain, privacy: .public) \(code.code, privacy: .public) \(String(describing: error), privacy: .private)"
           )
-          update(.failed(failure))
+          update(
+            .failed(
+              error is HookSocketInUse
+                ? String(
+                  localized:
+                    "Another copy of Cumba is using the Claude Code socket. Quit it to use this one.",
+                  comment: "Local server error")
+                : failure))
         }
         do {
           try await Task.sleep(for: delay)
@@ -204,6 +211,10 @@ final class LocalServer {
       }
     }
   }
+
+  /// Another copy of the app answers on the hook socket. Taking the socket over would leave
+  /// that copy deaf to Claude Code, so this one waits until it quits.
+  struct HookSocketInUse: Error {}
 
   /// Creates the private folder and removes a stale socket file. Returns the socket path.
   nonisolated static func prepareHookSocket() throws -> String {
@@ -216,7 +227,23 @@ final class LocalServer {
     try manager.createDirectory(
       atPath: folder, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
     try manager.setAttributes([.posixPermissions: 0o700], ofItemAtPath: folder)
+    if isListening(at: path) { throw HookSocketInUse() }
     unlink(path)
     return path
+  }
+
+  /// True when a process accepts connections on the Unix socket at `path`. A file left
+  /// behind by a copy that quit refuses them.
+  nonisolated static func isListening(at path: String) -> Bool {
+    let fd = socket(AF_UNIX, SOCK_STREAM, 0)
+    guard fd >= 0 else { return false }
+    defer { close(fd) }
+    let address = sockaddr_un.unix(path: path)
+    let result = withUnsafePointer(to: address) {
+      $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+        connect(fd, $0, socklen_t(MemoryLayout<sockaddr_un>.size))
+      }
+    }
+    return result == 0
   }
 }

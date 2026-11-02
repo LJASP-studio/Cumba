@@ -39,6 +39,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- The notch no longer spins on for a Claude Code turn you interrupted with Esc, which sends no Stop, or for one that went silent for half an hour. The session says Stopped.
+- A second copy of Cumba (a test run, or another build) no longer takes the Claude Code socket from the one you use, which left the notch frozen on the last step. It waits until the first copy quits.
 - In full screen apps the notch no longer hides behind the app's title bar when the menu bar slides down.
 - Live streams (a YouTube live broadcast, say) no longer stop Now Playing: their endless duration crashed the helper, and the media widget stayed empty until Cumba was restarted.
 - Opening the gallery or editing a tab no longer makes the panel narrower, which could leave the pointer outside and close it. The panel keeps its width until it closes or you switch tabs.
