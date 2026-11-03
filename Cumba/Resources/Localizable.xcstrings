@@ -36,13 +36,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ tiene un plan para que lo revises"
+            "value" : "%@ te propone un plan"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ tiene un plan para que lo revises"
+            "value" : "%@ te propone un plan"
           }
         },
         "fr" : {
@@ -221,7 +221,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ a besoin de votre autorisation"
+            "value" : "%@ demande votre autorisation"
           }
         },
         "tr" : {
@@ -256,7 +256,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bağlam penceresinin %@ kadarı kullanıldı"
+            "value" : "Bağlam penceresi %@ dolu"
           }
         }
       }
@@ -279,7 +279,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ s’est arrêté à cause d’une erreur"
+            "value" : "%@ s’est arrêté sur une erreur"
           }
         },
         "tr" : {
@@ -337,7 +337,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ veut utiliser %2$@"
+            "value" : "%1$@ souhaite utiliser %2$@"
           }
         },
         "tr" : {
@@ -540,19 +540,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld min antes"
+            "value" : "%lld min antes"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld min antes"
+            "value" : "%lld min antes"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld min avant"
+            "value" : "%lld min avant"
           }
         },
         "tr" : {
@@ -595,7 +595,7 @@
               "many" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld solicitudes más en espera"
+                  "value" : "%lld de solicitudes más en espera"
                 }
               },
               "other" : {
@@ -619,7 +619,7 @@
               "many" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lld solicitudes más en espera"
+                  "value" : "%lld de solicitudes más en espera"
                 }
               },
               "other" : {
@@ -697,19 +697,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld min"
+            "value" : "%lld min"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld min"
+            "value" : "%lld min"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld min"
+            "value" : "%lld min"
           }
         },
         "tr" : {
@@ -790,7 +790,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "+%lld etkinlik daha"
+            "value" : "+%lld daha"
           }
         }
       }
@@ -806,7 +806,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1. Abre chrome://extensions y activa el modo de desarrollador.\n2. Haz clic en «Cargar descomprimida» y elige la carpeta de la extensión.\n3. Abre las opciones de la extensión y pega el puerto y el token."
+            "value" : "1. Abre chrome://extensions y activa el modo de desarrollador.\n2. Haz clic en “Cargar descomprimida” y elige la carpeta de la extensión.\n3. Abre las opciones de la extensión y pega el puerto y el token."
           }
         },
         "fr" : {
@@ -818,7 +818,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1. chrome://extensions adresini açın ve Geliştirici modunu etkinleştirin.\n2. “Paketlenmemiş öğe yükle”ye tıklayın ve eklenti klasörünü seçin.\n3. Eklentinin seçeneklerini açın, portu ve token'ı yapıştırın."
+            "value" : "1. chrome://extensions adresini açın ve Geliştirici modunu etkinleştirin.\\n2. “Paketlenmemiş öğe yükle” düğmesine tıklayın ve uzantı klasörünü seçin.\\n3. Uzantının seçeneklerini açın, portu ve token'ı yapıştırın."
           }
         }
       }
@@ -1055,13 +1055,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Añadir las capturas de pantalla nuevas"
+            "value" : "Añadir capturas de pantalla nuevas"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar las capturas de pantalla nuevas"
+            "value" : "Agregar capturas de pantalla nuevas"
           }
         },
         "fr" : {
@@ -1073,7 +1073,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yeni ekran görüntülerini ekle"
+            "value" : "Yeni ekran resimlerini ekle"
           }
         }
       }
@@ -1496,7 +1496,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ayarlar'dan kontrole izin ver"
+            "value" : "Ayarlar'dan denetim izni ver"
           }
         }
       }
@@ -1562,19 +1562,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir en la muesca equivale a Permitir en Claude Code: la herramienta se ejecuta al momento. Las solicitudes con caracteres ocultos nunca muestran el botón Permitir."
+            "value" : "«Permitir» en la muesca equivale a «Permitir» en Claude Code: la herramienta se ejecuta al momento. Las solicitudes con caracteres ocultos nunca muestran el botón «Permitir»."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir en la muesca equivale a Permitir en Claude Code: la herramienta se ejecuta al momento. Las solicitudes con caracteres ocultos nunca muestran el botón Permitir."
+            "value" : "“Permitir” en la muesca equivale a “Permitir” en Claude Code: la herramienta se ejecuta de inmediato. Las solicitudes con caracteres ocultos nunca muestran el botón “Permitir”."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autoriser dans l’encoche revient à Autoriser dans Claude Code : l’outil s’exécute immédiatement. Les demandes contenant des caractères masqués n’ont jamais de bouton Autoriser."
+            "value" : "Choisir « Autoriser » dans l’encoche revient à choisir « Autoriser » dans Claude Code : l’outil s’exécute immédiatement. Les demandes contenant des caractères invisibles n’affichent jamais le bouton « Autoriser »."
           }
         },
         "tr" : {
@@ -1637,7 +1637,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anımsatıcılara Erişime İzin Ver"
+            "value" : "Anımsatıcılar Erişimine İzin Ver"
           }
         }
       }
@@ -1675,13 +1675,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir esto desde la muesca está desactivado en Ajustes."
+            "value" : "La opción de permitir esto desde la muesca está desactivada en Ajustes."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir esto desde la muesca está desactivado en Configuración."
+            "value" : "La opción para permitir esto desde la muesca está desactivada en Configuración."
           }
         },
         "fr" : {
@@ -1693,7 +1693,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bunun notch'tan onaylanması Ayarlar'da kapalı."
+            "value" : "Bu istek için notch'tan izin verme seçeneği Ayarlar'da kapalı."
           }
         }
       }
@@ -1874,25 +1874,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Con la batería al 20 % o menos, un anillo rojo y el porcentaje se quedan junto a la muesca."
+            "value" : "Con la batería al 20 % o menos, un anillo rojo y el porcentaje se quedan junto a la muesca."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Con la batería al 20 % o menos, un anillo rojo y el porcentaje se quedan junto a la muesca."
+            "value" : "Con la batería al 20 % o menos, un anillo rojo y el porcentaje se quedan junto a la muesca."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sur batterie, à 20 % ou moins, un anneau rouge et le pourcentage restent à côté de l’encoche."
+            "value" : "Sur batterie, à 20 % ou moins, un anneau rouge et le pourcentage restent affichés à côté de l’encoche."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pille çalışırken %20 ve altında, notch'un yanında kırmızı bir halka ve yüzde kalır."
+            "value" : "Pille çalışırken şarj %20 veya altına düştüğünde notch'un yanında kırmızı bir halka ve pil yüzdesi görünür kalır."
           }
         }
       }
@@ -1972,7 +1972,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L’accès Automatisation à Notes est désactivé."
+            "value" : "L’accès à Notes via Automatisation est désactivé."
           }
         },
         "tr" : {
@@ -2016,25 +2016,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hora de concentrarse"
+            "value" : "A concentrarse"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hora de concentrarse"
+            "value" : "A concentrarse"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Place à la concentration"
+            "value" : "Au travail"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Odaklanma zamanı"
+            "value" : "Odak zamanı"
           }
         }
       }
@@ -2235,7 +2235,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esneme"
+            "value" : "Zıplama"
           }
         }
       }
@@ -2245,19 +2245,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hora del descanso"
+            "value" : "A descansar"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hora del descanso"
+            "value" : "A descansar"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Place à la pause"
+            "value" : "Pause"
           }
         },
         "tr" : {
@@ -2520,7 +2520,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kamerayı Göstermek İçin Tıklayın"
+            "value" : "Kamerayı göstermek için tıklayın"
           }
         }
       }
@@ -2622,13 +2622,13 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Codex solo ejecuta hooks nuevos cuando confías en ellos: tras instalarlos, ejecuta /hooks una vez en Codex y confía en los hooks de Cumba."
+            "value" : "Codex solo ejecuta hooks nuevos si confías en ellos: después de instalarlos, ejecuta /hooks una vez en Codex y confía en los hooks de Cumba."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Codex n’exécute les nouveaux hooks qu’une fois que vous leur faites confiance : après l’installation, lancez /hooks une fois dans Codex et approuvez les hooks de Cumba."
+            "value" : "Codex n’exécute les nouveaux hooks que si vous les avez approuvés : après l’installation, lancez une fois /hooks dans Codex et approuvez les hooks de Cumba."
           }
         },
         "tr" : {
@@ -2795,7 +2795,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El uso del contexto aparece tras la primera respuesta."
+            "value" : "El uso del contexto aparece después de la primera respuesta."
           }
         },
         "fr" : {
@@ -3210,13 +3210,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comprobar ahora"
+            "value" : "Buscar ahora"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verificar ahora"
+            "value" : "Buscar ahora"
           }
         },
         "fr" : {
@@ -3340,7 +3340,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chrome Eklentisi"
+            "value" : "Chrome Uzantısı"
           }
         }
       }
@@ -3707,7 +3707,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "YouTube eklentisini bağla"
+            "value" : "YouTube uzantısını bağla"
           }
         }
       }
@@ -3898,7 +3898,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copier la commande d’exemple"
+            "value" : "Copier un exemple de commande"
           }
         },
         "tr" : {
@@ -4176,7 +4176,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba gestiona las teclas de brillo para que solo la muesca muestre el cambio."
+            "value" : "Cumba controla las teclas de brillo para que solo la muesca muestre el cambio."
           }
         },
         "fr" : {
@@ -4188,7 +4188,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba parlaklık tuşlarını kendisi işler, değişikliği yalnızca notch gösterir."
+            "value" : "Parlaklık tuşlarını Cumba yönetir; böylece değişiklik yalnızca notch'ta görünür."
           }
         }
       }
@@ -4205,7 +4205,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba gestiona las teclas de volumen para que solo la muesca muestre el cambio."
+            "value" : "Cumba controla las teclas de volumen para que solo la muesca muestre el cambio."
           }
         },
         "fr" : {
@@ -4217,7 +4217,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba ses tuşlarını kendisi işler, değişikliği yalnızca notch gösterir."
+            "value" : "Ses tuşlarını Cumba yönetir; böylece değişiklik yalnızca notch'ta görünür."
           }
         }
       }
@@ -4246,7 +4246,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mac'inize giriş yaptığınızda Cumba başlar."
+            "value" : "Mac'inizde oturum açtığınızda Cumba başlar."
           }
         }
       }
@@ -4285,13 +4285,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El tiempo ahora donde estés o en el lugar que elijas"
+            "value" : "El tiempo actual donde estés o en el lugar que elijas"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El clima ahora donde estés o en el lugar que elijas"
+            "value" : "El clima actual donde estés o en el lugar que elijas"
           }
         },
         "fr" : {
@@ -4341,13 +4341,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Predeterminado"
+            "value" : "Por omisión"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Predeterminado"
+            "value" : "Por omisión"
           }
         },
         "fr" : {
@@ -4370,13 +4370,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lista predeterminada"
+            "value" : "Lista por omisión"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lista predeterminada"
+            "value" : "Lista por omisión"
           }
         },
         "fr" : {
@@ -4576,7 +4576,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terminado"
+            "value" : "Listo"
           }
         },
         "fr" : {
@@ -4998,19 +4998,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Respuesta"
+            "value" : "Respuesta táctil"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Respuesta"
+            "value" : "Respuesta táctil"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Retour"
+            "value" : "Retour haptique"
           }
         },
         "tr" : {
@@ -5111,25 +5111,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rondas de concentración con descansos cortos y largos, contadas por día"
+            "value" : "Rondas de concentración con descansos cortos y largos, y recuento diario"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rondas de concentración con descansos cortos y largos, contadas por día"
+            "value" : "Rondas de concentración con descansos cortos y largos, y recuento diario"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Des sessions de concentration avec pauses courtes et longues, comptées chaque jour"
+            "value" : "Des sessions de concentration avec pauses courtes et longues, comptées par jour"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kısa ve uzun molalı odak turları, gün gün sayılır"
+            "value" : "Kısa ve uzun molalı odak turları, günlük olarak sayılır"
           }
         }
       }
@@ -5215,7 +5215,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yazı tipi"
+            "value" : "Font"
           }
         }
       }
@@ -5243,7 +5243,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ücretsiz ve açık kaynak. Telemetri yok."
+            "value" : "Ücretsiz ve açık kaynaklı. Telemetri yok."
           }
         }
       }
@@ -5369,13 +5369,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vidrio"
+            "value" : "Cristal"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vidrio"
+            "value" : "Cristal"
           }
         },
         "fr" : {
@@ -5490,7 +5490,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Respuesta háptica"
+            "value" : "Vibración del trackpad"
           }
         },
         "fr" : {
@@ -5661,7 +5661,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ocultar en apps a pantalla completa"
+            "value" : "Ocultar con apps en pantalla completa"
           }
         },
         "fr" : {
@@ -5695,7 +5695,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Masquer le panneau lors du partage d’écran pendant le défilement"
+            "value" : "Exclure le panneau du partage d’écran pendant le défilement"
           }
         },
         "tr" : {
@@ -5786,7 +5786,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hook'lar terminaldeki, IDE eklentilerindeki ve Claude masaüstü uygulamasındaki Claude Code olaylarını yalnızca sizin kullanıcı hesabınızın açabildiği özel bir soket üzerinden Cumba'ya gönderir. İzin istekleri böylece notch'ta görünür. Cumba çalışmıyorsa Claude Code her zamanki gibi devam eder. Oturum verileri yalnızca bellekte tutulur."
+            "value" : "Hook'lar terminaldeki, IDE uzantılarındaki ve Claude masaüstü uygulamasındaki Claude Code olaylarını yalnızca sizin kullanıcı hesabınızın açabildiği özel bir soket üzerinden Cumba'ya gönderir. İzin istekleri böylece notch'ta görünür. Cumba çalışmıyorsa Claude Code her zamanki gibi devam eder. Oturum verileri yalnızca bellekte tutulur."
           }
         }
       }
@@ -6042,7 +6042,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ön sürümleri dahil et"
+            "value" : "Ön sürümleri dâhil et"
           }
         }
       }
@@ -6211,7 +6211,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ temasından başlar."
+            "value" : "%@ temasını temel alır."
           }
         }
       }
@@ -6691,7 +6691,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Size göre ayarlayın"
+            "value" : "Kendinize göre ayarlayın"
           }
         }
       }
@@ -6713,7 +6713,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matière"
+            "value" : "Matériau"
           }
         },
         "tr" : {
@@ -7159,7 +7159,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mueve Cumba a la carpeta Aplicaciones: ciérralo, arrástralo allí en el Finder y vuelve a abrirlo. Si no, macOS puede olvidar sus permisos y la carpeta de la extensión de Chrome puede cambiar de sitio."
+            "value" : "Mueve Cumba a la carpeta Aplicaciones: ciérralo, arrástralo ahí en el Finder y vuelve a abrirlo. Si no, macOS puede olvidar sus permisos y la carpeta de la extensión de Chrome puede cambiar de lugar."
           }
         },
         "fr" : {
@@ -7171,7 +7171,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba'yı Uygulamalar klasörüne taşıyın: uygulamadan çıkın, Finder'da oraya sürükleyin ve yeniden açın. Aksi halde macOS izinleri unutabilir ve Chrome eklentisinin klasörü değişebilir."
+            "value" : "Cumba'yı Uygulamalar klasörüne taşıyın: uygulamadan çıkın, Finder'da oraya sürükleyin ve yeniden açın. Aksi hâlde macOS izinleri unutabilir ve Chrome uzantısının klasörü değişebilir."
           }
         }
       }
@@ -7366,7 +7366,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jamais (seulement Refuser et Dans le terminal)"
+            "value" : "Jamais (seulement « Refuser » et « Dans le terminal »)"
           }
         },
         "tr" : {
@@ -7555,13 +7555,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sin batería"
+            "value" : "Este Mac no tiene batería"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sin batería"
+            "value" : "Esta Mac no tiene batería"
           }
         },
         "fr" : {
@@ -7764,7 +7764,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pas ouvert"
+            "value" : "Non ouvert"
           }
         },
         "tr" : {
@@ -7850,13 +7850,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widget Notes : vos notes récentes, et les nouvelles créées depuis le panneau"
+            "value" : "Widget Notes : vos notes récentes et celles que vous créez depuis le panneau"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notlar widget'ı: son notlarınız ve panelden yeni notlar"
+            "value" : "Notlar widget'ı: son notlarınız ve panelden eklediğiniz yeni notlar"
           }
         }
       }
@@ -7901,7 +7901,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay nada previsto para este día."
+            "value" : "No hay nada programado para este día."
           }
         },
         "fr" : {
@@ -7913,7 +7913,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu gün için plan yok."
+            "value" : "Seçilen gün için plan yok."
           }
         }
       }
@@ -7923,13 +7923,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay nada previsto ni para hoy ni para mañana."
+            "value" : "No hay nada previsto para hoy ni para mañana."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay nada previsto ni para hoy ni para mañana."
+            "value" : "No hay nada programado para hoy ni para mañana."
           }
         },
         "fr" : {
@@ -8129,7 +8129,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Con «Al pasar el puntero», el panel se abre cuando el puntero se detiene un momento sobre la muesca."
+            "value" : "Con “Al pasar el puntero”, el panel se abre cuando el puntero se detiene un momento sobre la muesca."
           }
         },
         "fr" : {
@@ -8141,7 +8141,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Üzerine gelince seçiliyse, imleç notch'ta bir an durunca panel açılır."
+            "value" : "“Üzerine gelince” seçiliyse, imleç notch'un üzerinde bir an durduğunda panel açılır."
           }
         }
       }
@@ -8198,7 +8198,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yalnızca AppleScript ile Spotify ve Müzik, eklentiyle de YouTube."
+            "value" : "Yalnızca AppleScript ile Spotify ve Müzik, uzantıyla da YouTube."
           }
         }
       }
@@ -8226,7 +8226,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yalnızca bu token'ı taşıyan Cumba eklentisi kabul edilir. Bu token yalnızca eklenti içindir; Claude Code hook'ları kendi token'ını kullanır. Yeniledikten sonra yeni token'ı eklentinin seçeneklerine yapıştırın."
+            "value" : "Yalnızca bu token'ı taşıyan Cumba uzantısı kabul edilir. Bu token yalnızca uzantı içindir; Claude Code hook'ları kendi token'ını kullanır. Yeniden oluşturduktan sonra yeni token'ı uzantının seçeneklerine yapıştırın."
           }
         }
       }
@@ -8321,25 +8321,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir Ítems de inicio"
+            "value" : "Abrir Ítems de inicio y extensiones"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir Elementos de inicio"
+            "value" : "Abrir Elementos de inicio y extensiones"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrir les réglages Ouverture"
+            "value" : "Ouvrir les réglages Ouverture et extensions"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Giriş Öğeleri Ayarlarını Aç"
+            "value" : "Oturum Açma Öğeleri Ayarlarını Aç"
           }
         }
       }
@@ -8379,13 +8379,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir en la pestaña de los agentes mientras uno trabaja"
+            "value" : "Abrir en la pestaña de agentes si alguno está trabajando"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir en la pestaña de los agentes mientras uno trabaja"
+            "value" : "Abrir en la pestaña de agentes si alguno está trabajando"
           }
         },
         "fr" : {
@@ -8397,7 +8397,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bir ajan çalışırken ajanların sekmesinde aç"
+            "value" : "Bir ajan çalışırken ajanların olduğu sekmede aç"
           }
         }
       }
@@ -8818,7 +8818,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mettre en pause"
+            "value" : "Pause"
           }
         },
         "tr" : {
@@ -8881,7 +8881,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bir tema ve sekme stili seçin, paneli boyutlandırın ve kendi görünümünüzü yapın."
+            "value" : "Bir tema ve sekme stili seçin, paneli boyutlandırın ve kendi görünümünüzü oluşturun."
           }
         }
       }
@@ -9158,7 +9158,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le port %@ est utilisé ou indisponible. Choisissez un autre port."
+            "value" : "Le port %@ est déjà utilisé ou indisponible. Choisissez un autre port."
           }
         },
         "tr" : {
@@ -9363,7 +9363,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Medyayı her uygulamadan oku"
+            "value" : "Tüm uygulamalardaki medyayı oku"
           }
         }
       }
@@ -9420,7 +9420,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yenile"
+            "value" : "Yeniden Oluştur"
           }
         }
       }
@@ -9630,13 +9630,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eliminar…"
+            "value" : "Quitar…"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eliminar…"
+            "value" : "Quitar…"
           }
         },
         "fr" : {
@@ -9828,13 +9828,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Restaurar valores predeterminados"
+            "value" : "Restaurar valores por omisión"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Restaurar valores predeterminados"
+            "value" : "Restaurar valores por omisión"
           }
         },
         "fr" : {
@@ -9874,7 +9874,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Devam Et"
+            "value" : "Sürdür"
           }
         }
       }
@@ -9897,7 +9897,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Examiner"
+            "value" : "Voir"
           }
         },
         "tr" : {
@@ -9931,7 +9931,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "~/.claude/settings.json değişikliklerini gözden geçirin"
+            "value" : "~/.claude/settings.json dosyasındaki değişiklikleri gözden geçirin"
           }
         }
       }
@@ -9941,13 +9941,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haz clic con el botón derecho en la muesca"
+            "value" : "Haz clic derecho en la muesca"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haz clic con el botón derecho en la muesca"
+            "value" : "Haz clic derecho en la muesca"
           }
         },
         "fr" : {
@@ -10271,7 +10271,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kaydetmek dosyayı standart bir biçimde de yeniden yazar (anahtarlar sıralı, iki boşluk girinti). İçerik yalnızca aşağıda gösterildiği kadar değişir."
+            "value" : "Kaydederken dosya standart bir biçimde de yeniden yazılır (anahtarlar sıralanır, girinti iki boşluk olur). İçerik yalnızca aşağıda gösterildiği gibi değişir."
           }
         }
       }
@@ -10300,7 +10300,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ekran görüntüsü"
+            "value" : "Ekran resmi"
           }
         }
       }
@@ -10329,7 +10329,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ klasörüne kaydedilen ekran görüntüleri kaydedildikçe eklenir; yalnızca konumları tutulur. macOS bu klasöre erişim için bir kez izin ister."
+            "value" : "%@ klasörüne kaydedilen ekran resimleri oluştukça eklenir; yalnızca konumları saklanır. macOS bu klasöre erişim için bir kez izin ister."
           }
         }
       }
@@ -10481,19 +10481,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscar en Ajustes"
+            "value" : "Buscar"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscar en Configuración"
+            "value" : "Buscar"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rechercher dans les réglages"
+            "value" : "Rechercher"
           }
         },
         "tr" : {
@@ -10557,7 +10557,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Webde arıyor"
+            "value" : "Web'de arıyor"
           }
         }
       }
@@ -10614,7 +10614,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple Notlar'ınızı burada görün ve not ekleyin."
+            "value" : "Notlar'daki notlarınızı burada görün ve yenilerini ekleyin."
           }
         }
       }
@@ -10867,7 +10867,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ayarlar, Paneli Sıfırla ve Çık her zaman oradadır; menü çubuğu simgesi gizlense bile."
+            "value" : "Menü çubuğu simgesi gizli olsa bile Ayarlar, Paneli Sıfırla ve Çık her zaman oradadır."
           }
         }
       }
@@ -11123,7 +11123,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eklenti Klasörünü Göster"
+            "value" : "Uzantı Klasörünü Göster"
           }
         }
       }
@@ -11133,13 +11133,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostrar una muesca virtual si ninguna pantalla tiene"
+            "value" : "Mostrar una muesca virtual si ninguna pantalla tiene muesca"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostrar una muesca virtual si ninguna pantalla tiene"
+            "value" : "Mostrar una muesca virtual si ninguna pantalla tiene muesca"
           }
         },
         "fr" : {
@@ -11332,25 +11332,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muestra lo que suena en cualquier app, como el centro de control: Safari, Chrome, YouTube, Spotify, Música, pódcasts y más, sin extensiones ni acceso de Automatización. Un pequeño ayudante lo lee mediante el perl del propio macOS."
+            "value" : "Muestra lo que suena en cualquier app, como el centro de control: Safari, Chrome, YouTube, Spotify, Música, podcasts y más, sin extensiones ni acceso de Automatización. Un pequeño programa auxiliar lo lee mediante el perl integrado en macOS."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muestra lo que suena en cualquier app, como el centro de control: Safari, Chrome, YouTube, Spotify, Música, pódcasts y más, sin extensiones ni acceso de Automatización. Un pequeño ayudante lo lee mediante el perl del propio macOS."
+            "value" : "Muestra lo que suena en cualquier app, como el centro de control: Safari, Chrome, YouTube, Spotify, Música, podcasts y más, sin extensiones ni acceso de Automatización. Un pequeño programa auxiliar lo lee mediante el perl integrado en macOS."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Affiche ce que lit n’importe quelle app, comme le Centre de contrôle : Safari, Chrome, YouTube, Spotify, Musique, podcasts et plus encore, sans extension ni accès Automatisation. Un petit assistant le lit via le perl intégré à macOS."
+            "value" : "Affiche ce que lit n’importe quelle app, comme le Centre de contrôle : Safari, Chrome, YouTube, Spotify, Musique, podcasts et plus encore, sans extension ni accès Automatisation. Un petit programme auxiliaire récupère ces informations via le perl intégré à macOS."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Denetim Merkezi gibi, hangi uygulama ne çalıyorsa gösterir: Safari, Chrome, YouTube, Spotify, Müzik, podcast'ler ve daha fazlası; eklenti ya da Otomasyon izni gerekmez. Bunu küçük bir yardımcı, macOS'un kendi perl'ü üzerinden okur."
+            "value" : "Denetim Merkezi gibi, hangi uygulama ne çalıyorsa gösterir: Safari, Chrome, YouTube, Spotify, Müzik, podcast'ler ve daha fazlası; uzantı ya da Otomasyon izni gerekmez. Bunu, macOS'in kendi perl'ü üzerinden çalışan küçük bir yardımcı okur."
           }
         }
       }
@@ -11451,7 +11451,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Negro liso"
+            "value" : "Negro sólido"
           }
         },
         "fr" : {
@@ -11519,7 +11519,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kapak görseli ve kontrollerle Spotify, Müzik ve YouTube"
+            "value" : "Kapak görseli ve oynatma denetimleriyle Spotify, Müzik ve YouTube"
           }
         }
       }
@@ -11558,25 +11558,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abre Cumba con tu Mac, mantenlo al día y comprueba cómo funciona."
+            "value" : "Abre Cumba al iniciar sesión, mantenlo actualizado y consulta su estado."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abre Cumba con tu Mac, mantenlo al día y comprueba cómo funciona."
+            "value" : "Abre Cumba al iniciar sesión, mantenlo actualizado y revisa su estado."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lancez Cumba avec votre Mac, tenez-le à jour et voyez comment il se porte."
+            "value" : "Ouvrez Cumba à la connexion, tenez-le à jour et voyez comment il se porte."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba'yı Mac'inizle başlatın, güncel tutun ve nasıl çalıştığını görün."
+            "value" : "Cumba'yı Mac'inizle birlikte başlatın, güncel tutun ve durumunu izleyin."
           }
         }
       }
@@ -11604,7 +11604,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sonraki turu kendiliğinden başlat"
+            "value" : "Sonraki turu otomatik başlat"
           }
         }
       }
@@ -11615,13 +11615,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Arranque"
+            "value" : "Inicio de sesión"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Arranque"
+            "value" : "Inicio de sesión"
           }
         },
         "fr" : {
@@ -12264,19 +12264,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La muesca se aparta cuando un vídeo o una app ocupan la pantalla."
+            "value" : "La muesca se aparta cuando un vídeo o una app ocupan toda la pantalla."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La muesca se aparta cuando un video o una app ocupan la pantalla."
+            "value" : "La muesca se aparta cuando un video o una app ocupan toda la pantalla."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L’encoche s’efface quand une vidéo ou une app occupe l’écran."
+            "value" : "L’encoche s’efface quand une vidéo ou une app occupe tout l’écran."
           }
         },
         "tr" : {
@@ -12299,7 +12299,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La muesca escribe «hello», como la primera vez que se abre Cumba."
+            "value" : "La muesca escribe “hello”, como la primera vez que se abre Cumba."
           }
         },
         "fr" : {
@@ -12311,7 +12311,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notch, Cumba ilk açıldığında olduğu gibi hello yazar."
+            "value" : "Notch, Cumba ilk açıldığında olduğu gibi “hello” yazar."
           }
         }
       }
@@ -12334,13 +12334,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le widget Notes affiche vos notes Apple les plus récentes et en crée de nouvelles. Cumba lit Notes via AppleScript, ouvre l’app en arrière-plan si elle est fermée et ne modifie ni ne supprime jamais une note existante. Rien ne quitte votre Mac."
+            "value" : "Le widget Notes affiche vos notes Apple les plus récentes et en crée de nouvelles. Cumba lit Notes via AppleScript, ouvre l’app en arrière-plan si elle est fermée et ne modifie ni ne supprime jamais aucune note existante. Rien ne quitte votre Mac."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notlar widget'ı son Apple Notlar'ınızı gösterir ve yeni not oluşturur. Cumba Notlar'ı AppleScript ile okur, Notlar kapalıysa onu arka planda başlatır ve var olan hiçbir notu değiştirmez ya da silmez. Hiçbir şey Mac'inizden çıkmaz."
+            "value" : "Notlar widget'ı Notlar'daki son notlarınızı gösterir ve yeni not oluşturur. Cumba Notlar'ı AppleScript ile okur, Notlar kapalıysa onu arka planda başlatır ve var olan hiçbir notu değiştirmez ya da silmez. Hiçbir şey Mac'inizden çıkmaz."
           }
         }
       }
@@ -12476,13 +12476,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Impossible de lire la lecture en cours du système sur ce Mac : Cumba utilise donc Spotify, Musique et l’extension YouTube."
+            "value" : "Les informations « À l’écoute » du système ne sont pas accessibles sur ce Mac : Cumba utilise donc Spotify, Musique et l’extension YouTube."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu Mac'te sistemin Şu An Çalan bilgisi okunamıyor; Cumba bu yüzden Spotify, Müzik ve YouTube eklentisini kullanıyor."
+            "value" : "Bu Mac'te sistemin Şu An Çalan bilgisi okunamıyor; bu yüzden Cumba Spotify, Müzik ve YouTube uzantısını kullanıyor."
           }
         }
       }
@@ -12619,13 +12619,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le trackpad émet un léger retour quand le panneau s’ouvre ou que vous changez d’onglet."
+            "value" : "Le trackpad produit un léger retour haptique quand le panneau s’ouvre ou que l’onglet change."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Panel açılınca ya da sekme değişince trackpad hafifçe tıklar."
+            "value" : "Panel açılınca ya da sekme değişince izleme dörtgeni hafifçe titreşir."
           }
         }
       }
@@ -12654,7 +12654,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "YouTube eklentisi ve kendi script'leriniz."
+            "value" : "YouTube uzantısı ve kendi script'leriniz."
           }
         }
       }
@@ -12762,13 +12762,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette demande contient des caractères masqués ou est trop longue pour être affichée en toute sécurité. Répondez-y dans le terminal."
+            "value" : "Cette demande contient des caractères invisibles ou est trop longue pour être affichée en toute sécurité. Répondez-y dans le terminal."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu istekte gizli karakterler var veya güvenle gösterilemeyecek kadar uzun. Terminalde yanıtlayın."
+            "value" : "Bu istek gizli karakterler içeriyor ya da güvenle gösterilemeyecek kadar uzun. Terminalde yanıtlayın."
           }
         }
       }
@@ -12854,7 +12854,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple Anımsatıcılar'ınızı burada işaretleyin ve ekleyin."
+            "value" : "Anımsatıcılarınızı burada işaretleyin ve yenilerini ekleyin."
           }
         }
       }
@@ -12921,13 +12921,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vidrio tintado"
+            "value" : "Cristal tintado"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vidrio polarizado"
+            "value" : "Vidrio teñido"
           }
         },
         "fr" : {
@@ -12967,7 +12967,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kapak görselini göstermek ve kontrolleri kullanmak için Cumba'nın her oynatıcıya Otomasyon erişimi olmalı. Oynatıcıyı açın, ardından buradan izin verin."
+            "value" : "Kapak görselini göstermek ve denetimleri kullanmak için Cumba'nın her oynatıcıya Otomasyon erişimi olmalı. Oynatıcıyı açın, ardından buradan izin verin."
           }
         }
       }
@@ -13364,7 +13364,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Panelin sabitlemesini kaldır"
+            "value" : "Panelin sabitlenmesini kaldır"
           }
         }
       }
@@ -13647,7 +13647,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genellikle gerekmez: Medya widget'ı YouTube'u her tarayıcıdan kendisi okur. Yalnızca eklentiyi kullanıyorsanız açın. Cumba bu durumda bu Mac'te (127.0.0.1) Cumba eklentisini dinler; ağdan hiçbir şeye erişilemez."
+            "value" : "Genellikle gerekmez: Medya widget'ı YouTube'u her tarayıcıdan kendisi okur. Yalnızca uzantıyı kullanıyorsanız açın. Bu durumda Cumba, uzantısını bu Mac'te (127.0.0.1) dinler; ağdan hiçbir şeye erişilemez."
           }
         }
       }
@@ -13973,13 +13973,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los datos del tiempo proceden de Open-Meteo. Tu ubicación se redondea a unos 10 km antes de enviarse, y Mapas encuentra el nombre de la ciudad. Para una ciudad elegida, solo se envían sus coordenadas."
+            "value" : "Los datos del tiempo proceden de Open-Meteo. Tu ubicación se redondea a unos 10 km antes de enviarse, y Mapas de Apple obtiene el nombre de la ciudad. Si eliges una ciudad, solo se envían sus coordenadas."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los datos del clima vienen de Open-Meteo. Tu ubicación se redondea a unos 10 km antes de enviarse, y Mapas encuentra el nombre de la ciudad. Para una ciudad elegida, solo se envían sus coordenadas."
+            "value" : "Los datos del clima vienen de Open-Meteo. Tu ubicación se redondea a unos 10 km antes de enviarse, y Mapas de Apple obtiene el nombre de la ciudad. Si eliges una ciudad, solo se envían sus coordenadas."
           }
         },
         "fr" : {
@@ -14001,7 +14001,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El tiempo no está disponible."
+            "value" : "No hay información del tiempo disponible."
           }
         },
         "es-419" : {
@@ -14501,7 +14501,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "S’il n’y a aucune encoche, par exemple quand le Mac est fermé, l’écran principal en affiche une."
+            "value" : "S’il n’y a aucune encoche, par exemple en mode écran fermé, l’écran principal en affiche une."
           }
         },
         "tr" : {
@@ -14593,7 +14593,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple Anımsatıcılar'ınız: işaretleyin, yenilerini ekleyin"
+            "value" : "Anımsatıcılarınız: işaretleyin, yenilerini ekleyin"
           }
         }
       }
@@ -14621,7 +14621,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kameranız hızlı bir ayna olarak"
+            "value" : "Kameranızla hızlı bir ayna"
           }
         }
       }
@@ -14705,7 +14705,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kendi script'leriniz, Kısayollar veya derleme araçlarınız Cumba'nın özel soketi üzerinden notch'un yanında kısa bir durum ya da ilerleme gösterebilir. Ona yalnızca sizin hesabınızla çalışan programlar ulaşabilir ve bu token'a ihtiyaç duyarlar. Etkinlikler yalnızca metindir; içlerinde tıklanabilecek bir şey yoktur."
+            "value" : "Kendi script'leriniz, kısayollarınız ya da derleme araçlarınız Cumba'nın özel soketi üzerinden notch'un yanında kısa bir durum ya da ilerleme gösterebilir. Ona yalnızca sizin hesabınızla çalışan programlar ulaşabilir ve bu token'a ihtiyaç duyarlar. Etkinlikler yalnızca metindir; içlerinde tıklanabilecek bir şey yoktur."
           }
         }
       }
@@ -14812,13 +14812,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba ne demande une autorisation que lorsque vous utilisez la fonction qui en a besoin. Tout ce qui figure ici peut être modifié à nouveau dans Réglages Système."
+            "value" : "Cumba ne demande une autorisation que lorsque vous utilisez la fonction qui en a besoin. Vous pourrez toujours modifier ces choix dans Réglages Système."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba bir izni yalnızca onu gerektiren özelliği kullandığınızda ister. Buradaki her şeyi Sistem Ayarları'ndan yeniden değiştirebilirsiniz."
+            "value" : "Cumba bir izni yalnızca onu gerektiren özelliği kullandığınızda ister. Buradaki her şeyi daha sonra Sistem Ayarları'ndan değiştirebilirsiniz."
           }
         }
       }
@@ -14874,7 +14874,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba'nın %@ uygulamasını kontrol etme izni yok. Sistem Ayarları > Gizlilik ve Güvenlik > Otomasyon'dan izin verin."
+            "value" : "Cumba'nın %@ uygulamasını denetleme izni yok. Sistem Ayarları > Gizlilik ve Güvenlik > Otomasyon'dan izin verin."
           }
         }
       }
@@ -14959,7 +14959,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Son Apple Notlar'ınız ve panelde yazılan yeni notlar"
+            "value" : "Notlar'daki son notlarınız ve panelde yazdığınız yeni notlar"
           }
         }
       }
@@ -14988,7 +14988,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sekmeleriniz, içlerindeki widget'lar ve tüm widget'lar."
+            "value" : "Sekmeleriniz, içlerindeki widget'lar ve kullanılabilecek tüm widget'lar."
           }
         }
       }
@@ -15045,6 +15045,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "↑%lld° ↓%lld°"
+          }
+        }
+      }
+    },
+    "tab-editing-done" : {
+      "comment" : "Button that leaves tab editing and the widget gallery",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitti"
           }
         }
       }

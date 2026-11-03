@@ -26,9 +26,9 @@ macOS için ücretsiz ve açık kaynak bir notch uygulaması. MacBook notch'unu,
 
 ## Özellikler
 
-- **Medya**: hangi uygulama ne çalıyorsa (Safari, Chrome, YouTube, Spotify, Müzik, podcast'ler ve daha fazlası) tek bir mini oynatıcıda; kapak görseli, ilerleme, sarma ve kontroller, eklenti ya da kurulum gerekmeden. Notch'un yanındaki küçük ses dalgası neyin çaldığını gösterir.
+- **Medya**: hangi uygulama ne çalıyorsa (Safari, Chrome, YouTube, Spotify, Müzik, podcast'ler ve daha fazlası) tek bir mini oynatıcıda; kapak görseli, ilerleme, sarma ve kontroller, uzantı ya da kurulum gerekmeden. Notch'un yanındaki küçük ses dalgası neyin çaldığını gösterir.
 - **Yapay zeka ajanları (Claude Code ve Codex)**: ajanın o an ne yaptığı, son yanıtı ve bağlam penceresinin ne kadar dolu olduğu; çalışırken notch'un yanında dönen bir halka. Soru sorduğunda, izin istediğinde veya bitirdiğinde notch'un altında ne olduğunu söyleyen bir bildirim açılır; **Aç** ajanın çalıştığı uygulamayı öne getirir. Ajan çalışırken paneli açınca onun sekmesi gelir. İzin istekleri **İzin Ver**, **Reddet** ve **Terminalde** seçenekleriyle görünür; sorular ve planlar ajanda kalır, notch sizi beklediğini söyler.
-- **Sekmelerde widget'lar**: görüntülü görüşmeler için Katıl düğmeli takvim (günler arasında kaydırarak herhangi bir günün etkinliklerine bakın), zamanlayıcı, Pomodoro, Apple Notlar'ınız (son notlar ve panelden yeni not), Apple Anımsatıcılar'dan yapılacaklar (işaretleyin, yenisini ekleyin), pano geçmişi (metin, bağlantı, görsel, dosya ve yeni ekran görüntüleri kartlar halinde), uyanık tut, teleprompter, pil, AirDrop destekli dosya rafı, kamera aynası, hava durumu, Kısayollar ve CPU/bellek grafiği. Panelden ya da Ayarlar'daki galeriden ekleyin, sekmeler arasında iki parmakla kaydırarak geçin; yeni kurulum yalnızca üçüyle başlar.
+- **Sekmelerde widget'lar**: görüntülü görüşmeler için Katıl düğmeli takvim (günler arasında kaydırarak herhangi bir günün etkinliklerine bakın), zamanlayıcı, Pomodoro, Notlar'daki notlarınız (son notlar ve panelden yeni not), Apple Anımsatıcılar'dan yapılacaklar (işaretleyin, yenisini ekleyin), pano geçmişi (metin, bağlantı, görsel, dosya ve yeni ekran resimleri kartlar hâlinde), uyanık tut, teleprompter, pil, AirDrop destekli dosya rafı, kamera aynası, hava durumu, Kısayollar ve CPU/bellek grafiği. Panelden ya da Ayarlar'daki galeriden ekleyin, sekmeler arasında iki parmakla kaydırarak geçin; yeni kurulum yalnızca üçüyle başlar.
 - **Size uyan bir panel**: sekmeler altta ya da üstte, doğrudan panelde düzenlenir (ad, simge, sıra, widget'lar). Panel açık sekme kadar geniştir; sekmesinde tek başına olan widget ayrıntılı görünür: Apple'ın widget'ı gibi önümüzdeki saatler ve günlerle hava durumu, etkinliklerinizin yanında ayın tamamı, büyük albüm kapağı. Yazı boyutu ve kapalı notch'un kameranın ne kadar dışına taşacağı ayarlanabilir.
 - **İsteğe bağlı ekstralar** (siz açana kadar kapalı): paneli istediğiniz ekranda gösterme, sistemin ses ve parlaklık göstergeleri yerine notch, mikrofon veya kamera kullanılırken bir nokta, toplantılardan önce geri sayım, medya kaynağı seçimi ve [kendi script'leriniz için bir API](#scriptler).
 - **Canlı etkinlikler**: çalışan zamanlayıcı, çalışan bir yapay zeka ajanı, bekleyen bir istek, şarj, çalan şarkı ya da ses veya parlaklık değişikliği kapalı notch'un iki yanında görünür.
@@ -62,7 +62,7 @@ macOS için ücretsiz ve açık kaynak bir notch uygulaması. MacBook notch'unu,
 
 **Güncellemeler:** Uygulama yeni sürüm çıktığında haber verir; kendi başına hiçbir şey indirmez veya kurmaz. Sürümler ad-hoc imzalı olduğu için güncellemeden sonra macOS verdiğiniz izinleri (Otomasyon, Takvim, Konum, Kamera) ve Cumba'nın token'ları için Anahtar Zinciri erişimini yeniden sorar. Önce yeni dosyayı doğrulayın, sonra izin verin.
 
-**cumbaNotch'tan mı geçiyorsunuz?** Cumba aynı uygulamanın yeni adı. cumbaNotch'tan çıkın, eski uygulamayı Çöp Sepeti'ne taşıyın ve Cumba'yı kurun; ayarlarınız, düzeniniz, notlarınız ve temalarınız aynen gelir. Claude Code hook'larını kullanıyorsanız Ayarlar > Ajanlar'da bir kez **Güncelle…**'ye tıklayın. Chrome eklentisini kullanıyorsanız onu `chrome://extensions` sayfasından kaldırın, [YouTube ve YouTube Music](#youtube-ve-youtube-music) bölümündeki gibi yeni uygulamadan tekrar yükleyin ve token'ı yapıştırın.
+**cumbaNotch'tan mı geçiyorsunuz?** Cumba aynı uygulamanın yeni adı. cumbaNotch'tan çıkın, eski uygulamayı Çöp Sepeti'ne taşıyın ve Cumba'yı kurun; ayarlarınız, düzeniniz, notlarınız ve temalarınız aynen gelir. Claude Code hook'larını kullanıyorsanız Ayarlar > Ajanlar'da bir kez **Güncelle…**'ye tıklayın. Chrome uzantısını kullanıyorsanız onu `chrome://extensions` sayfasından kaldırın, [YouTube ve YouTube Music](#youtube-ve-youtube-music) bölümündeki gibi yeni uygulamadan tekrar yükleyin ve token'ı yapıştırın.
 
 ## Gereksinimler
 
@@ -99,13 +99,13 @@ Aşağıdakilerin hepsi, gerektiren özelliği açana kadar kapalıdır veya kul
 | Anımsatıcılar (tam erişim) | Yapılacaklar widget'ı: anımsatıcıları göstermek, işaretlemek ve eklemek | Widget'ta veya Ayarlar'da İzin Ver'e tıkladığınızda istenir |
 | Konum | Hava durumu widget'ı, bulunduğunuz yerin havası için | Konumumu Kullan'a tıkladığınızda istenir; şehir seçerseniz kullanılmaz |
 | Kamera | Ayna widget'ı | Yalnızca panel onu gösterirken; hiçbir şey kaydedilmez |
-| `127.0.0.1` üzerinde yerel sunucu | İsteğe bağlı YouTube eklentisi bağlantısı | Yalnızca Ayarlar > Bağlantılar'dan açtıktan sonra |
+| `127.0.0.1` üzerinde yerel sunucu | İsteğe bağlı YouTube uzantısı bağlantısı | Yalnızca Ayarlar > Bağlantılar'dan açtıktan sonra |
 | Özel Unix soketi | Claude Code ve Codex hook'ları ve [script etkinlikleri](#scriptler) | Yalnızca hook'lar kuruluyken veya script etkinlikleri açıkken |
 | `~/.claude/settings.json`, `~/.codex/hooks.json` | Claude Code ve Codex hook'larını kurmak ve kaldırmak | Yalnızca değişikliği gözden geçirdikten sonra; yedek alınır |
 | `~/.claude/projects` içindeki Claude Code oturum kayıtları | Yapay Zeka Ajanları widget'ında bağlam kullanımı ve oturum başlığı | Yalnızca bu Mac'te, son 256 KB, oturum sürerken okunur |
 | Erişilebilirlik | Ses veya parlaklık tuşlarını yönetmek | Yalnızca "Sistemin ses göstergesinin yerine geç" veya "…parlaklık göstergesinin…" açıksa |
 | Pano | Pano Geçmişi widget'ı | Yalnızca o widget paneldeyken |
-| Dosyalar ve Klasörler (Masaüstü ya da ekran görüntülerinin kaydedildiği yer) | Yeni ekran görüntülerini Pano Geçmişi'ne ekleme | Yalnızca "Yeni ekran görüntülerini ekle" açıksa |
+| Dosyalar ve Klasörler (Masaüstü ya da ekran resimlerinin kaydedildiği yer) | Yeni ekran resimlerini Pano Geçmişi'ne ekleme | Yalnızca "Yeni ekran resimlerini ekle" açıksa |
 | Giriş öğesi | Oturum açıldığında başlatma | Siz açana kadar kapalı |
 | Ağ | Kapak görselleri, hava durumu, güncelleme kontrolü | Bkz. [Gizlilik](#gizlilik) |
 
@@ -119,24 +119,24 @@ Cumba hiçbir zaman telemetri göndermez, yönetici parolası istemez, yardımc�
 
 macOS'ta bir uygulamanın diğer uygulamaların ne çaldığını görmesinin ya da Apple silicon'da dahili ekranın parlaklığını okumasının açık bir yolu yok. Cumba yalnızca bunlar için iki özel Apple çerçevesi kullanır, başka hiçbir şey için değil:
 
-- **MediaRemote**, sistemin Şu An Çalan bilgisi (medya tuşlarının ve Denetim Merkezi'nin kullandığı). macOS bunu yalnızca Apple'ın kendi programlarına yanıtlar; bu yüzden Cumba kendi uygulama paketindeki küçük bir yardımcı kitaplığı ([kaynak](NowPlayingHelper/CumbaNowPlaying.m)) sistemin `/usr/bin/perl`'ü içinde, boş bir ortamla çalıştırır. Yardımcı yalnızca Şu An Çalan'ı okur ve oynat, duraklat, atla ve sar komutlarını iletir; hiçbir dosya ya da ağ bağlantısı açmaz ve Cumba kapanınca çıkar. Bunun yerine Spotify ve Müzik için AppleScript'i, YouTube için eklentiyi kullanmak isterseniz **Ayarlar > Widget'lar > Medya > Medyayı her uygulamadan oku**'yu kapatın.
+- **MediaRemote**, sistemin Şu An Çalan bilgisi (medya tuşlarının ve Denetim Merkezi'nin kullandığı). macOS bunu yalnızca Apple'ın kendi programlarına yanıtlar; bu yüzden Cumba kendi uygulama paketindeki küçük bir yardımcı kitaplığı ([kaynak](NowPlayingHelper/CumbaNowPlaying.m)) sistemin `/usr/bin/perl`'ü içinde, boş bir ortamla çalıştırır. Yardımcı yalnızca Şu An Çalan'ı okur ve oynat, duraklat, atla ve sar komutlarını iletir; hiçbir dosya ya da ağ bağlantısı açmaz ve Cumba kapanınca çıkar. Bunun yerine Spotify ve Müzik için AppleScript'i, YouTube için uzantıyı kullanmak isterseniz **Ayarlar > Widget'lar > Medya > Medyayı her uygulamadan oku**'yu kapatın.
 - **DisplayServices**, yalnızca notch'taki parlaklık düzeyi için. Kullanılmasını istemiyorsanız **Ayarlar > Genel > Parlaklık değişikliklerini notch'ta göster** seçeneğini kapatın.
 
 Özel API'ler herhangi bir macOS güncellemesiyle değişebilir. Çalışmayı bırakırlarsa Cumba yukarıdaki açık yollara geri döner ve çalışmaya devam eder.
 
-## YouTube eklentisi (isteğe bağlı)
+## YouTube uzantısı (isteğe bağlı)
 
-Medya her uygulamadan okurken gerekmez. Küçük bir Chrome eklentisi (diğer Chromium tarayıcılarda da çalışır) YouTube sekmelerinde çalanı yerel bir bağlantı üzerinden uygulamaya gönderir; uygulama da oynat, duraklat, sonraki ve sarma komutlarını geri yollar.
+Medya her uygulamadan okurken gerekmez. Küçük bir Chrome uzantısı (diğer Chromium tarayıcılarda da çalışır) YouTube sekmelerinde çalanı yerel bir bağlantı üzerinden uygulamaya gönderir; uygulama da oynat, duraklat, sonraki ve sarma komutlarını geri yollar.
 
-1. Cumba'da **Ayarlar > Bağlantılar**'ı açın, **YouTube eklentisini bağla**'yı açın ve **Eklenti Klasörünü Göster**'e tıklayın.
+1. Cumba'da **Ayarlar > Bağlantılar**'ı açın, **YouTube uzantısını bağla**'yı açın ve **Uzantı Klasörünü Göster**'e tıklayın.
 2. Chrome'da `chrome://extensions` adresini açın, **Geliştirici modu**'nu etkinleştirin ve **Paketlenmemiş öğe yükle**'ye tıklayın. 1. adımdaki klasörü seçin.
-3. Eklentinin **Ayrıntılar > Eklenti seçenekleri** sayfasını açın, **Ayarlar > Bağlantılar**'daki portu ve token'ı yapıştırıp kaydedin.
+3. Uzantının **Ayrıntılar > Uzantı seçenekleri** sayfasını açın, **Ayarlar > Bağlantılar**'daki portu ve token'ı yapıştırıp kaydedin.
 
-Chrome, eklentinin `youtube.com` ve `music.youtube.com` üzerindeki verilerinizi okuyup değiştirebileceğini söyler: eklenti oynatıcıyı okur (başlık, kapak, ilerleme) ve orada oynat, duraklat, sonraki ve sarma düğmelerine basar. Başka hiçbir sitede çalışmaz, tek diğer izni depolamadır (port ve token için) ve yalnızca `127.0.0.1` ile konuşur.
+Chrome, uzantının `youtube.com` ve `music.youtube.com` üzerindeki verilerinizi okuyup değiştirebileceğini söyler: uzantı oynatıcıyı okur (başlık, kapak, ilerleme) ve orada oynat, duraklat, sonraki ve sarma düğmelerine basar. Başka hiçbir sitede çalışmaz, tek diğer izni depolamadır (port ve token için) ve yalnızca `127.0.0.1` ile konuşur.
 
 ## Claude Code ve Codex
 
-Yapay Zeka Ajanları widget'ı bir oturumun o an ne yaptığını ("Notch.swift düzenleniyor", "Testler çalıştırılıyor"), başlığını ve son yanıtını, bağlam penceresinin ne kadar dolu olduğunu gösterir. Claude Code'un (terminal, IDE eklentileri ve Claude masaüstü uygulaması) izin istekleri **İzin Ver**, **Reddet** ve **Terminalde** seçenekleriyle notch'ta görünür; bir oturum bitince veya hata verince de görürsünüz. Kart, isteğin tamamını gizli karakterleri görünür hale getirerek gösterir. Sorular ve plan onayları izin isteği değildir: onları Claude Code kendisi sorar, notch oturumun sizi beklediğini gösterir. Hook'ları **Ayarlar > Ajanlar**'dan kurun; `~/.claude/settings.json` değişikliğini önce siz görürsünüz ve yedek alınır. Hook'lar uygulamaya yalnızca sizin kullanıcı hesabınızın açabildiği özel bir soket üzerinden ulaşır; böylece başka hiçbir şey Claude Code'a uygulama adına cevap veremez; hook'lar eklentininkinden ayrı, kendi token'larını kullanır.
+Yapay Zeka Ajanları widget'ı bir oturumun o an ne yaptığını ("Notch.swift düzenleniyor", "Testler çalıştırılıyor"), başlığını ve son yanıtını, bağlam penceresinin ne kadar dolu olduğunu gösterir. Claude Code'un (terminal, IDE uzantıları ve Claude masaüstü uygulaması) izin istekleri **İzin Ver**, **Reddet** ve **Terminalde** seçenekleriyle notch'ta görünür; bir oturum bitince veya hata verince de görürsünüz. Kart, isteğin tamamını gizli karakterleri görünür hale getirerek gösterir. Sorular ve plan onayları izin isteği değildir: onları Claude Code kendisi sorar, notch oturumun sizi beklediğini gösterir. Hook'ları **Ayarlar > Ajanlar**'dan kurun; `~/.claude/settings.json` değişikliğini önce siz görürsünüz ve yedek alınır. Hook'lar uygulamaya yalnızca sizin kullanıcı hesabınızın açabildiği özel bir soket üzerinden ulaşır; böylece başka hiçbir şey Claude Code'a uygulama adına cevap veremez; hook'lar uzantınınkinden ayrı, kendi token'larını kullanır.
 
 **Notch'taki İzin Ver, Claude Code'daki İzin Ver ile aynıdır: araç hemen çalışır.** Varsayılan olarak kabuk komutları terminalde yanıtlanır, geri kalan her şeye notch'tan izin verilebilir; Ayarlar > Ajanlar'dan her şeye izin verilmesini seçebilir ya da İzin Ver'i tamamen kapatıp yalnızca Reddet ve Terminalde seçeneklerini bırakabilirsiniz. Gizli karakter içeren isteklerde İzin Ver düğmesi hiç gösterilmez; kutusuna sığmayan bir istekte İzin Ver, sonuna kadar kaydırana kadar bekler. Ayrıntılar ve elle kurulum için [docs/claude-code-setup.md](docs/claude-code-setup.md) dosyasına bakın.
 
@@ -168,15 +168,15 @@ Telemetri yok. Her şey Mac'inizde kalır. Şu özellikler ağ isteği yapar, ya
 | Hava durumu widget'ı | Yaklaşık 10 km'ye yuvarlanmış konumunuz (ya da seçtiğiniz şehrin koordinatları) `api.open-meteo.com`'a; konumunuzla birlikte şehir adı için aynı yuvarlanmış koordinatlar Apple Haritalar'a; aradığınız şehir adı, dilinizle birlikte `geocoding-api.open-meteo.com`'a. Yalnızca widget ekrandayken, en fazla 15 dakikada bir |
 | Güncelleme denetimi | Açılışta ve günde bir kez `api.github.com`'dan sürüm listesi, kullanıcı aracısı olarak Cumba'nın sürümüyle; Ayarlar > Genel'den kapatılabilir |
 
-Kamera (Ayna widget'ı) yalnızca panel onu gösterirken çalışır ve hiçbir şey kaydedilmez. Raf yalnızca dosya yollarını Mac'inizde tutar. Notlar ve Yapılacaklar, Mac'inizdeki Apple Notlar ve Apple Anımsatıcılar'ı okuyup yazar; hiçbir şey kopyalanmaz ya da gönderilmez. Önceki sürümlerin notu (`notes.txt`) bir kez Apple Notlar'a taşınır, dosya yerinde bırakılır. Pano Geçmişi son 20 kopyanızı (metin, bağlantı, görsel ve dosya) yalnızca bellekte tutar ve uygulamaların parola olarak işaretlediği öğeleri almaz; sekmelerinizden birindeyken, bir kopyayı kaçırmamak için panel kapalıyken de panonun değişip değişmediğini saniyede bir kontrol eder. "Yeni ekran görüntülerini ekle" açıksa ekran görüntüsü klasöründeki yeni ekran görüntülerini izler ve yalnızca konumlarını tutar. Mikrofon ve kamera göstergesi yalnızca bir cihazın kullanımda olup olmadığını okur; sese veya görüntüye asla erişmez.
+Kamera (Ayna widget'ı) yalnızca panel onu gösterirken çalışır ve hiçbir şey kaydedilmez. Raf yalnızca dosya yollarını Mac'inizde tutar. Notlar ve Yapılacaklar, Mac'inizdeki Apple Notlar ve Apple Anımsatıcılar'ı okuyup yazar; hiçbir şey kopyalanmaz ya da gönderilmez. Önceki sürümlerin notu (`notes.txt`) bir kez Apple Notlar'a taşınır, dosya yerinde bırakılır. Pano Geçmişi son 20 kopyanızı (metin, bağlantı, görsel ve dosya) yalnızca bellekte tutar ve uygulamaların parola olarak işaretlediği öğeleri almaz; sekmelerinizden birindeyken, bir kopyayı kaçırmamak için panel kapalıyken de panonun değişip değişmediğini saniyede bir kontrol eder. "Yeni ekran resimlerini ekle" açıksa ekran resmi klasöründeki yeni ekran resimlerini izler ve yalnızca konumlarını tutar. Mikrofon ve kamera göstergesi yalnızca bir cihazın kullanımda olup olmadığını okur; sese veya görüntüye asla erişmez.
 
-Açıldığında eklenti sunucusu yalnızca `127.0.0.1` adresini dinler, yalnızca Cumba eklentisini kabul eder ve Anahtar Zinciri'nde saklanan kendi token'ını ister.
+Açıldığında uzantı sunucusu yalnızca `127.0.0.1` adresini dinler, yalnızca Cumba uzantısını kabul eder ve Anahtar Zinciri'nde saklanan kendi token'ını ister.
 
 ## Kaldırma
 
 1. Claude Code veya Codex hook'larını kurduysanız önce **Ayarlar > Ajanlar > Kaldır…** ile (her ajan için) kaldırın. Uygulama silindikten sonra kalan hook'lar hiçbir şey yapmaz ama `~/.claude/settings.json` ve `~/.codex/hooks.json` içinde kalır.
 2. Ayarlar > Genel'de **Oturum açıldığında başlat**'ı kapatın, menü çubuğundan Cumba'dan çıkın ve uygulamayı Çöp Sepeti'ne taşıyın.
-3. Eklentiyi `chrome://extensions` sayfasından kaldırın.
+3. Uzantıyı `chrome://extensions` sayfasından kaldırın.
 4. Verilerini de silmek için (temalar, düzen, notlar, tercihler ve token'lar):
    ```bash
    rm -rf ~/Library/Application\ Support/Cumba

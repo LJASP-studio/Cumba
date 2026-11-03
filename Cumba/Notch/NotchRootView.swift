@@ -178,7 +178,13 @@ private struct ExpandedPanelView: View {
           modeTitle
             .panelFont(.headline)
           Spacer()
-          Button("Done") {
+          // Its own key: "Done" alone is also the finished state, which other languages word
+          // differently from a button.
+          Button(
+            String(
+              localized: "tab-editing-done", defaultValue: "Done",
+              comment: "Button that leaves tab editing and the widget gallery")
+          ) {
             withAnimation(.spring(response: 0.3, dampingFraction: 0.85)) {
               host.showGallery(false)
               host.setEditing(false)
