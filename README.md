@@ -18,6 +18,8 @@
 
 <p align="center"><a href="https://cumbanotch.com">cumbanotch.com</a> · <a href="README.tr.md">Türkçe</a></p>
 
+<p align="center"><img src="docs/demo.gif" width="800" alt="Cumba in use: the panel opens with music and the weather, Claude Code asks to edit a file and gets Allow from the notch, then clipboard history and the volume level beside the notch"></p>
+
 A free, open source notch app for macOS. It turns the MacBook notch into a panel that grows out of the camera housing when you rest the pointer on it: whatever is playing, what your AI coding agents (Claude Code and Codex) are doing, and a set of widgets, all in a look you can make your own.
 
 A *cumba* is the small bay window that juts out from the upper floor of old Turkish houses: a quiet place to sit and see what's happening in the street. The panel does the same from the top of your screen.
