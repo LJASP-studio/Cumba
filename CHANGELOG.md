@@ -6,9 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Spanish and French. Spanish comes in two versions, for Spain and for Latin America, each using the words macOS uses there (Ajustes del Sistema or Configuración del Sistema).
+- The Chrome extension's options page speaks the same languages.
+
 ### Changed
 
 - The README links the website, cumbanotch.com.
+- English counts read right in the singular ("1 File", "1 more request waiting").
+- Clearer Turkish in a few places.
 
 ## [1.2.0] - 2026-11-03
 
