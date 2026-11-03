@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-11-03
+
 ### Added
 
 - Spanish and French. Spanish comes in two versions, for Spain and for Latin America, each using the words macOS uses there (Ajustes del Sistema or Configuración del Sistema).
@@ -248,7 +250,8 @@ Fixes from a security review of the code, done with AI assistance (not an extern
 - CI workflow (build, test, swift-format lint) and a release workflow that publishes an ad-hoc signed zip.
 - Contributor docs: README in Turkish, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue and pull request templates.
 
-[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/LJASP-studio/Cumba/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/LJASP-studio/Cumba/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/LJASP-studio/Cumba/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/LJASP-studio/Cumba/compare/v0.7.0...v1.0.0
