@@ -18,6 +18,8 @@
 
 <p align="center"><a href="https://cumbanotch.com">cumbanotch.com</a> · <a href="README.md">English</a></p>
 
+<p align="center"><img src="docs/demo.gif" width="800" alt="Cumba kullanımda: panel müzik ve hava durumuyla açılıyor, Claude Code bir dosyayı düzenlemek için izin istiyor ve izin notch'tan veriliyor, ardından pano geçmişi ve notch'un yanında ses düzeyi"></p>
+
 macOS için ücretsiz ve açık kaynaklı bir notch uygulaması. MacBook notch'unu, imleci üzerinde tuttuğunuzda kamera yuvasından büyüyen bir panele çevirir: her uygulamadan müzik ve video, yapay zeka kodlama ajanlarınızın (Claude Code ve Codex) ne yaptığı ve bir dizi widget; hepsi size göre ayarlanabilen bir görünümle.
 
 *Cumba*, eski Türk evlerinin üst katından sokağa taşan küçük çıkmadır: oturup sokakta olup biteni izlediğiniz sakin bir köşe. Panel de aynısını ekranınızın tepesinden yapar.
