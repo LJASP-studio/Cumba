@@ -11,10 +11,28 @@
             "value" : "Cumba reads what Spotify and Music are playing and sends play, pause, next and seek commands to them, and shows your recent Apple Notes and makes new ones."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumba lee lo que suena en Spotify y Música y les envía comandos para reproducir, pausar, pasar a la siguiente canción y saltar a otro punto. También muestra tus notas recientes de Apple y crea otras nuevas."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumba lee lo que suena en Spotify y Música y les envía comandos para reproducir, pausar, pasar a la siguiente canción y saltar a otro punto. También muestra tus notas recientes de Apple y crea otras nuevas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumba récupère le morceau en cours de lecture dans Spotify et Musique et leur envoie les commandes lecture, pause, morceau suivant et déplacement dans le morceau. Il affiche aussi vos notes Apple récentes et en crée de nouvelles."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba, Spotify ve Müzik'te çalanı okur ve onlara oynat, duraklat, sonraki ve sarma komutlarını gönderir; ayrıca son Apple Notlar'ınızı gösterir ve yeni not oluşturur."
+            "value" : "Cumba, Spotify ve Müzik'te çalanı okur ve onlara oynat, duraklat, sonraki ve sarma komutlarını gönderir; ayrıca Notlar'daki son notlarınızı gösterir ve yeni not oluşturur."
           }
         }
       }
@@ -27,6 +45,24 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Cumba shows your upcoming events in the notch. Nothing leaves your Mac."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumba muestra tus próximos eventos en la muesca. Nada sale de tu Mac."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumba muestra tus próximos eventos en la muesca. Nada sale de tu Mac."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumba affiche vos prochains événements dans l’encoche. Rien ne quitte votre Mac."
           }
         },
         "tr" : {
@@ -47,6 +83,24 @@
             "value" : "The Mirror widget shows your camera while the panel is open. Nothing is recorded or sent."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Espejo muestra la imagen de tu cámara mientras el panel está abierto. No se graba ni se envía nada."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Espejo muestra la imagen de tu cámara mientras el panel está abierto. No se graba ni se envía nada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget Miroir affiche l’image de votre caméra tant que le panneau est ouvert. Rien n’est enregistré ni envoyé."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65,10 +119,28 @@
             "value" : "The Clipboard History widget shows new screenshots saved to your Desktop, and the Tray widget shows files you put on it. Nothing leaves your Mac."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Historial del portapapeles muestra las capturas de pantalla nuevas que se guardan en el Escritorio, y el widget Bandeja muestra los archivos que sueltas en él. Nada sale de tu Mac."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Historial del portapapeles muestra las capturas de pantalla nuevas que se guardan en el Escritorio, y el widget Bandeja muestra los archivos que sueltas en él. Nada sale de tu Mac."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget Historique du presse-papiers affiche les nouvelles captures d’écran enregistrées sur le Bureau, et le widget Étagère affiche les fichiers que vous y déposez. Rien ne quitte votre Mac."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pano Geçmişi widget'ı Masaüstü'ne kaydedilen yeni ekran görüntülerini, Raf widget'ı da üzerine bıraktığınız dosyaları gösterir. Hiçbir şey Mac'inizden çıkmaz."
+            "value" : "Pano Geçmişi widget'ı Masaüstü'ne kaydedilen yeni ekran resimlerini, Raf widget'ı da üzerine bıraktığınız dosyaları gösterir. Hiçbir şey Mac'inizden çıkmaz."
           }
         }
       }
@@ -81,6 +153,24 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "The Tray widget shows the files you put on it. Nothing leaves your Mac."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Bandeja muestra los archivos que sueltas en él. Nada sale de tu Mac."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Bandeja muestra los archivos que sueltas en él. Nada sale de tu Mac."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget Étagère affiche les fichiers que vous y déposez. Rien ne quitte votre Mac."
           }
         },
         "tr" : {
@@ -101,6 +191,24 @@
             "value" : "The Tray widget shows the files you put on it. Nothing leaves your Mac."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Bandeja muestra los archivos que sueltas en él. Nada sale de tu Mac."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Bandeja muestra los archivos que sueltas en él. Nada sale de tu Mac."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget Étagère affiche les fichiers que vous y déposez. Rien ne quitte votre Mac."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -117,6 +225,24 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "The Weather widget shows the weather where you are. Your location is rounded to about 10 km first."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Tiempo muestra el tiempo donde estás. Tu ubicación se redondea primero a unos 10 km."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Clima muestra el clima donde estás. Tu ubicación se redondea primero a unos 10 km."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget Météo affiche la météo là où vous êtes. Votre position est d’abord arrondie à environ 10 km."
           }
         },
         "tr" : {
@@ -137,6 +263,24 @@
             "value" : "The Weather widget shows the weather where you are. Your location is rounded to about 10 km first."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Tiempo muestra el tiempo donde estás. Tu ubicación se redondea primero a unos 10 km."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Clima muestra el clima donde estás. Tu ubicación se redondea primero a unos 10 km."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget Météo affiche la météo là où vous êtes. Votre position est d’abord arrondie à environ 10 km."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -155,6 +299,24 @@
             "value" : "The To-dos widget shows your reminders and lets you tick them off and add new ones. Nothing leaves your Mac."
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Pendientes muestra tus recordatorios y te permite marcarlos y añadir otros nuevos. Nada sale de tu Mac."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Pendientes muestra tus recordatorios y te permite marcarlos y agregar otros nuevos. Nada sale de tu Mac."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget À faire affiche vos rappels et vous permet de les cocher et d’en ajouter de nouveaux. Rien ne quitte votre Mac."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +333,24 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "The To-dos widget shows your reminders and lets you tick them off and add new ones. Nothing leaves your Mac."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Pendientes muestra tus recordatorios y te permite marcarlos y añadir otros nuevos. Nada sale de tu Mac."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El widget Pendientes muestra tus recordatorios y te permite marcarlos y agregar otros nuevos. Nada sale de tu Mac."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le widget À faire affiche vos rappels et vous permet de les cocher et d’en ajouter de nouveaux. Rien ne quitte votre Mac."
           }
         },
         "tr" : {

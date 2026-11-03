@@ -51,6 +51,8 @@ struct WeatherCard: View {
             Text("H:\(degrees(high)) L:\(degrees(low))", comment: "Today's high and low")
               .panelFont(.caption, monospacedDigit: true)
               .lineLimit(1)
+              // Spanish and French spell out Máx./Mín., which can be wider than H:/L:.
+              .minimumScaleFactor(0.8)
           }
         }
       }

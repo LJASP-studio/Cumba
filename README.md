@@ -34,7 +34,7 @@ A *cumba* is the small bay window that juts out from the upper floor of old Turk
 - **Live activities**: a running timer, a working AI agent, a pending request, charging, the current song or a volume or brightness change appear on both sides of the closed notch.
 - **Themes**: eight built in, from plain black and Liquid Glass to Neon Tokyo, Sakura, Synthwave and Citrus. Make your own: glass, solid or tinted, a gradient background, a neon edge, colors, font, corner radius, shadow and animation. Panel size and text size stay the same whichever theme you pick. Import and export themes as JSON.
 - **Stays out of the way**: clicks pass through to the menu bar, dragging windows past the notch doesn't open it, it works in full screen apps too (or hides there, if you like), and idle CPU use is zero. Right-click the notch for Settings.
-- English and Turkish interface.
+- Interface in English, Spanish (Spain and Latin America), French and Turkish.
 
 ## Download and install
 

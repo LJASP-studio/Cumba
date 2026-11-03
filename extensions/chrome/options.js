@@ -1,22 +1,78 @@
 // Saves the port and token for the WebSocket to the Cumba app.
 "use strict";
 
-const TR = navigator.language.startsWith("tr");
-const TEXT = {
-  hint: TR
-    ? "Portu ve token'ı Cumba > Ayarlar > Bağlantılar'dan kopyalayın."
-    : "Copy the port and token from Cumba > Settings > Connections.",
-  port: "Port",
-  token: "Token",
-  save: TR ? "Kaydet" : "Save",
-  saved: TR ? "Kaydedildi." : "Saved.",
-  invalid: TR ? "Geçersiz port veya token." : "Invalid port or token.",
-  connected: TR ? "Uygulamaya bağlı." : "Connected to the app.",
-  connecting: TR ? "Bağlanıyor…" : "Connecting…",
-  unreachable: TR ? "Uygulamaya ulaşılamıyor." : "Can't reach the app.",
-  disconnected: TR ? "Bağlı değil." : "Not connected.",
-  noToken: TR ? "Token girilmedi." : "No token yet.",
+// The page's text in the app's languages. Spanish for Spain says "Ajustes" like macOS there;
+// every other Spanish uses the Latin American "Configuración".
+const STRINGS = {
+  en: {
+    hint: "Copy the port and token from Cumba > Settings > Connections.",
+    port: "Port",
+    token: "Token",
+    save: "Save",
+    saved: "Saved.",
+    invalid: "Invalid port or token.",
+    connected: "Connected to the app.",
+    connecting: "Connecting…",
+    unreachable: "Can't reach the app.",
+    disconnected: "Not connected.",
+    noToken: "No token yet.",
+  },
+  tr: {
+    hint: "Portu ve token'ı Cumba > Ayarlar > Bağlantılar bölümünden kopyalayın.",
+    port: "Port",
+    token: "Token",
+    save: "Kaydet",
+    saved: "Kaydedildi.",
+    invalid: "Geçersiz port veya token.",
+    connected: "Uygulamaya bağlı.",
+    connecting: "Bağlanıyor…",
+    unreachable: "Uygulamaya ulaşılamıyor.",
+    disconnected: "Bağlı değil.",
+    noToken: "Token girilmedi.",
+  },
+  es: {
+    hint: "Copia el puerto y el token desde Cumba > Ajustes > Conexiones.",
+    port: "Puerto",
+    token: "Token",
+    save: "Guardar",
+    saved: "Guardado.",
+    invalid: "El puerto o el token no son válidos.",
+    connected: "Conectado a la app.",
+    connecting: "Conectando…",
+    unreachable: "No se puede conectar con la app.",
+    disconnected: "Sin conexión.",
+    noToken: "Aún no hay token.",
+  },
+  fr: {
+    hint: "Copiez le port et le jeton depuis Cumba > Réglages > Connexions.",
+    port: "Port",
+    token: "Jeton",
+    save: "Enregistrer",
+    saved: "Enregistré.",
+    invalid: "Port ou jeton non valide.",
+    connected: "Connecté à l’app.",
+    connecting: "Connexion…",
+    unreachable: "Impossible de joindre l’app.",
+    disconnected: "Non connecté.",
+    noToken: "Aucun jeton pour l’instant.",
+  },
 };
+STRINGS["es-419"] = {
+  ...STRINGS.es,
+  hint: "Copia el puerto y el token desde Cumba > Configuración > Conexiones.",
+};
+
+function language(tag) {
+  const [base, region] = tag.toLowerCase().split("-");
+  if (base === "es") {
+    return region === undefined || region === "es" ? "es" : "es-419";
+  }
+  return base in STRINGS ? base : "en";
+}
+
+const LANGUAGE = language(navigator.language);
+const TEXT = STRINGS[LANGUAGE];
+document.documentElement.lang = LANGUAGE;
 
 for (const element of document.querySelectorAll("[data-i18n]")) {
   element.textContent = TEXT[element.dataset.i18n];
