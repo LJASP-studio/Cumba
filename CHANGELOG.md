@@ -15,7 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - The README links the website, cumbanotch.com.
 - English counts read right in the singular ("1 File", "1 more request waiting").
-- Clearer Turkish in a few places.
+- Turkish reads more naturally and uses the words Chrome and macOS use in Turkish (uzantı, ekran resmi, izleme dörtgeni, Oturum Açma Öğeleri).
+- Short texts beside the notch and in notifications stay short in every language.
 
 ## [1.2.0] - 2026-11-03
 
