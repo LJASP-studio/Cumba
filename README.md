@@ -24,7 +24,7 @@ A free, open source notch app for macOS. It turns the MacBook notch into a panel
 
 A *cumba* is the small bay window that juts out from the upper floor of old Turkish houses: a quiet place to sit and see what's happening in the street. The panel does the same from the top of your screen.
 
-> **Project status:** Cumba is new (first release October 2026) and made by one maintainer with AI assistance (Claude Code). It hasn't had an external security audit. The code is small and open, releases are built by GitHub Actions from tagged commits, and [what it can access](#permissions-and-what-runs) and [how to check a download](#download-and-install) are listed below.
+> **Project status:** Cumba is new (first release October 2026) and made by one maintainer with AI assistance (Claude Code). It hasn't had an external security audit. [Is it safe?](#is-it-safe) explains how it's built and released, why macOS warns before the first launch, and how to check all of it yourself.
 
 ## Features
 
@@ -37,6 +37,46 @@ A *cumba* is the small bay window that juts out from the upper floor of old Turk
 - **Themes**: eight built in, from plain black and Liquid Glass to Neon Tokyo, Sakura, Synthwave and Citrus. Make your own: glass, solid or tinted, a gradient background, a neon edge, colors, font, corner radius, shadow and animation. Panel size and text size stay the same whichever theme you pick. Import and export themes as JSON.
 - **Stays out of the way**: clicks pass through to the menu bar, dragging windows past the notch doesn't open it, it works in full screen apps too (or hides there, if you like), and idle CPU use is zero. Right-click the notch for Settings.
 - Interface in English, Spanish (Spain and Latin America), French and Turkish.
+
+## Is it safe?
+
+People usually ask two things first: *"Wasn't this written by an AI?"* and *"Why does macOS warn me about it?"* Here are straight answers, and a way to check each claim yourself instead of taking anyone's word for it.
+
+### Written with AI, checked like any code
+
+Cumba is designed and maintained by one person, and much of its code is written with Claude Code. Code written with AI can have the same mistakes as any other code, so Cumba is set up so that you don't have to trust whoever wrote it:
+
+- **All of it is open.** The whole app is in this repository under the MIT license. There's no closed part, and the app never downloads code later.
+- **Nothing reaches `main` unchecked.** Every change comes through a pull request that must build, pass more than 200 unit tests, a strict format check and a Release build on GitHub's machines before it can merge. Direct pushes, force pushes and history rewrites on `main` are blocked for everyone, the maintainer included.
+- **The files you download come from GitHub, not from a laptop.** Releases are built only by the [release workflow](.github/workflows/release.yml), from a tagged commit, on a GitHub-hosted Mac with read-only access. Each file carries signed build provenance that ties it to this repository and that commit, and releases can't be changed after publishing.
+- **Little to go wrong.** One third-party library ([FlyingFox](https://github.com/swhitty/FlyingFox), MIT, pinned to a commit), no analytics or ad SDKs, no telemetry. Workflows may use only GitHub's own actions, pinned to commits. Secret scanning, push protection and Dependabot security updates are on, and CodeQL scans the Chrome extension, the workflows and the scripts every week.
+- **Security work is on the record.** The [CHANGELOG](CHANGELOG.md) lists the security fixes in each release. [SECURITY.md](SECURITY.md) has the threat model and a map of the security-relevant code, about a dozen files, for anyone who wants to review it.
+- **What's missing:** no independent firm has audited Cumba yet. If you find a problem, please report it privately as described in [SECURITY.md](SECURITY.md).
+
+### Why macOS warns
+
+On first launch, macOS says Apple could not verify that Cumba is free of malware. It says the same about every app that isn't notarized. Notarization is Apple's automated malware scan, and it's only available for apps signed with a paid Apple Developer ID. Cumba doesn't have one, so its releases are signed ad hoc.
+
+- The warning means Apple hasn't scanned this build. It doesn't mean anything was found.
+- XProtect, the malware protection built into macOS, still checks Cumba at first launch, as it does every app.
+- In place of Apple's scan, you can check something notarization doesn't show: that your download was built by GitHub from this public code (the first row below).
+
+### Check it yourself
+
+A few commands in Terminal; the first needs the [GitHub CLI](https://cli.github.com).
+
+| Claim | Command | What you should see |
+|---|---|---|
+| GitHub built the file from this repository | `gh attestation verify ~/Downloads/Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba` | `Verification succeeded!` |
+| It's the file the release lists | `shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg` | The value in the release's `SHA256SUMS.txt` |
+| It has only the entitlements in [Cumba.entitlements](Cumba/Resources/Cumba.entitlements) | `codesign -d --entitlements - /Applications/Cumba.app` | App Sandbox off, then Apple Events, camera, calendars and location; nothing else |
+| Hardened Runtime is on | `codesign -dv /Applications/Cumba.app 2>&1 \| grep flags` | `runtime` among the flags |
+| No other device can connect to it | `lsof -nP -iTCP -sTCP:LISTEN \| grep Cumba` | No output; with the YouTube extension on, `127.0.0.1` only |
+| It talks only to the servers in [Privacy](#privacy) | `nettop -p Cumba`, or an outbound firewall such as LuLu or Little Snitch | `api.github.com` for the update check; weather and artwork servers only while you use them |
+| Nothing keeps running after you quit | Quit Cumba, then `pgrep -fl Cumba` | No output |
+| It installs nothing that runs in the background | `ls ~/Library/LaunchAgents /Library/LaunchAgents /Library/LaunchDaemons` | No Cumba file; launch at login uses the macOS login items list, under Cumba's own name |
+
+What Cumba can reach on your Mac is listed in [Permissions and what runs](#permissions-and-what-runs). If you'd rather not run a prebuilt app at all, [build it from source](#build-from-source).
 
 ## Download and install
 
@@ -51,7 +91,7 @@ A *cumba* is the small bay window that juts out from the upper floor of old Turk
    ```
    1.1.0 was built before the repository moved to LJASP-studio, so check it with `--owner muazfurkan` instead of `--repo`.
 3. Open the disk image and drag Cumba to Applications.
-4. Cumba isn't notarized by Apple, because that needs a paid developer account, so macOS blocks the first launch. Open it once, then click **Open Anyway** in **System Settings > Privacy & Security**. If you'd rather not run a downloaded build at all, [build it from source](#build-from-source).
+4. Cumba isn't notarized by Apple, because that needs a paid developer account, so macOS blocks the first launch ([what the warning means](#why-macos-warns)). Open it once, then click **Open Anyway** in **System Settings > Privacy & Security**. If you'd rather not run a downloaded build at all, [build it from source](#build-from-source).
 5. A short welcome lets you try the panel. Cumba lives in the menu bar; if its icon hides behind the notch, right-click the notch for Settings.
 
 <details>
