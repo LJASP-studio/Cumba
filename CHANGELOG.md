@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - The Turkish README uses the same setting names as the app.
 - Both READMEs open with a short demo of the panel.
+- Both READMEs have an "Is it safe?" section: how the code is checked and released, what the macOS warning on first launch means, and commands to check each claim yourself.
 
 ## [1.3.0] - 2026-11-03
 
