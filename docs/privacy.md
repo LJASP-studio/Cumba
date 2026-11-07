@@ -4,7 +4,7 @@ Back to the [README](../README.md) · [Türkçe](privacy.tr.md)
 
 ## What goes online
 
-No telemetry. Everything stays on your Mac. These features make network requests, and only while you use them:
+Cumba sends no telemetry. Only these features make network requests:
 
 | Feature | Request |
 |---|---|
@@ -15,7 +15,7 @@ No telemetry. Everything stays on your Mac. These features make network requests
 
 ## What stays on your Mac
 
-The camera (Mirror widget) runs only while the panel shows it, and nothing is recorded. The Tray keeps only file paths on your Mac. Notes and To-dos read and write Apple Notes and Apple Reminders on your Mac; nothing is copied or sent anywhere. The note of earlier versions (`notes.txt`) is moved to Apple Notes once, and the file is left in place.
+The camera (Mirror widget) runs only while the panel shows it, and nothing is recorded. The Tray keeps only file paths on your Mac. Notes and To-dos read and write Apple Notes and Apple Reminders on your Mac; nothing is copied or sent anywhere. The note from earlier versions (`notes.txt`) is imported into Apple Notes once; the file itself stays where it was.
 
 Clipboard History keeps your last 20 copies (text, links, images and files) in memory only and skips items apps mark as passwords; while it's in one of your tabs it checks once a second whether the clipboard changed, even with the panel closed, so it doesn't miss a copy. With "Add new screenshots" on, it watches the screenshot folder for new screenshots and keeps only their location. The microphone and camera indicator reads only whether a device is in use, never audio or video.
 
@@ -23,7 +23,7 @@ When turned on, the extension server listens only on `127.0.0.1`, accepts only t
 
 ## Permissions and what runs
 
-Everything below is off or unused until you turn on the feature that needs it. Settings > Permissions shows the current state of each.
+Except for the Now Playing helper and the update check, everything below is off or unused until you turn on the feature that needs it. Settings > Permissions shows the current state of each.
 
 | What | Why | When |
 |---|---|---|
@@ -39,7 +39,7 @@ Everything below is off or unused until you turn on the feature that needs it. S
 | `~/.claude/settings.json`, `~/.codex/hooks.json` | Installing and removing the Claude Code and Codex hooks | Only after you review the change; a backup is kept |
 | Claude Code transcripts in `~/.claude/projects` | Context use and session title in the AI Agents widget | Read on this Mac only, the last 256 KB, while a session runs |
 | Accessibility | Handling the volume or brightness keys | Only if you turn on "Replace the system volume indicator" or "…brightness indicator" |
-| Clipboard | Clipboard History widget | Only while that widget is in the panel |
+| Clipboard | Clipboard History widget | Only while that widget is in one of your tabs |
 | Files and Folders (Desktop, or wherever screenshots go) | Adding new screenshots to Clipboard History | Only if you turn on "Add new screenshots" |
 | Login item | Launch at login | Off until you turn it on |
 | Network | Artwork, weather, update check | See [What goes online](#what-goes-online) |
@@ -55,4 +55,4 @@ macOS has no public way for an app to see what other apps play or to read the bu
 - **MediaRemote**, the system's Now Playing (what the media keys and Control Center use). macOS answers it only for Apple's own programs, so Cumba runs a small helper library from its own app bundle ([source](../NowPlayingHelper/CumbaNowPlaying.m)) inside the system's `/usr/bin/perl`, started with an empty environment. The helper only reads Now Playing and passes on play, pause, skip and seek; it opens no files or network connections and exits when Cumba quits. Turn off **Settings > Widgets > Media > Read media from every app** to use AppleScript for Spotify and Music and the extension for YouTube instead.
 - **DisplayServices**, only for the brightness level in the notch. Turn off **Settings > General > Show brightness changes in the notch** to stop using it.
 
-Private APIs can change with any macOS update. If they stop working, Cumba falls back to the public ways above and keeps running.
+Private APIs can change with any macOS update. If they stop working, Cumba keeps running: media falls back to the public ways above, and the brightness level just isn't shown.

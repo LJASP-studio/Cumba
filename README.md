@@ -20,58 +20,60 @@
 
 <p align="center"><img src="docs/demo.gif" width="800" alt="Cumba in use: the panel opens with music and the weather, Claude Code asks to edit a file and gets Allow from the notch, then clipboard history and the volume level beside the notch"></p>
 
-A free, open source notch app for macOS. Rest the pointer on the MacBook notch and a panel grows out of the camera housing, with whatever is playing, what Claude Code and Codex are doing, and the widgets you picked, in a look you make your own.
+Cumba is a free, open source notch app for macOS. Rest the pointer on the MacBook notch and a panel opens below it with what's playing, what Claude Code and Codex are doing, and the widgets you chose.
 
-A *cumba* is the small bay window that juts out from the upper floor of old Turkish houses: a quiet place to sit and see what's happening in the street. The panel does the same from the top of your screen.
+A *cumba* is the small bay window that juts out from the upper floor of old Turkish houses: a quiet place to sit and watch the street. The panel does the same from the top of your screen.
 
 ## What you get
 
-- One mini player for whatever is playing in any app: Spotify, Music, YouTube in Safari or Chrome, podcasts. Artwork, seeking and controls, with no extension or setup.
-- Claude Code and Codex in the notch. See what the agent is doing and how full its context window is, and answer its permission requests with Allow, Deny or In Terminal without switching windows.
-- Widgets you arrange in tabs: a calendar with a Join button for calls, Apple Notes, Reminders, clipboard history, timer and Pomodoro, weather, a file tray with AirDrop and more.
-- Eight themes, from plain black and Liquid Glass to Neon Tokyo and Synthwave, or one you make yourself with glass, gradients, a neon edge, your own colors and font. Themes import and export as JSON.
-- Live activities on both sides of the closed notch: a running timer, a working agent, charging, the current song, volume and brightness.
-- It stays out of the way. Clicks pass through to the menu bar, it works in full screen apps, and it uses no CPU while idle.
+- A mini player for whatever is playing, in any app: Spotify, Music, YouTube in Safari or Chrome, podcasts. Artwork, seeking and controls, with nothing to set up.
+- Claude Code and Codex in the notch. You see what the agent is doing and answer its permission requests with Allow, Deny or In Terminal without leaving the window you're in. For Claude Code you also see how full the context window is.
+- Widgets in tabs: a calendar with a Join button for calls, Apple Notes, Reminders, clipboard history, timer and Pomodoro, weather, a file tray with AirDrop and more.
+- Eight themes, from plain black and Liquid Glass to Neon Tokyo and Synthwave. You can also make your own with glass, gradients, a neon edge, colors and fonts, and share it as JSON.
+- Live activities beside the closed notch: a running timer, a working agent, charging, the current song, volume and brightness.
+- Cumba lets clicks through to the menu bar, works in full-screen apps and uses next to no CPU while idle.
 - English, Spanish, French and Turkish.
 
-Every widget and option is in the [feature tour](docs/features.md).
+You decide what the notch shows: which widgets, in which tabs and order, in which theme. You also choose which agent requests you can allow from the notch. By default that's everything except shell commands, and you can widen it or turn Allow off. Extras such as replacing the volume indicator stay off until you turn them on, and Cumba asks for macOS permissions only when you turn on a feature that needs one.
+
+Every widget and option is listed in [Features](docs/features.md).
 
 ## Download and install
 
-With [Homebrew](https://brew.sh):
+Install with [Homebrew](https://brew.sh):
 
 ```bash
 brew install --cask ljasp-studio/cumba/cumba
 ```
 
-Or download the `.dmg` from [cumbanotch.com](https://cumbanotch.com) or the [latest release](https://github.com/LJASP-studio/Cumba/releases/latest) and drag Cumba to Applications. You need macOS 26 or later; Macs without a notch can show a virtual one.
+Or download the `.dmg` from [cumbanotch.com](https://cumbanotch.com) or the [latest release](https://github.com/LJASP-studio/Cumba/releases/latest) and drag Cumba to Applications. You need macOS 26 or later. Macs without a notch can show a virtual one.
 
 <a name="why-macos-warns"></a>
 
-**First launch:** Cumba isn't notarized by Apple, because that needs a paid developer account, so macOS blocks the first launch of a downloaded copy. Open it once, then click **Open Anyway** in **System Settings > Privacy & Security**. The Homebrew cask checks the download and skips this step. [What the warning means](docs/safety.md#why-macos-warns).
+Cumba isn't notarized by Apple, because that needs a paid developer account, so macOS blocks the first launch of a downloaded copy. Open it once, then click **Open Anyway** in **System Settings > Privacy & Security**. If you install with Homebrew, it checks the download and you can skip this step. [What the warning means](docs/safety.md#why-macos-warns)
 
-Cumba lives in the menu bar. If its icon hides behind the notch, right-click the notch for Settings.
+Cumba's icon sits in the menu bar. If it hides behind the notch, right-click the notch for Settings.
 
 <a name="uninstall"></a>
 
-[Install, update and uninstall](docs/install.md) covers the rest: checking the download, updates, moving from cumbaNotch, building from source and removing Cumba.
+Checking the download, updates, moving from cumbaNotch, building from source and uninstalling are covered in [Install, update and uninstall](docs/install.md).
 
 ## Is it safe?
 
-Cumba is new (first release October 2026) and made by one person, with much of the code written with Claude Code. It hasn't had an external security audit. So it's set up so you don't have to take anyone's word for it: all of the code is in this repository, every change must pass CI before it reaches `main`, and GitHub builds each release from a tagged commit with signed provenance you can check. There's no telemetry, and Cumba asks for each permission only when you turn on the feature that needs it.
+Cumba is new (first release October 2026). One person makes it, much of the code is written with Claude Code, and no outside firm has audited it yet. You don't have to take anyone's word for it, though. The whole app is open source in this repository, every change has to pass CI before it reaches `main`, and GitHub builds the releases from tagged commits, with signed provenance you can verify.
 
-[Is Cumba safe?](docs/safety.md) explains the macOS warning and lists commands to check each claim yourself. [Privacy and permissions](docs/privacy.md) covers everything Cumba can reach on your Mac, and [SECURITY.md](SECURITY.md) has the threat model and how to report a problem privately.
+[Is Cumba safe?](docs/safety.md) explains the macOS warning and gives the commands to check all of this yourself. [Privacy and permissions](docs/privacy.md) lists what Cumba can reach on your Mac. To report a problem privately, see [SECURITY.md](SECURITY.md).
 
 ## Privacy
 
-No telemetry, and everything stays on your Mac. Only these features go online, and only while you use them:
+Cumba sends no telemetry. These are the only features that go online:
 
 | Feature | Talks to |
 |---|---|
 | Spotify artwork in the media player | `i.scdn.co` |
 | YouTube thumbnails in the media player | `*.ytimg.com`, `*.googleusercontent.com`, `*.ggpht.com` |
-| Weather | `api.open-meteo.com` with your location rounded to about 10 km (or the city you choose), `geocoding-api.open-meteo.com` for city search, Apple Maps for the city name |
-| Update check | `api.github.com`, at launch and once a day; turn it off in Settings > General |
+| Weather, while the widget is on screen | `api.open-meteo.com` with your location rounded to about 10 km (or the city you choose), `geocoding-api.open-meteo.com` for city search, Apple Maps for the city name |
+| Update check | `api.github.com` at launch and once a day; you can turn it off in Settings > General |
 
 What each request contains is in [Privacy and permissions](docs/privacy.md).
 
@@ -81,7 +83,7 @@ Cumba is free. If it's useful to you, you can support it on [GitHub Sponsors](ht
 
 ## Contributing
 
-Questions and ideas are welcome in [Discussions](https://github.com/LJASP-studio/Cumba/discussions). To contribute code, read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately as described in [SECURITY.md](SECURITY.md).
+Questions and ideas are welcome in [Discussions](https://github.com/LJASP-studio/Cumba/discussions). If you'd like to contribute code, please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## License
 

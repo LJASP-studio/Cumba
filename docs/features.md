@@ -20,7 +20,7 @@ Chrome will say the extension can read and change your data on `youtube.com` and
 
 ## Claude Code and Codex
 
-The AI Agents widget shows what a session is doing right now ("Editing Notch.swift", "Running tests"), its title and last answer, and how full its context window is. A ring turns beside the notch while the agent works, and opening the panel then shows its tab.
+The AI Agents widget shows what a session is doing right now ("Editing Notch.swift", "Running tests"), its title and last answer, and, for Claude Code, how full its context window is. A ring turns beside the notch while the agent works, and opening the panel then shows its tab.
 
 When the agent asks a question, needs permission or finishes, a notification opens under the notch with what happened and **Open**, which brings the agent's app forward. You also see when a session fails. Permission requests from Claude Code (terminal, IDE extensions and the Claude desktop app) show up with **Allow**, **Deny** and **In Terminal**, and the card shows the full request with hidden characters made visible. Questions and plan approvals aren't permission requests: they stay in the agent, which asks them itself, and the notch shows that the session is waiting.
 
@@ -44,7 +44,7 @@ Tabs sit at the bottom or the top and are edited right in the panel (name, symbo
 
 ## Themes
 
-Eight built in, from plain black and Liquid Glass to Neon Tokyo, Sakura, Synthwave and Citrus. Make your own: glass, solid or tinted, a gradient background, a neon edge, colors, font, corner radius, shadow and animation. Panel size and text size stay the same whichever theme you pick. Import and export themes as JSON.
+Eight built-in themes, from plain black and Liquid Glass to Neon Tokyo, Sakura, Synthwave and Citrus. Make your own: a glass, solid or tinted surface, a gradient background, a neon edge, colors, font, corner radius, shadow and animation. Panel size and text size stay the same whichever theme you pick. Import and export themes as JSON.
 
 ## Live activities
 
@@ -69,7 +69,7 @@ Fields: `id` (letters, digits, `.`, `_` and `-`), `title` (up to 60 characters),
 
 ## Stays out of the way
 
-Clicks pass through to the menu bar, dragging windows past the notch doesn't open it, it works in full screen apps too (or hides there, if you like), and idle CPU use is zero. Right-click the notch for Settings.
+Clicks pass through to the menu bar, dragging windows past the notch doesn't open it, it works in full-screen apps too (or hides there, if you like), and it uses next to no CPU while idle. Right-click the notch for Settings.
 
 ## Languages
 

@@ -2,20 +2,18 @@
 
 Back to the [README](../README.md) · [Türkçe](safety.tr.md)
 
-Cumba is new (first release October 2026) and made by one maintainer with AI assistance (Claude Code). It hasn't had an external security audit.
-
-People usually ask two things first: *"Wasn't this written by an AI?"* and *"Why does macOS warn me about it?"* Here are straight answers, and a way to check each claim yourself instead of taking anyone's word for it.
+People usually ask two things first: *"Wasn't this written by an AI?"* and *"Why does macOS warn me about it?"* Both are answered below, with a way to check each claim yourself.
 
 ## Written with AI, checked like any code
 
 Cumba is designed and maintained by one person, and much of its code is written with Claude Code. Code written with AI can have the same mistakes as any other code, so Cumba is set up so that you don't have to trust whoever wrote it:
 
-- **All of it is open.** The whole app is in this repository under the MIT license. There's no closed part, and the app never downloads code later.
-- **Nothing reaches `main` unchecked.** Every change comes through a pull request that must build, pass more than 200 unit tests, a strict format check and a Release build on GitHub's machines before it can merge. Direct pushes, force pushes and history rewrites on `main` are blocked for everyone, the maintainer included.
-- **The files you download come from GitHub, not from a laptop.** Releases are built only by the [release workflow](../.github/workflows/release.yml), from a tagged commit, on a GitHub-hosted Mac with read-only access. Each file carries signed build provenance that ties it to this repository and that commit, and releases can't be changed after publishing.
-- **Little to go wrong.** One third-party library ([FlyingFox](https://github.com/swhitty/FlyingFox), MIT, pinned to a commit), no analytics or ad SDKs, no telemetry. Workflows may use only GitHub's own actions, pinned to commits. Secret scanning, push protection and Dependabot security updates are on, and CodeQL scans the Chrome extension, the workflows and the scripts every week.
-- **Security work is on the record.** The [CHANGELOG](../CHANGELOG.md) lists the security fixes in each release. [SECURITY.md](../SECURITY.md) has the threat model and a map of the security-relevant code, about a dozen files, for anyone who wants to review it.
-- **What's missing:** no independent firm has audited Cumba yet. If you find a problem, please report it privately as described in [SECURITY.md](../SECURITY.md).
+- All of it is open. The whole app is in this repository under the MIT license. There's no closed part, and the app never downloads code later.
+- Nothing reaches `main` unchecked. Every change comes through a pull request that must build, pass more than 200 unit tests, a strict format check and a Release build on GitHub's machines before it can merge. Direct pushes, force pushes and history rewrites on `main` are blocked for everyone, the maintainer included.
+- The files you download come from GitHub, not from a laptop. Releases are built only by the [release workflow](../.github/workflows/release.yml), from a tagged commit, on a GitHub-hosted Mac with read-only access. Each file carries signed build provenance that ties it to this repository and that commit, and releases can't be changed after publishing.
+- There's little to go wrong: one third-party library ([FlyingFox](https://github.com/swhitty/FlyingFox), MIT, pinned to a commit), no analytics or ad SDKs, no telemetry. Workflows may use only GitHub's own actions, pinned to commits. Secret scanning, push protection and Dependabot security updates are on, and CodeQL scans the Chrome extension, the workflows and the scripts every week.
+- Security work is on the record. The [CHANGELOG](../CHANGELOG.md) lists the security fixes in each release. [SECURITY.md](../SECURITY.md) has the threat model and a map of the security-relevant code, about a dozen files, for anyone who wants to review it.
+- What's missing: no independent firm has audited Cumba yet. If you find a problem, please report it privately as described in [SECURITY.md](../SECURITY.md).
 
 ## Why macOS warns
 

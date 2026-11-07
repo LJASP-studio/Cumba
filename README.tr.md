@@ -20,37 +20,39 @@
 
 <p align="center"><img src="docs/demo.gif" width="800" alt="Cumba kullanımda: panel müzik ve hava durumuyla açılıyor, Claude Code bir dosyayı düzenlemek için izin istiyor ve izin notch'tan veriliyor, ardından pano geçmişi ve notch'un yanında ses düzeyi"></p>
 
-macOS için ücretsiz ve açık kaynaklı bir notch uygulaması. İmleci MacBook notch'unun üzerinde tuttuğunuzda kamera yuvasından bir panel büyür: çalan müzik ya da video, Claude Code ve Codex'in ne yaptığı ve seçtiğiniz widget'lar; hepsi size göre ayarladığınız bir görünümle.
+Cumba, macOS için ücretsiz ve açık kaynaklı bir notch uygulaması. İmleci MacBook'un notch'una getirdiğinizde altında bir panel açılır: çalan müzik ya da video, Claude Code ve Codex'in ne yaptığı ve seçtiğiniz widget'lar.
 
-*Cumba*, eski Türk evlerinin üst katından sokağa taşan küçük çıkmadır: oturup sokakta olup biteni izlediğiniz sakin bir köşe. Panel de aynısını ekranınızın tepesinden yapar.
+*Cumba*, eski Türk evlerinin üst katından sokağa taşan küçük çıkmadır: oturup sokağı seyrettiğiniz sakin bir köşe. Panel de aynısını ekranınızın tepesinden yapar.
 
-## Neler sunar
+## Neler var
 
-- Hangi uygulamada ne çalıyorsa tek bir mini oynatıcıda: Spotify, Müzik, Safari ya da Chrome'da YouTube, podcast'ler. Kapak görseli, sarma ve kontroller; uzantı ya da kurulum gerekmez.
-- Notch'ta Claude Code ve Codex. Ajanın ne yaptığını ve bağlam penceresinin ne kadar dolu olduğunu görün, izin isteklerini pencere değiştirmeden İzin Ver, Reddet ya da Terminalde ile yanıtlayın.
-- Sekmelere dizdiğiniz widget'lar: görüşmeler için Katıl düğmeli takvim, Apple Notlar, Anımsatıcılar, pano geçmişi, zamanlayıcı ve Pomodoro, hava durumu, AirDrop destekli dosya rafı ve daha fazlası.
-- Düz siyah ve Liquid Glass'tan Neon Tokyo ve Synthwave'e sekiz tema; ya da cam, renk geçişi, neon kenar, kendi renkleriniz ve fontunuzla kendi temanız. Temalar JSON olarak içe ve dışa aktarılır.
-- Kapalı notch'un iki yanında canlı etkinlikler: çalışan zamanlayıcı, çalışan bir ajan, şarj, çalan şarkı, ses ve parlaklık.
-- Yolunuza çıkmaz. Tıklamalar menü çubuğuna geçer, tam ekran uygulamalarda da çalışır, boştayken CPU kullanmaz.
+- Hangi uygulamada ne çalıyorsa tek bir mini oynatıcıda: Spotify, Müzik, Safari ya da Chrome'da YouTube, podcast'ler. Kapak görseli, sarma ve kontroller; kurulacak bir şey yok.
+- Notch'ta Claude Code ve Codex. Ajanın ne yaptığını görür, izin isteklerini İzin Ver, Reddet ya da Terminalde ile bulunduğunuz pencereden ayrılmadan yanıtlarsınız. Claude Code'da bağlam penceresinin ne kadar dolduğunu da görürsünüz.
+- Sekmelerde widget'lar: görüşmeler için Katıl düğmeli takvim, Notlar, Anımsatıcılar, pano geçmişi, zamanlayıcı ve Pomodoro, hava durumu, AirDrop destekli dosya rafı ve daha fazlası.
+- Düz siyah ve Liquid Glass'tan Neon Tokyo ve Synthwave'e sekiz tema. Cam, renk geçişi, neon kenar, renkler ve fontlarla kendi temanızı da yapıp JSON olarak paylaşabilirsiniz.
+- Kapalı notch'un iki yanında canlı etkinlikler: işleyen zamanlayıcı, çalışan bir ajan, şarj, çalan şarkı, ses ve parlaklık.
+- Tıklamalar menü çubuğuna geçer; Cumba tam ekran uygulamalarda da çalışır ve boştayken neredeyse hiç işlemci kullanmaz.
 - Türkçe, İngilizce, İspanyolca ve Fransızca.
 
-Her widget ve seçenek [özellik turunda](docs/features.tr.md).
+Notch'ta ne görüneceğine siz karar verirsiniz: hangi widget'lar, hangi sekmelerde, hangi sırayla, hangi temayla. Bir ajana notch'tan neye izin verilebileceğini de siz seçersiniz. Varsayılan ayarda kabuk komutları dışındaki her şeye izin verilebilir; bunu genişletebilir ya da İzin Ver'i kapatabilirsiniz. Sistemin ses göstergesi yerine notch'u kullanmak gibi ekstralar siz açana kadar kapalı kalır, Cumba da macOS izinlerini yalnızca onları gerektiren bir özelliği açtığınızda ister.
+
+Tüm widget'lar ve seçenekler [Özellikler](docs/features.tr.md) sayfasında.
 
 ## İndirme ve kurulum
 
-[Homebrew](https://brew.sh) ile:
+[Homebrew](https://brew.sh) ile kurun:
 
 ```bash
 brew install --cask ljasp-studio/cumba/cumba
 ```
 
-Ya da `.dmg` dosyasını [cumbanotch.com](https://cumbanotch.com)'dan veya [son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) indirip Cumba'yı Uygulamalar klasörüne sürükleyin. macOS 26 veya üstü gerekir; notch'u olmayan Mac'ler sanal bir notch gösterebilir.
+Ya da `.dmg` dosyasını [cumbanotch.com](https://cumbanotch.com)'dan veya [son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) indirip Cumba'yı Uygulamalar klasörüne sürükleyin. macOS 26 veya üstü gerekir. Notch'u olmayan Mac'ler sanal bir notch gösterebilir.
 
 <a name="macos-neden-uyariyor"></a>
 
-**İlk açılış:** Cumba Apple tarafından notarize edilmedi, çünkü bu ücretli bir geliştirici hesabı gerektiriyor; bu yüzden macOS indirilen kopyanın ilk açılışını engeller. Bir kez açmayı deneyin, ardından **Sistem Ayarları > Gizlilik ve Güvenlik**'te **Yine de Aç**'a tıklayın. Homebrew cask'ı dosyayı doğrular ve bu adımı atlar. [Uyarının anlamı](docs/safety.tr.md#macos-neden-uyariyor).
+Cumba Apple tarafından notarize edilmedi, çünkü bu ücretli bir geliştirici hesabı gerektiriyor. Bu yüzden macOS indirilen kopyanın ilk açılışını engeller. Bir kez açmayı deneyin, ardından **Sistem Ayarları > Gizlilik ve Güvenlik**'te **Yine de Aç**'a tıklayın. Homebrew ile kurarsanız dosya doğrulanır ve bu adım gerekmez. [Uyarının anlamı](docs/safety.tr.md#macos-neden-uyariyor)
 
-Cumba menü çubuğunda yaşar. Simgesi notch'un arkasında kalırsa Ayarlar için notch'a sağ tıklayın.
+Cumba'nın simgesi menü çubuğunda durur. Notch'un arkasında kalırsa Ayarlar için notch'a sağ tıklayın.
 
 <a name="kaynaktan-derleme"></a>
 <a name="kaldırma"></a>
@@ -61,20 +63,20 @@ Dosyayı doğrulama, güncellemeler, cumbaNotch'tan geçiş, kaynaktan derleme v
 
 ## Güvenli mi?
 
-Cumba yeni (ilk sürüm Ekim 2026) ve tek bir kişi tarafından geliştiriliyor; kodunun büyük kısmı Claude Code ile yazılıyor. Bağımsız bir güvenlik denetiminden geçmedi. Bu yüzden kimsenin sözüne güvenmeniz gerekmeyecek şekilde kuruldu: kodun tamamı bu depoda, her değişiklik `main`'e girmeden önce CI'dan geçmek zorunda ve her sürümü GitHub, etiketli bir commit'ten, doğrulayabileceğiniz imzalı derleme kaynağıyla derliyor. Telemetri yok; Cumba her izni ancak onu gerektiren özelliği açtığınızda ister.
+Cumba yeni bir uygulama (ilk sürüm Ekim 2026). Tek bir geliştiricisi var ve kodunun büyük kısmı Claude Code ile yazılıyor. Henüz bağımsız bir güvenlik denetiminden de geçmedi. Yine de kimsenin sözüne güvenmeniz gerekmiyor. Uygulamanın tamamı bu depoda açık kaynak, her değişiklik `main`'e girmeden önce CI'dan geçmek zorunda ve sürümleri GitHub, etiketli commit'lerden derliyor. Dosyalar, doğrulayabileceğiniz imzalı bir derleme kaydı taşıyor.
 
-[Cumba güvenli mi?](docs/safety.tr.md) macOS uyarısını açıklıyor ve her iddiayı kendiniz doğrulamanız için komutları veriyor. Cumba'nın Mac'inizde nelere erişebildiği [Gizlilik ve izinler](docs/privacy.tr.md) sayfasında; tehdit modeli ve bir sorunu gizlice bildirme yolu [SECURITY.md](SECURITY.md)'de.
+[Cumba güvenli mi?](docs/safety.tr.md) macOS uyarısını açıklıyor ve bunların hepsini kendiniz doğrulamanız için komutları veriyor. Cumba'nın Mac'inizde nelere erişebildiği [Gizlilik ve izinler](docs/privacy.tr.md) sayfasında. Bir sorunu gizli olarak bildirmek için [SECURITY.md](SECURITY.md) dosyasına bakın.
 
 ## Gizlilik
 
-Telemetri yok, her şey Mac'inizde kalır. Yalnızca şu özellikler internete çıkar, o da yalnızca siz kullanırken:
+Cumba telemetri göndermez. İnternete çıkan özellikler yalnızca bunlar:
 
 | Özellik | Bağlandığı yer |
 |---|---|
 | Medya oynatıcıda Spotify kapakları | `i.scdn.co` |
 | Medya oynatıcıda YouTube küçük resimleri | `*.ytimg.com`, `*.googleusercontent.com`, `*.ggpht.com` |
-| Hava durumu | Yaklaşık 10 km'ye yuvarlanmış konumunuzla (ya da seçtiğiniz şehirle) `api.open-meteo.com`, şehir araması için `geocoding-api.open-meteo.com`, şehir adı için Apple Haritalar |
-| Güncelleme denetimi | Açılışta ve günde bir kez `api.github.com`; Ayarlar > Genel'den kapatılabilir |
+| Hava durumu, widget ekrandayken | Yaklaşık 10 km'ye yuvarlanmış konumunuzla (ya da seçtiğiniz şehirle) `api.open-meteo.com`, şehir araması için `geocoding-api.open-meteo.com`, şehir adı için Apple Haritalar |
+| Güncelleme denetimi | Açılışta ve günde bir kez `api.github.com`; Ayarlar > Genel'den kapatabilirsiniz |
 
 Her isteğin içinde ne olduğu [Gizlilik ve izinler](docs/privacy.tr.md) sayfasında.
 
@@ -84,7 +86,7 @@ Cumba ücretsiz. İşinize yarıyorsa [GitHub Sponsors](https://github.com/spons
 
 ## Katkı
 
-Sorular ve fikirler için [Discussions](https://github.com/LJASP-studio/Cumba/discussions) bölümünü kullanabilirsiniz. Kod katkısı için lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
+Sorular ve fikirler için [Discussions](https://github.com/LJASP-studio/Cumba/discussions) bölümünü kullanabilirsiniz. Kod katkısı yapmak isterseniz lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
 
 ## Lisans
 
