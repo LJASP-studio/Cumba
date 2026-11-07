@@ -80,6 +80,16 @@ What Cumba can reach on your Mac is listed in [Permissions and what runs](#permi
 
 ## Download and install
 
+**With [Homebrew](https://brew.sh):**
+
+```bash
+brew install --cask ljasp-studio/cumba/cumba
+```
+
+The cask lives in [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba). It installs the same `.dmg` from the latest release after checking its SHA-256, then removes macOS's download flag from Cumba.app, so there's no Open Anyway step ([what that warning means](#why-macos-warns)). A new version reaches the cask only after its checksum and build provenance pass. Then go on at step 5 below; later, update with `brew upgrade --cask cumba`.
+
+**By hand:**
+
 1. Get `Cumba-vX.Y.Z.dmg` (or the `.zip`) from [cumbanotch.com](https://cumbanotch.com) or the [latest release](https://github.com/LJASP-studio/Cumba/releases/latest).
 2. **Check the download before opening it.** Its SHA-256 must match the one in `SHA256SUMS.txt` on the release page:
    ```bash
@@ -211,7 +221,7 @@ When turned on, the extension server listens only on `127.0.0.1`, accepts only t
 ## Uninstall
 
 1. If you installed the Claude Code or Codex hooks, remove them first in **Settings > Agents > Remove…** (for each agent). Hooks left behind do nothing once the app is gone, but they stay in `~/.claude/settings.json` and `~/.codex/hooks.json`.
-2. Turn off **Launch at login** in Settings > General, quit Cumba from the menu bar and move it to the Trash.
+2. Turn off **Launch at login** in Settings > General, quit Cumba from the menu bar and move it to the Trash. If you installed it with Homebrew, run `brew uninstall --cask cumba` instead; `--zap` also deletes its settings, themes and notes (not the tokens in step 4).
 3. Remove the extension in `chrome://extensions`.
 4. To delete its data too (themes, layout, notes, preferences and the tokens):
    ```bash

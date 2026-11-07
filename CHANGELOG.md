@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Install with Homebrew: `brew install --cask ljasp-studio/cumba/cumba`, from the new [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba) tap. The cask installs the release `.dmg` and removes its quarantine flag, so there's no Open Anyway step; it moves to a new version only after the file's checksum and build provenance are verified.
+
 ### Changed
 
 - The Turkish README uses the same setting names as the app.

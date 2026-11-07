@@ -86,6 +86,16 @@ Cumba'nın Mac'inizde nelere erişebildiği [İzinler ve neler çalışır](#izi
 
 ## İndirme ve kurulum
 
+**[Homebrew](https://brew.sh) ile:**
+
+```bash
+brew install --cask ljasp-studio/cumba/cumba
+```
+
+Cask, [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba) deposunda duruyor. Son sürümdeki aynı `.dmg` dosyasını SHA-256 değerini doğruladıktan sonra kurar, ardından Cumba.app'teki macOS indirme işaretini kaldırır; böylece Yine de Aç adımı gerekmez ([uyarının anlamı](#macos-neden-uyariyor)). Yeni bir sürüm cask'a ancak sağlaması ve derleme kaynağı doğrulandıktan sonra girer. Kurduktan sonra aşağıdaki 5. adımdan devam edin; ileride `brew upgrade --cask cumba` ile güncelleyin.
+
+**Elle:**
+
 1. [cumbanotch.com](https://cumbanotch.com) ya da [son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
 2. **Açmadan önce dosyayı doğrulayın.** SHA-256 değeri, sürüm sayfasındaki `SHA256SUMS.txt` ile aynı olmalı:
    ```bash
@@ -221,7 +231,7 @@ Açıldığında uzantı sunucusu yalnızca `127.0.0.1` adresini dinler, yalnız
 ## Kaldırma
 
 1. Claude Code veya Codex hook'larını kurduysanız önce **Ayarlar > Ajanlar > Kaldır…** ile (her ajan için) kaldırın. Uygulama silindikten sonra kalan hook'lar hiçbir şey yapmaz ama `~/.claude/settings.json` ve `~/.codex/hooks.json` içinde kalır.
-2. Ayarlar > Genel'de **Oturum açıldığında başlat**'ı kapatın, menü çubuğundan Cumba'dan çıkın ve uygulamayı Çöp Sepeti'ne taşıyın.
+2. Ayarlar > Genel'de **Oturum açıldığında başlat**'ı kapatın, menü çubuğundan Cumba'dan çıkın ve uygulamayı Çöp Sepeti'ne taşıyın. Homebrew ile kurduysanız bunun yerine `brew uninstall --cask cumba` çalıştırın; `--zap` ayarlarını, temalarını ve notlarını da siler (4. adımdaki token'ları silmez).
 3. Uzantıyı `chrome://extensions` sayfasından kaldırın.
 4. Verilerini de silmek için (temalar, düzen, notlar, tercihler ve token'lar):
    ```bash
