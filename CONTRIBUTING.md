@@ -63,7 +63,7 @@ All user-facing text goes through `Localizable.xcstrings`. English is the develo
 - [ ] Builds and tests pass locally
 - [ ] `swift-format lint` passes
 - [ ] New strings have Turkish translations
-- [ ] Any feature that makes network requests is listed in the README privacy section
+- [ ] Any feature that makes network requests is listed under Privacy in both READMEs and in `docs/privacy.md` and `docs/privacy.tr.md`
 - [ ] `CHANGELOG.md` updated under "Unreleased"
 - [ ] No secrets, tokens, personal paths or `Local.xcconfig` in the diff
 

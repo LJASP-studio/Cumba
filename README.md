@@ -20,222 +20,70 @@
 
 <p align="center"><img src="docs/demo.gif" width="800" alt="Cumba in use: the panel opens with music and the weather, Claude Code asks to edit a file and gets Allow from the notch, then clipboard history and the volume level beside the notch"></p>
 
-A free, open source notch app for macOS. It turns the MacBook notch into a panel that grows out of the camera housing when you rest the pointer on it: whatever is playing, what your AI coding agents (Claude Code and Codex) are doing, and a set of widgets, all in a look you can make your own.
+Cumba is a free, open source notch app for macOS. Rest the pointer on the MacBook notch and a panel opens below it with what's playing, what Claude Code and Codex are doing, and the widgets you chose.
 
-A *cumba* is the small bay window that juts out from the upper floor of old Turkish houses: a quiet place to sit and see what's happening in the street. The panel does the same from the top of your screen.
+A *cumba* is the small bay window that juts out from the upper floor of old Turkish houses: a quiet place to sit and watch the street. The panel does the same from the top of your screen.
 
-> **Project status:** Cumba is new (first release October 2026) and made by one maintainer with AI assistance (Claude Code). It hasn't had an external security audit. [Is it safe?](#is-it-safe) explains how it's built and released, why macOS warns before the first launch, and how to check all of it yourself.
+## What you get
 
-## Features
+- A mini player for whatever is playing, in any app: Spotify, Music, YouTube in Safari or Chrome, podcasts. Artwork, seeking and controls, with nothing to set up.
+- Claude Code and Codex in the notch. You see what the agent is doing and answer its permission requests with Allow, Deny or In Terminal without leaving the window you're in. For Claude Code you also see how full the context window is.
+- Widgets in tabs: a calendar with a Join button for calls, Apple Notes, Reminders, clipboard history, timer and Pomodoro, weather, a file tray with AirDrop and more.
+- Eight themes, from plain black and Liquid Glass to Neon Tokyo and Synthwave. You can also make your own with glass, gradients, a neon edge, colors and fonts, and share it as JSON.
+- Live activities beside the closed notch: a running timer, a working agent, charging, the current song, volume and brightness.
+- Cumba lets clicks through to the menu bar, works in full-screen apps and uses next to no CPU while idle.
+- English, Spanish, French and Turkish.
 
-- **Media**: whatever any app plays (Safari, Chrome, YouTube, Spotify, Music, podcasts and more) in one mini player with artwork, progress, seeking and controls, with no extension or setup. A small waveform beside the notch shows what's playing.
-- **AI agents (Claude Code and Codex)**: what the agent is doing right now, its last answer and how full its context window is, with a ring beside the notch while it works. When it asks a question, needs permission or finishes, a notification opens under the notch with what happened and **Open**, which brings the agent's app forward. Opening the panel while an agent works shows its tab. Permission requests show up with **Allow**, **Deny** and **In Terminal**; questions and plans stay in the agent, and the notch tells you it's waiting.
-- **Widgets in tabs**: calendar with a Join button for video calls (scroll through the days to see any day's events), timer, Pomodoro, your Apple Notes (recent notes, and new ones from the panel), to-dos from Apple Reminders (tick them off, add new ones), clipboard history (text, links, images, files and new screenshots as cards), keep awake, teleprompter, battery, file tray with AirDrop, camera mirror, weather, Shortcuts and a CPU/memory graph. Add them from a gallery in the panel or in Settings, switch tabs with a two-finger swipe; a new installation starts with just three.
-- **A panel that fits**: tabs at the bottom or the top, edited right in the panel (name, symbol, order, widgets). The panel is as wide as the open tab, and a widget alone in its tab shows a detailed view: weather with the next hours and days like Apple's widget, the whole month beside your events, large album art. Text size is adjustable, and so is how far the closed notch reaches past the camera.
-- **Optional extras**, off until you turn them on: show the panel on any display, the notch in place of the system volume and brightness indicators, a dot while the microphone or camera is in use, a countdown before meetings, a choice of media sources, and an [API for your own scripts](#scripts).
-- **Live activities**: a running timer, a working AI agent, a pending request, charging, the current song or a volume or brightness change appear on both sides of the closed notch.
-- **Themes**: eight built in, from plain black and Liquid Glass to Neon Tokyo, Sakura, Synthwave and Citrus. Make your own: glass, solid or tinted, a gradient background, a neon edge, colors, font, corner radius, shadow and animation. Panel size and text size stay the same whichever theme you pick. Import and export themes as JSON.
-- **Stays out of the way**: clicks pass through to the menu bar, dragging windows past the notch doesn't open it, it works in full screen apps too (or hides there, if you like), and idle CPU use is zero. Right-click the notch for Settings.
-- Interface in English, Spanish (Spain and Latin America), French and Turkish.
+You decide what the notch shows: which widgets, in which tabs and order, in which theme. You also choose which agent requests you can allow from the notch. By default that's everything except shell commands, and you can widen it or turn Allow off. Extras such as replacing the volume indicator stay off until you turn them on, and Cumba asks for macOS permissions only when you turn on a feature that needs one.
 
-## Is it safe?
-
-People usually ask two things first: *"Wasn't this written by an AI?"* and *"Why does macOS warn me about it?"* Here are straight answers, and a way to check each claim yourself instead of taking anyone's word for it.
-
-### Written with AI, checked like any code
-
-Cumba is designed and maintained by one person, and much of its code is written with Claude Code. Code written with AI can have the same mistakes as any other code, so Cumba is set up so that you don't have to trust whoever wrote it:
-
-- **All of it is open.** The whole app is in this repository under the MIT license. There's no closed part, and the app never downloads code later.
-- **Nothing reaches `main` unchecked.** Every change comes through a pull request that must build, pass more than 200 unit tests, a strict format check and a Release build on GitHub's machines before it can merge. Direct pushes, force pushes and history rewrites on `main` are blocked for everyone, the maintainer included.
-- **The files you download come from GitHub, not from a laptop.** Releases are built only by the [release workflow](.github/workflows/release.yml), from a tagged commit, on a GitHub-hosted Mac with read-only access. Each file carries signed build provenance that ties it to this repository and that commit, and releases can't be changed after publishing.
-- **Little to go wrong.** One third-party library ([FlyingFox](https://github.com/swhitty/FlyingFox), MIT, pinned to a commit), no analytics or ad SDKs, no telemetry. Workflows may use only GitHub's own actions, pinned to commits. Secret scanning, push protection and Dependabot security updates are on, and CodeQL scans the Chrome extension, the workflows and the scripts every week.
-- **Security work is on the record.** The [CHANGELOG](CHANGELOG.md) lists the security fixes in each release. [SECURITY.md](SECURITY.md) has the threat model and a map of the security-relevant code, about a dozen files, for anyone who wants to review it.
-- **What's missing:** no independent firm has audited Cumba yet. If you find a problem, please report it privately as described in [SECURITY.md](SECURITY.md).
-
-### Why macOS warns
-
-On first launch, macOS says Apple could not verify that Cumba is free of malware. It says the same about every app that isn't notarized. Notarization is Apple's automated malware scan, and it's only available for apps signed with a paid Apple Developer ID. Cumba doesn't have one, so its releases are signed ad hoc.
-
-- The warning means Apple hasn't scanned this build. It doesn't mean anything was found.
-- XProtect, the malware protection built into macOS, still checks Cumba at first launch, as it does every app.
-- In place of Apple's scan, you can check something notarization doesn't show: that your download was built by GitHub from this public code (the first row below).
-
-### Check it yourself
-
-A few commands in Terminal; the first needs the [GitHub CLI](https://cli.github.com).
-
-| Claim | Command | What you should see |
-|---|---|---|
-| GitHub built the file from this repository | `gh attestation verify ~/Downloads/Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba` | `Verification succeeded!` |
-| It's the file the release lists | `shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg` | The value in the release's `SHA256SUMS.txt` |
-| It has only the entitlements in [Cumba.entitlements](Cumba/Resources/Cumba.entitlements) | `codesign -d --entitlements - /Applications/Cumba.app` | App Sandbox off, then Apple Events, camera, calendars and location; nothing else |
-| Hardened Runtime is on | `codesign -dv /Applications/Cumba.app 2>&1 \| grep flags` | `runtime` among the flags |
-| No other device can connect to it | `lsof -nP -iTCP -sTCP:LISTEN \| grep Cumba` | No output; with the YouTube extension on, `127.0.0.1` only |
-| It talks only to the servers in [Privacy](#privacy) | `nettop -p Cumba`, or an outbound firewall such as LuLu or Little Snitch | `api.github.com` for the update check; weather and artwork servers only while you use them |
-| Nothing keeps running after you quit | Quit Cumba, then `pgrep -fl Cumba` | No output |
-| It installs nothing that runs in the background | `ls ~/Library/LaunchAgents /Library/LaunchAgents /Library/LaunchDaemons` | No Cumba file; launch at login uses the macOS login items list, under Cumba's own name |
-
-What Cumba can reach on your Mac is listed in [Permissions and what runs](#permissions-and-what-runs). If you'd rather not run a prebuilt app at all, [build it from source](#build-from-source).
+Every widget and option is listed in [Features](docs/features.md).
 
 ## Download and install
 
-**With [Homebrew](https://brew.sh):**
+Install with [Homebrew](https://brew.sh):
 
 ```bash
 brew install --cask ljasp-studio/cumba/cumba
 ```
 
-The cask lives in [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba). It installs the same `.dmg` from the latest release after checking its SHA-256, then removes macOS's download flag from Cumba.app, so there's no Open Anyway step ([what that warning means](#why-macos-warns)). A new version reaches the cask only after its checksum and build provenance pass. Then go on at step 5 below; later, update with `brew upgrade --cask cumba`.
+Or download the `.dmg` from [cumbanotch.com](https://cumbanotch.com) or the [latest release](https://github.com/LJASP-studio/Cumba/releases/latest) and drag Cumba to Applications. You need macOS 26 or later. Macs without a notch can show a virtual one.
 
-**By hand:**
+<a name="why-macos-warns"></a>
 
-1. Get `Cumba-vX.Y.Z.dmg` (or the `.zip`) from [cumbanotch.com](https://cumbanotch.com) or the [latest release](https://github.com/LJASP-studio/Cumba/releases/latest).
-2. **Check the download before opening it.** Its SHA-256 must match the one in `SHA256SUMS.txt` on the release page:
-   ```bash
-   shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg
-   ```
-   From 1.1.0 on, releases are also immutable (files and tag can't change after publishing) and carry signed build provenance. With the [GitHub CLI](https://cli.github.com) you can confirm the file was built from this repository by its release workflow:
-   ```bash
-   gh attestation verify ~/Downloads/Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba
-   ```
-   1.1.0 was built before the repository moved to LJASP-studio, so check it with `--owner muazfurkan` instead of `--repo`.
-3. Open the disk image and drag Cumba to Applications.
-4. Cumba isn't notarized by Apple, because that needs a paid developer account, so macOS blocks the first launch ([what the warning means](#why-macos-warns)). Open it once, then click **Open Anyway** in **System Settings > Privacy & Security**. If you'd rather not run a downloaded build at all, [build it from source](#build-from-source).
-5. A short welcome lets you try the panel. Cumba lives in the menu bar; if its icon hides behind the notch, right-click the notch for Settings.
+Cumba isn't notarized by Apple, because that needs a paid developer account, so macOS blocks the first launch of a downloaded copy. Open it once, then click **Open Anyway** in **System Settings > Privacy & Security**. If you install with Homebrew, it checks the download and you can skip this step. [What the warning means](docs/safety.md#why-macos-warns)
 
-<details>
-<summary>Terminal alternative to Open Anyway</summary>
+Cumba's icon sits in the menu bar. If it hides behind the notch, right-click the notch for Settings.
 
-`xattr -dr com.apple.quarantine /Applications/Cumba.app` removes the download flag from this one app, so Gatekeeper stops asking. Only do this for a copy you checked in step 2.
-</details>
+<a name="uninstall"></a>
 
-**Updates:** the app tells you when a new version is out; it never downloads or installs anything itself. Release builds are signed ad hoc, so after an update macOS asks again for the permissions you gave (Automation, Calendar, Location, Camera) and for Keychain access to Cumba's tokens. Check the new download first, then allow.
+Checking the download, updates, moving from cumbaNotch, building from source and uninstalling are covered in [Install, update and uninstall](docs/install.md).
 
-**Coming from cumbaNotch?** Cumba is the same app under a new name. Quit cumbaNotch, move the old app to the Trash and install Cumba; your settings, layout, notes and themes carry over. If you use Claude Code hooks, click **Update…** once in Settings > Agents. If you use the Chrome extension, remove it in `chrome://extensions`, load it again from the new app as in [YouTube and YouTube Music](#youtube-and-youtube-music) and paste the token.
+## Is it safe?
 
-## Requirements
+Cumba is new (first release October 2026). One person makes it, much of the code is written with Claude Code, and no outside firm has audited it yet. You don't have to take anyone's word for it, though. The whole app is open source in this repository, every change has to pass CI before it reaches `main`, and GitHub builds the releases from tagged commits, with signed provenance you can verify.
 
-- A Mac with a notch (other Macs can show a virtual notch, see Settings > General)
-- macOS 26 or later
-
-## Build from source
-
-You need Xcode 26 or later and [Homebrew](https://brew.sh).
-
-```bash
-brew install xcodegen
-git clone https://github.com/LJASP-studio/Cumba.git
-cd Cumba
-cp Local.xcconfig.example Local.xcconfig   # then set your DEVELOPMENT_TEAM
-xcodegen generate
-open Cumba.xcodeproj
-```
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## Permissions and what runs
-
-Everything below is off or unused until you turn on the feature that needs it. Settings > Permissions shows the current state of each.
-
-| What | Why | When |
-|---|---|---|
-| System Now Playing helper | Media from every app, and its controls | Runs while the app runs; turn off "Read media from every app" to use AppleScript instead. See [below](#media-and-private-apis) |
-| Automation (Apple Events) for Spotify and Music | Read the current track; play, pause, skip, seek | Only with "Read media from every app" off; asked from Settings, scripts are sent only while that app is already running |
-| Automation (Apple Events) for Notes | Notes widget: list your recent notes, open one, make new ones | Asked when you connect Notes in the widget or in Settings; Cumba starts Notes in the background and never changes an existing note |
-| Calendar (full access) | Calendar widget | Asked when you click Allow in the widget or in Settings |
-| Reminders (full access) | To-dos widget: show, tick off and add reminders | Asked when you click Allow in the widget or in Settings |
-| Location | Weather widget, for the weather where you are | Asked when you click Use My Location; off if you choose a city instead |
-| Camera | Mirror widget | Only while the panel shows it; nothing is recorded |
-| Local server on `127.0.0.1` | Optional YouTube extension connection | Only after you turn it on in Settings > Connections |
-| Private Unix socket | Claude Code and Codex hooks, and [script activities](#scripts) | Only while hooks are installed or script activities are on |
-| `~/.claude/settings.json`, `~/.codex/hooks.json` | Installing and removing the Claude Code and Codex hooks | Only after you review the change; a backup is kept |
-| Claude Code transcripts in `~/.claude/projects` | Context use and session title in the AI Agents widget | Read on this Mac only, the last 256 KB, while a session runs |
-| Accessibility | Handling the volume or brightness keys | Only if you turn on "Replace the system volume indicator" or "…brightness indicator" |
-| Clipboard | Clipboard History widget | Only while that widget is in the panel |
-| Files and Folders (Desktop, or wherever screenshots go) | Adding new screenshots to Clipboard History | Only if you turn on "Add new screenshots" |
-| Login item | Launch at login | Off until you turn it on |
-| Network | Artwork, weather, update check | See [Privacy](#privacy) |
-
-The App Sandbox is off: a sandboxed app would need exceptions to script Spotify and Music, to run the socket Claude Code's hooks reach, and to edit `~/.claude/settings.json`. Hardened Runtime is on, and the app has only the entitlements in [Cumba.entitlements](Cumba/Resources/Cumba.entitlements) (Apple Events, calendars, location, camera).
-
-Cumba never sends telemetry, asks for no administrator password, installs no helper tools, kernel or system extensions, doesn't change system settings, and never downloads code or updates itself. [SECURITY.md](SECURITY.md) has the threat model and a map of the security-relevant code.
-
-<a name="media-and-private-apis"></a>
-
-## Media, brightness and private APIs
-
-macOS has no public way for an app to see what other apps play or to read the built-in display's brightness on Apple silicon. Cumba uses two private Apple frameworks for exactly these, and nothing else:
-
-- **MediaRemote**, the system's Now Playing (what the media keys and Control Center use). macOS answers it only for Apple's own programs, so Cumba runs a small helper library from its own app bundle ([source](NowPlayingHelper/CumbaNowPlaying.m)) inside the system's `/usr/bin/perl`, started with an empty environment. The helper only reads Now Playing and passes on play, pause, skip and seek; it opens no files or network connections and exits when Cumba quits. Turn off **Settings > Widgets > Media > Read media from every app** to use AppleScript for Spotify and Music and the extension for YouTube instead.
-- **DisplayServices**, only for the brightness level in the notch. Turn off **Settings > General > Show brightness changes in the notch** to stop using it.
-
-Private APIs can change with any macOS update. If they stop working, Cumba falls back to the public ways above and keeps running.
-
-## YouTube extension (optional)
-
-Not needed while Media reads from every app. A small Chrome extension (also works in other Chromium browsers) sends what plays in YouTube tabs to the app over a local connection, and the app sends play, pause, next and seek back.
-
-1. In Cumba, open **Settings > Connections**, turn on **Connect the YouTube extension** and click **Show Extension Folder**.
-2. In Chrome, open `chrome://extensions`, turn on **Developer mode** and click **Load unpacked**. Choose the folder from step 1.
-3. Open the extension's **Details > Extension options**, paste the port and the token from **Settings > Connections**, and save.
-
-Chrome will say the extension can read and change your data on `youtube.com` and `music.youtube.com`: it reads the player (title, artwork, progress) and presses play, pause, next and seek there. It runs on no other site, its only other permission is storage (for the port and token), and it talks only to `127.0.0.1`.
-
-## Claude Code and Codex
-
-The AI Agents widget shows what a session is doing right now ("Editing Notch.swift", "Running tests"), its title and last answer, and how full its context window is. Permission requests from Claude Code (terminal, IDE extensions and the Claude desktop app) appear in the notch with **Allow**, **Deny** and **In Terminal**, and you see when a session finishes or fails. The card shows the full request with hidden characters made visible. Questions and plan approvals aren't permission requests: Claude Code asks them itself, and the notch shows the session is waiting. Install the hooks in **Settings > Agents**; you review the change to `~/.claude/settings.json` first and a backup is made. Hooks reach the app through a private socket that only your user account can open, so nothing else can answer Claude Code in its place; they use their own token, separate from the extension's.
-
-**Codex** works the same way: install its hooks in **Settings > Agents > Codex** (they go to `~/.codex/hooks.json`), then run `/hooks` in Codex once and trust them, since Codex runs new hooks only after that.
-
-**Allow in the notch is the same as Allow in Claude Code: the tool runs right away.** By default, shell commands are answered in the terminal and everything else can be allowed from the notch; in Settings > Agents you can allow everything, or turn Allow off and keep only Deny and In Terminal. Requests with hidden characters never get an Allow button, and when a request is longer than its box, Allow waits until you've scrolled to its end. See [docs/claude-code-setup.md](docs/claude-code-setup.md) for details and manual setup.
-
-## Scripts
-
-Turn on **Settings > Connections > Scripts** to let your own scripts, Shortcuts or build tools show a short status beside the notch. **Copy Example Command** copies a ready-to-run command with your token:
-
-```bash
-curl -s --unix-socket "$HOME/Library/Application Support/Cumba/hook.sock" \
-  -H "X-Cumba-Token: <token>" -H "Content-Type: application/json" \
-  -d '{"id":"build","title":"Build done","symbol":"hammer","duration":5}' \
-  http://localhost/activity
-```
-
-Fields: `id` (letters, digits, `.`, `_` and `-`), `title` (up to 60 characters), `symbol` (an SF Symbol name), `progress` (0 to 1, shows a bar), `duration` (seconds, 1 to 3600), and `"remove": true` to take an activity away. Activities are text only, escaped like Claude Code requests, and nothing in them can be clicked.
+[Is Cumba safe?](docs/safety.md) explains the macOS warning and gives the commands to check all of this yourself. [Privacy and permissions](docs/privacy.md) lists what Cumba can reach on your Mac. To report a problem privately, see [SECURITY.md](SECURITY.md).
 
 ## Privacy
 
-No telemetry. Everything stays on your Mac. These features make network requests, and only while you use them:
+Cumba sends no telemetry. These are the only features that go online:
 
-| Feature | Request |
+| Feature | Talks to |
 |---|---|
-| Media widget with Spotify | Album artwork from Spotify's image server (`i.scdn.co`), for the panel and the closed notch |
-| Media widget with YouTube | Thumbnails from YouTube's image servers (`*.ytimg.com`, `*.googleusercontent.com`, `*.ggpht.com`; the URL the page itself uses), for the panel and the closed notch |
-| Weather widget | Your location rounded to about 10 km (or the coordinates of the city you choose) to `api.open-meteo.com`; with your location, the same rounded coordinates to Apple Maps for the city name; a city you search for, with your language, to `geocoding-api.open-meteo.com`. Only while the widget is on screen, at most every 15 minutes |
-| Update check | The list of releases from `api.github.com` at launch and once a day, with Cumba's version as the user agent; turn it off in Settings > General |
+| Spotify artwork in the media player | `i.scdn.co` |
+| YouTube thumbnails in the media player | `*.ytimg.com`, `*.googleusercontent.com`, `*.ggpht.com` |
+| Weather, while the widget is on screen | `api.open-meteo.com` with your location rounded to about 10 km (or the city you choose), `geocoding-api.open-meteo.com` for city search, Apple Maps for the city name |
+| Update check | `api.github.com` at launch and once a day; you can turn it off in Settings > General |
 
-The camera (Mirror widget) runs only while the panel shows it, and nothing is recorded. The Tray keeps only file paths on your Mac. Notes and To-dos read and write Apple Notes and Apple Reminders on your Mac; nothing is copied or sent anywhere. The note of earlier versions (`notes.txt`) is moved to Apple Notes once, and the file is left in place. Clipboard History keeps your last 20 copies (text, links, images and files) in memory only and skips items apps mark as passwords; while it's in one of your tabs it checks once a second whether the clipboard changed, even with the panel closed, so it doesn't miss a copy. With "Add new screenshots" on, it watches the screenshot folder for new screenshots and keeps only their location. The microphone and camera indicator reads only whether a device is in use, never audio or video.
+What each request contains is in [Privacy and permissions](docs/privacy.md).
 
-When turned on, the extension server listens only on `127.0.0.1`, accepts only the Cumba extension and requires its own token, stored in your Keychain.
+## Support
 
-## Uninstall
-
-1. If you installed the Claude Code or Codex hooks, remove them first in **Settings > Agents > Remove…** (for each agent). Hooks left behind do nothing once the app is gone, but they stay in `~/.claude/settings.json` and `~/.codex/hooks.json`.
-2. Turn off **Launch at login** in Settings > General, quit Cumba from the menu bar and move it to the Trash. If you installed it with Homebrew, run `brew uninstall --cask cumba` instead; `--zap` also deletes its settings, themes and notes (not the tokens in step 4).
-3. Remove the extension in `chrome://extensions`.
-4. To delete its data too (themes, layout, notes, preferences and the tokens):
-   ```bash
-   rm -rf ~/Library/Application\ Support/Cumba
-   defaults delete io.github.muazfurkan.ljaspnotch
-   security delete-generic-password -s io.github.muazfurkan.ljaspnotch.server -a token
-   security delete-generic-password -s io.github.muazfurkan.ljaspnotch.server -a extension-token
-   security delete-generic-password -s io.github.muazfurkan.ljaspnotch.server -a scripts-token
-   ```
-   Backups made during hook setup are next to the files they back up, as `~/.claude/settings.json.bak-…` and `~/.codex/hooks.json.bak-…`; keep or delete them.
+Cumba is free. If it's useful to you, you can support it on [GitHub Sponsors](https://github.com/sponsors/muazfurkan) or [Buy Me a Coffee](https://buymeacoffee.com/ljasp).
 
 ## Contributing
 
-Questions and ideas are welcome in [Discussions](https://github.com/LJASP-studio/Cumba/discussions). Contributions are welcome too; please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately as described in [SECURITY.md](SECURITY.md).
+Questions and ideas are welcome in [Discussions](https://github.com/LJASP-studio/Cumba/discussions). If you'd like to contribute code, please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## License
 

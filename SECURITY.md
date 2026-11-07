@@ -64,7 +64,7 @@ gh attestation verify Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba
 
 1.1.0 was built before the repository moved to LJASP-studio, so check it with `--owner muazfurkan` instead of `--repo`.
 
-If a check fails, don't open the app, and please report it privately. To avoid trusting a prebuilt binary at all, build from source as described in the README.
+If a check fails, don't open the app, and please report it privately. To avoid trusting a prebuilt binary at all, [build from source](docs/install.md#build-from-source).
 
 ## Reviewing the code
 

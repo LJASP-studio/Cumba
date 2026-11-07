@@ -11,7 +11,7 @@
 - [ ] Builds and tests pass locally
 - [ ] `xcrun swift-format lint --strict --recursive Cumba CumbaTests` passes
 - [ ] New user-facing strings are in `Localizable.xcstrings` with Turkish translations
-- [ ] Features that make network requests are listed in the README privacy section
+- [ ] Features that make network requests are listed under Privacy in both READMEs and in `docs/privacy.md` and `docs/privacy.tr.md`
 - [ ] `CHANGELOG.md` updated under "Unreleased"
 - [ ] No secrets, tokens, personal paths or `Local.xcconfig` in the diff
 - [ ] No code copied from other projects

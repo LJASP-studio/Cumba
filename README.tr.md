@@ -20,232 +20,73 @@
 
 <p align="center"><img src="docs/demo.gif" width="800" alt="Cumba kullanımda: panel müzik ve hava durumuyla açılıyor, Claude Code bir dosyayı düzenlemek için izin istiyor ve izin notch'tan veriliyor, ardından pano geçmişi ve notch'un yanında ses düzeyi"></p>
 
-macOS için ücretsiz ve açık kaynaklı bir notch uygulaması. MacBook notch'unu, imleci üzerinde tuttuğunuzda kamera yuvasından büyüyen bir panele çevirir: her uygulamadan müzik ve video, yapay zeka kodlama ajanlarınızın (Claude Code ve Codex) ne yaptığı ve bir dizi widget; hepsi size göre ayarlanabilen bir görünümle.
+Cumba, macOS için ücretsiz ve açık kaynaklı bir notch uygulaması. İmleci MacBook'un notch'una getirdiğinizde altında bir panel açılır: çalan müzik ya da video, Claude Code ve Codex'in ne yaptığı ve seçtiğiniz widget'lar.
 
-*Cumba*, eski Türk evlerinin üst katından sokağa taşan küçük çıkmadır: oturup sokakta olup biteni izlediğiniz sakin bir köşe. Panel de aynısını ekranınızın tepesinden yapar.
+*Cumba*, eski Türk evlerinin üst katından sokağa taşan küçük çıkmadır: oturup sokağı seyrettiğiniz sakin bir köşe. Panel de aynısını ekranınızın tepesinden yapar.
 
-> **Proje durumu:** Cumba yeni (ilk sürüm Ekim 2026) ve tek bir geliştirici tarafından yapay zeka desteğiyle (Claude Code) geliştiriliyor. Bağımsız bir güvenlik denetiminden geçmedi. [Güvenli mi?](#guvenli-mi) bölümü nasıl derlenip yayımlandığını, macOS'in ilk açılışta neden uyardığını ve bunların hepsini kendiniz nasıl doğrulayacağınızı anlatıyor.
+## Neler var
 
-## Özellikler
+- Hangi uygulamada ne çalıyorsa tek bir mini oynatıcıda: Spotify, Müzik, Safari ya da Chrome'da YouTube, podcast'ler. Kapak görseli, sarma ve kontroller; kurulacak bir şey yok.
+- Notch'ta Claude Code ve Codex. Ajanın ne yaptığını görür, izin isteklerini İzin Ver, Reddet ya da Terminalde ile bulunduğunuz pencereden ayrılmadan yanıtlarsınız. Claude Code'da bağlam penceresinin ne kadar dolduğunu da görürsünüz.
+- Sekmelerde widget'lar: görüşmeler için Katıl düğmeli takvim, Notlar, Anımsatıcılar, pano geçmişi, zamanlayıcı ve Pomodoro, hava durumu, AirDrop destekli dosya rafı ve daha fazlası.
+- Düz siyah ve Liquid Glass'tan Neon Tokyo ve Synthwave'e sekiz tema. Cam, renk geçişi, neon kenar, renkler ve fontlarla kendi temanızı da yapıp JSON olarak paylaşabilirsiniz.
+- Kapalı notch'un iki yanında canlı etkinlikler: işleyen zamanlayıcı, çalışan bir ajan, şarj, çalan şarkı, ses ve parlaklık.
+- Tıklamalar menü çubuğuna geçer; Cumba tam ekran uygulamalarda da çalışır ve boştayken neredeyse hiç işlemci kullanmaz.
+- Türkçe, İngilizce, İspanyolca ve Fransızca.
 
-- **Medya**: hangi uygulama ne çalıyorsa (Safari, Chrome, YouTube, Spotify, Müzik, podcast'ler ve daha fazlası) tek bir mini oynatıcıda; kapak görseli, ilerleme, sarma ve kontroller, uzantı ya da kurulum gerekmeden. Notch'un yanındaki küçük ses dalgası neyin çaldığını gösterir.
-- **Yapay zeka ajanları (Claude Code ve Codex)**: ajanın o an ne yaptığı, son yanıtı ve bağlam penceresinin ne kadar dolu olduğu; çalışırken notch'un yanında dönen bir halka. Soru sorduğunda, izin istediğinde veya bitirdiğinde notch'un altında ne olduğunu söyleyen bir bildirim açılır; **Aç** ajanın çalıştığı uygulamayı öne getirir. Ajan çalışırken paneli açınca onun sekmesi gelir. İzin istekleri **İzin Ver**, **Reddet** ve **Terminalde** seçenekleriyle görünür; sorular ve planlar ajanda kalır, notch sizi beklediğini söyler.
-- **Sekmelerde widget'lar**: görüntülü görüşmeler için Katıl düğmeli takvim (günler arasında kaydırarak herhangi bir günün etkinliklerine bakın), zamanlayıcı, Pomodoro, Notlar'daki notlarınız (son notlar ve panelden yeni not), Apple Anımsatıcılar'dan yapılacaklar (işaretleyin, yenisini ekleyin), pano geçmişi (metin, bağlantı, görsel, dosya ve yeni ekran resimleri kartlar hâlinde), uyanık tut, teleprompter, pil, AirDrop destekli dosya rafı, kamera aynası, hava durumu, Kısayollar ve CPU/bellek grafiği. Panelden ya da Ayarlar'daki galeriden ekleyin, sekmeler arasında iki parmakla kaydırarak geçin; yeni kurulum yalnızca üçüyle başlar.
-- **Size uyan bir panel**: sekmeler altta ya da üstte, doğrudan panelde düzenlenir (ad, simge, sıra, widget'lar). Panel açık sekme kadar geniştir; sekmesinde tek başına olan widget ayrıntılı görünür: Apple'ın widget'ı gibi önümüzdeki saatler ve günlerle hava durumu, etkinliklerinizin yanında ayın tamamı, büyük albüm kapağı. Yazı boyutu ve kapalı notch'un kameranın ne kadar dışına taşacağı ayarlanabilir.
-- **İsteğe bağlı ekstralar** (siz açana kadar kapalı): paneli istediğiniz ekranda gösterme, sistemin ses ve parlaklık göstergeleri yerine notch, mikrofon veya kamera kullanılırken bir nokta, toplantılardan önce geri sayım, medya kaynağı seçimi ve [kendi script'leriniz için bir API](#scriptler).
-- **Canlı etkinlikler**: çalışan zamanlayıcı, çalışan bir yapay zeka ajanı, bekleyen bir istek, şarj, çalan şarkı ya da ses veya parlaklık değişikliği kapalı notch'un iki yanında görünür.
-- **Temalar**: düz siyah ve Liquid Glass'tan Neon Tokyo, Sakura, Synthwave ve Narenciye'ye sekiz hazır tema. Kendi temanızı yapın: cam, düz veya renkli cam, renk geçişli zemin, neon kenar, renkler, font, köşe yuvarlaklığı, gölge ve animasyon. Panel boyutu ve yazı boyutu hangi temayı seçerseniz seçin aynı kalır. Temaları JSON olarak içe/dışa aktarın.
-- **Yolunuza çıkmaz**: tıklamalar menü çubuğuna geçer, pencere sürüklerken panel açılmaz, tam ekran uygulamalarda da çalışır (isterseniz orada gizlenir) ve boşta CPU kullanımı sıfırdır. Ayarlar için notch'a sağ tıklayın.
-- Türkçe, İngilizce, İspanyolca (İspanya ve Latin Amerika) ve Fransızca arayüz.
+Notch'ta ne görüneceğine siz karar verirsiniz: hangi widget'lar, hangi sekmelerde, hangi sırayla, hangi temayla. Bir ajana notch'tan neye izin verilebileceğini de siz seçersiniz. Varsayılan ayarda kabuk komutları dışındaki her şeye izin verilebilir; bunu genişletebilir ya da İzin Ver'i kapatabilirsiniz. Sistemin ses göstergesi yerine notch'u kullanmak gibi ekstralar siz açana kadar kapalı kalır, Cumba da macOS izinlerini yalnızca onları gerektiren bir özelliği açtığınızda ister.
 
-<a name="guvenli-mi"></a>
-
-## Güvenli mi?
-
-İnsanlar genelde önce iki şey soruyor: *"Bunu yapay zeka yazmadı mı?"* ve *"macOS neden uyarıyor?"* Aşağıda ikisinin de açık cevabı var; her iddiayı kimsenin sözüne güvenmeden kendiniz nasıl doğrulayacağınız da.
-
-### Yapay zekayla yazıldı, her kod gibi denetleniyor
-
-Cumba'yı tek bir kişi tasarlıyor ve geliştiriyor; kodunun büyük kısmı Claude Code ile yazılıyor. Yapay zekayla yazılan kodda da her kodda olabilecek hatalar olabilir. Bu yüzden Cumba, kodu kimin yazdığına güvenmeniz gerekmeyecek şekilde kuruldu:
-
-- **Her şey açık.** Uygulamanın tamamı MIT lisansıyla bu depoda. Kapalı bir parçası yok ve uygulama sonradan kod indirmiyor.
-- **`main`'e denetlenmeden hiçbir şey girmiyor.** Her değişiklik bir pull request'le geliyor. Birleşmeden önce GitHub'ın makinelerinde derlenmesi, 200'den fazla birim testini, katı biçim denetimini ve Release derlemesini geçmesi gerekiyor. `main`'e doğrudan push, force push ve geçmişi yeniden yazma herkese kapalı, geliştiricinin kendisine de.
-- **İndirdiğiniz dosyalar bir dizüstü bilgisayardan değil, GitHub'dan geliyor.** Sürümleri yalnızca [yayın iş akışı](.github/workflows/release.yml) derliyor: etiketli bir commit'ten, GitHub'ın Mac'inde, salt okunur yetkiyle. Her dosya, onu bu depoya ve o commit'e bağlayan imzalı derleme kaynağı (build provenance) taşıyor; sürümler yayımlandıktan sonra değiştirilemiyor.
-- **Ters gidebilecek az şey var.** Tek bir dış kitaplık ([FlyingFox](https://github.com/swhitty/FlyingFox), MIT, bir commit'e sabit), analiz ya da reklam SDK'sı yok, telemetri yok. İş akışları yalnızca GitHub'ın kendi action'larını kullanabiliyor, onlar da commit'e sabit. Sır taraması, push koruması ve Dependabot güvenlik güncellemeleri açık; CodeQL her hafta Chrome uzantısını, iş akışlarını ve betikleri tarıyor.
-- **Güvenlik çalışmaları kayıt altında.** [CHANGELOG](CHANGELOG.md) her sürümün güvenlik düzeltmelerini listeliyor. [SECURITY.md](SECURITY.md)'de tehdit modeli ve güvenlikle ilgili kodun haritası var; incelemek isteyen için on kadar dosya.
-- **Eksik olan:** Cumba'yı henüz bağımsız bir firma denetlemedi. Bir sorun bulursanız lütfen [SECURITY.md](SECURITY.md)'de anlatıldığı gibi gizlice bildirin.
-
-<a name="macos-neden-uyariyor"></a>
-
-### macOS neden uyarıyor
-
-macOS ilk açılışta, Apple'ın Cumba'nın kötü amaçlı yazılım içermediğini doğrulayamadığını söyler. Notarize edilmemiş her uygulama için aynısını söyler. Notarizasyon, Apple'ın otomatik kötü amaçlı yazılım taramasıdır ve yalnızca ücretli bir Apple Developer ID ile imzalanan uygulamalar için yapılır. Cumba'nın böyle bir kimliği yok; bu yüzden sürümleri ad hoc imzalanıyor.
-
-- Uyarı, Apple'ın bu derlemeyi taramadığı anlamına gelir. Bir şey bulunduğu anlamına gelmez.
-- macOS'in yerleşik kötü amaçlı yazılım koruması XProtect, her uygulamada olduğu gibi Cumba'yı da ilk açılışta yine denetler.
-- Apple'ın taraması yerine, notarizasyonun göstermediği bir şeyi kendiniz doğrulayabilirsiniz: indirdiğiniz dosyanın bu açık koddan GitHub'da derlendiğini (aşağıdaki ilk satır).
-
-### Kendiniz doğrulayın
-
-Terminal'de birkaç komut; ilki için [GitHub CLI](https://cli.github.com) gerekir.
-
-| İddia | Komut | Görmeniz gereken |
-|---|---|---|
-| Dosyayı bu depodan GitHub derledi | `gh attestation verify ~/Downloads/Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba` | `Verification succeeded!` |
-| Sürümün listelediği dosya bu | `shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg` | Sürümdeki `SHA256SUMS.txt` ile aynı değer |
-| Yalnızca [Cumba.entitlements](Cumba/Resources/Cumba.entitlements) dosyasındaki yetkileri var | `codesign -d --entitlements - /Applications/Cumba.app` | App Sandbox kapalı, ardından Apple Events, kamera, takvim ve konum; başka bir şey yok |
-| Hardened Runtime açık | `codesign -dv /Applications/Cumba.app 2>&1 \| grep flags` | Bayraklar arasında `runtime` |
-| Başka bir cihaz ona bağlanamaz | `lsof -nP -iTCP -sTCP:LISTEN \| grep Cumba` | Çıktı yok; YouTube uzantısı açıksa yalnızca `127.0.0.1` |
-| Yalnızca [Gizlilik](#gizlilik) bölümündeki sunucularla konuşur | `nettop -p Cumba` ya da LuLu, Little Snitch gibi giden bağlantıları gösteren bir güvenlik duvarı | Güncelleme kontrolü için `api.github.com`; hava durumu ve kapak görseli sunucuları yalnızca onları kullanırken |
-| Çıktıktan sonra çalışan bir şey kalmaz | Cumba'dan çıkın, sonra `pgrep -fl Cumba` | Çıktı yok |
-| Arka planda çalışacak bir şey kurmaz | `ls ~/Library/LaunchAgents /Library/LaunchAgents /Library/LaunchDaemons` | Cumba dosyası yok; oturum açıldığında başlatma, macOS'in Oturum Açma Öğeleri listesini Cumba'nın kendi adıyla kullanır |
-
-Cumba'nın Mac'inizde nelere erişebildiği [İzinler ve neler çalışır](#izinler) bölümünde. Hazır derlenmiş bir uygulamayı hiç çalıştırmak istemezseniz [kaynaktan derleyin](#kaynaktan-derleme).
-
-<a name="indirme"></a>
+Tüm widget'lar ve seçenekler [Özellikler](docs/features.tr.md) sayfasında.
 
 ## İndirme ve kurulum
 
-**[Homebrew](https://brew.sh) ile:**
+[Homebrew](https://brew.sh) ile kurun:
 
 ```bash
 brew install --cask ljasp-studio/cumba/cumba
 ```
 
-Cask, [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba) deposunda duruyor. Son sürümdeki aynı `.dmg` dosyasını SHA-256 değerini doğruladıktan sonra kurar, ardından Cumba.app'teki macOS indirme işaretini kaldırır; böylece Yine de Aç adımı gerekmez ([uyarının anlamı](#macos-neden-uyariyor)). Yeni bir sürüm cask'a ancak sağlaması ve derleme kaynağı doğrulandıktan sonra girer. Kurduktan sonra aşağıdaki 5. adımdan devam edin; ileride `brew upgrade --cask cumba` ile güncelleyin.
+Ya da `.dmg` dosyasını [cumbanotch.com](https://cumbanotch.com)'dan veya [son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) indirip Cumba'yı Uygulamalar klasörüne sürükleyin. macOS 26 veya üstü gerekir. Notch'u olmayan Mac'ler sanal bir notch gösterebilir.
 
-**Elle:**
+<a name="macos-neden-uyariyor"></a>
 
-1. [cumbanotch.com](https://cumbanotch.com) ya da [son sürümden](https://github.com/LJASP-studio/Cumba/releases/latest) `Cumba-vX.Y.Z.dmg` (ya da `.zip`) dosyasını indirin.
-2. **Açmadan önce dosyayı doğrulayın.** SHA-256 değeri, sürüm sayfasındaki `SHA256SUMS.txt` ile aynı olmalı:
-   ```bash
-   shasum -a 256 ~/Downloads/Cumba-vX.Y.Z.dmg
-   ```
-   1.1.0'dan itibaren sürümler ayrıca değiştirilemezdir (yayımlandıktan sonra dosyaları ve etiketi değişemez) ve imzalı derleme kaynağı (build provenance) taşır. [GitHub CLI](https://cli.github.com) ile dosyanın bu reponun yayın iş akışında derlendiğini doğrulayabilirsiniz:
-   ```bash
-   gh attestation verify ~/Downloads/Cumba-vX.Y.Z.dmg --repo LJASP-studio/Cumba
-   ```
-   1.1.0, depo LJASP-studio'ya taşınmadan önce derlendi; onu `--repo` yerine `--owner muazfurkan` ile doğrulayın.
-3. Disk görüntüsünü açın ve Cumba'yı Uygulamalar klasörüne sürükleyin.
-4. Cumba Apple tarafından notarize edilmedi, çünkü bu ücretli bir geliştirici hesabı gerektiriyor; bu yüzden macOS ilk açılışı engeller ([uyarının anlamı](#macos-neden-uyariyor)). Bir kez açmayı deneyin, ardından **Sistem Ayarları > Gizlilik ve Güvenlik**'te **Yine de Aç**'a tıklayın. İndirilmiş bir derlemeyi hiç çalıştırmak istemezseniz [kaynaktan derleyin](#kaynaktan-derleme).
-5. Kısa bir karşılama penceresi paneli denemenizi sağlar. Cumba menü çubuğunda yaşar; simgesi notch'un arkasında kalırsa Ayarlar için notch'a sağ tıklayın.
+Cumba Apple tarafından notarize edilmedi, çünkü bu ücretli bir geliştirici hesabı gerektiriyor. Bu yüzden macOS indirilen kopyanın ilk açılışını engeller. Bir kez açmayı deneyin, ardından **Sistem Ayarları > Gizlilik ve Güvenlik**'te **Yine de Aç**'a tıklayın. Homebrew ile kurarsanız dosya doğrulanır ve bu adım gerekmez. [Uyarının anlamı](docs/safety.tr.md#macos-neden-uyariyor)
 
-<details>
-<summary>Yine de Aç yerine Terminal</summary>
+Cumba'nın simgesi menü çubuğunda durur. Notch'un arkasında kalırsa Ayarlar için notch'a sağ tıklayın.
 
-`xattr -dr com.apple.quarantine /Applications/Cumba.app` yalnızca bu uygulamadaki indirme işaretini kaldırır, Gatekeeper da sormayı bırakır. Bunu yalnızca 2. adımda doğruladığınız bir kopya için yapın.
-</details>
+<a name="kaynaktan-derleme"></a>
+<a name="kaldırma"></a>
 
-**Güncellemeler:** Uygulama yeni sürüm çıktığında haber verir; kendi başına hiçbir şey indirmez veya kurmaz. Sürümler ad-hoc imzalı olduğu için güncellemeden sonra macOS verdiğiniz izinleri (Otomasyon, Takvim, Konum, Kamera) ve Cumba'nın token'ları için Anahtar Zinciri erişimini yeniden sorar. Önce yeni dosyayı doğrulayın, sonra izin verin.
+Dosyayı doğrulama, güncellemeler, cumbaNotch'tan geçiş, kaynaktan derleme ve kaldırma [Kurulum, güncelleme ve kaldırma](docs/install.tr.md) sayfasında.
 
-**cumbaNotch'tan mı geçiyorsunuz?** Cumba aynı uygulamanın yeni adı. cumbaNotch'tan çıkın, eski uygulamayı Çöp Sepeti'ne taşıyın ve Cumba'yı kurun; ayarlarınız, düzeniniz, notlarınız ve temalarınız aynen gelir. Claude Code hook'larını kullanıyorsanız Ayarlar > Ajanlar'da bir kez **Güncelle…**'ye tıklayın. Chrome uzantısını kullanıyorsanız onu `chrome://extensions` sayfasından kaldırın, [YouTube ve YouTube Music](#youtube-ve-youtube-music) bölümündeki gibi yeni uygulamadan tekrar yükleyin ve token'ı yapıştırın.
+<a name="guvenli-mi"></a>
 
-## Gereksinimler
+## Güvenli mi?
 
-- Notch'lu bir Mac (diğer Mac'ler sanal notch gösterebilir, bkz. Ayarlar > Genel)
-- macOS 26 veya üstü
+Cumba yeni bir uygulama (ilk sürüm Ekim 2026). Tek bir geliştiricisi var ve kodunun büyük kısmı Claude Code ile yazılıyor. Henüz bağımsız bir güvenlik denetiminden de geçmedi. Yine de kimsenin sözüne güvenmeniz gerekmiyor. Uygulamanın tamamı bu depoda açık kaynak, her değişiklik `main`'e girmeden önce CI'dan geçmek zorunda ve sürümleri GitHub, etiketli commit'lerden derliyor. Dosyalar, doğrulayabileceğiniz imzalı bir derleme kaydı taşıyor.
 
-## Kaynaktan derleme
-
-Xcode 26 veya üstü ve [Homebrew](https://brew.sh) gerekir.
-
-```bash
-brew install xcodegen
-git clone https://github.com/LJASP-studio/Cumba.git
-cd Cumba
-cp Local.xcconfig.example Local.xcconfig   # ardından DEVELOPMENT_TEAM değerini gir
-xcodegen generate
-open Cumba.xcodeproj
-```
-
-Ayrıntılar için [CONTRIBUTING.md](CONTRIBUTING.md) dosyasına bakın.
-
-<a name="izinler"></a>
-
-## İzinler ve neler çalışır
-
-Aşağıdakilerin hepsi, gerektiren özelliği açana kadar kapalıdır veya kullanılmaz. Her birinin güncel durumu Ayarlar > İzinler'de görünür.
-
-| Ne | Neden | Ne zaman |
-|---|---|---|
-| Sistemin Şu An Çalan yardımcısı | Her uygulamadaki medya ve kontrolleri | Uygulama açıkken çalışır; yerine AppleScript kullanmak için "Tüm uygulamalardaki medyayı oku" seçeneğini kapatın. Bkz. [aşağısı](#medya-ve-ozel-apiler) |
-| Spotify ve Müzik için Otomasyon (Apple Events) | Çalan parçayı okumak; oynat, duraklat, atla, sar | Yalnızca "Tüm uygulamalardaki medyayı oku" kapalıyken; Ayarlar'dan istenir, komutlar yalnızca o uygulama zaten açıkken gönderilir |
-| Notlar için Otomasyon (Apple Events) | Notlar widget'ı: son notları listelemek, açmak, yeni not oluşturmak | Notlar'ı widget'ta ya da Ayarlar'da bağladığınızda istenir; Cumba Notlar'ı arka planda başlatır ve var olan hiçbir notu değiştirmez |
-| Takvim (tam erişim) | Takvim widget'ı | Widget'ta veya Ayarlar'da İzin Ver'e tıkladığınızda istenir |
-| Anımsatıcılar (tam erişim) | Yapılacaklar widget'ı: anımsatıcıları göstermek, işaretlemek ve eklemek | Widget'ta veya Ayarlar'da İzin Ver'e tıkladığınızda istenir |
-| Konum | Hava durumu widget'ı, bulunduğunuz yerin havası için | Konumumu Kullan'a tıkladığınızda istenir; şehir seçerseniz kullanılmaz |
-| Kamera | Ayna widget'ı | Yalnızca panel onu gösterirken; hiçbir şey kaydedilmez |
-| `127.0.0.1` üzerinde yerel sunucu | İsteğe bağlı YouTube uzantısı bağlantısı | Yalnızca Ayarlar > Bağlantılar'dan açtıktan sonra |
-| Özel Unix soketi | Claude Code ve Codex hook'ları ve [script etkinlikleri](#scriptler) | Yalnızca hook'lar kuruluyken veya script etkinlikleri açıkken |
-| `~/.claude/settings.json`, `~/.codex/hooks.json` | Claude Code ve Codex hook'larını kurmak ve kaldırmak | Yalnızca değişikliği gözden geçirdikten sonra; yedek alınır |
-| `~/.claude/projects` içindeki Claude Code oturum kayıtları | Yapay Zeka Ajanları widget'ında bağlam kullanımı ve oturum başlığı | Yalnızca bu Mac'te, son 256 KB, oturum sürerken okunur |
-| Erişilebilirlik | Ses veya parlaklık tuşlarını yönetmek | Yalnızca "Sistemin ses göstergesinin yerine geç" veya "…parlaklık göstergesinin…" açıksa |
-| Pano | Pano Geçmişi widget'ı | Yalnızca o widget paneldeyken |
-| Dosyalar ve Klasörler (Masaüstü ya da ekran resimlerinin kaydedildiği yer) | Yeni ekran resimlerini Pano Geçmişi'ne ekleme | Yalnızca "Yeni ekran resimlerini ekle" açıksa |
-| Oturum Açma Öğeleri | Oturum açıldığında başlatma | Siz açana kadar kapalı |
-| Ağ | Kapak görselleri, hava durumu, güncelleme kontrolü | Bkz. [Gizlilik](#gizlilik) |
-
-App Sandbox kapalı: sandbox'taki bir uygulama Spotify ve Müzik'i komutla yönetmek, Claude Code hook'larının ulaştığı soketi çalıştırmak ve `~/.claude/settings.json` dosyasını düzenlemek için istisnalara ihtiyaç duyar. Hardened Runtime açık ve uygulamanın yalnızca [Cumba.entitlements](Cumba/Resources/Cumba.entitlements) dosyasındaki yetkileri var (Apple Events, takvim, konum, kamera).
-
-Cumba hiçbir zaman telemetri göndermez, yönetici parolası istemez, yardımcı araç, çekirdek veya sistem uzantısı kurmaz, sistem ayarlarını değiştirmez, kod indirmez ve kendini güncellemez. Tehdit modeli ve güvenlikle ilgili kodun haritası [SECURITY.md](SECURITY.md) dosyasında.
-
-<a name="medya-ve-ozel-apiler"></a>
-
-## Medya, parlaklık ve özel API'ler
-
-macOS'ta bir uygulamanın diğer uygulamaların ne çaldığını görmesinin ya da Apple silicon'da dahili ekranın parlaklığını okumasının açık bir yolu yok. Cumba yalnızca bunlar için iki özel Apple çerçevesi kullanır, başka hiçbir şey için değil:
-
-- **MediaRemote**, sistemin Şu An Çalan bilgisi (medya tuşlarının ve Denetim Merkezi'nin kullandığı). macOS bunu yalnızca Apple'ın kendi programlarına yanıtlar; bu yüzden Cumba kendi uygulama paketindeki küçük bir yardımcı kitaplığı ([kaynak](NowPlayingHelper/CumbaNowPlaying.m)) sistemin `/usr/bin/perl`'ü içinde, boş bir ortamla çalıştırır. Yardımcı yalnızca Şu An Çalan'ı okur ve oynat, duraklat, atla ve sar komutlarını iletir; hiçbir dosya ya da ağ bağlantısı açmaz ve Cumba kapanınca çıkar. Bunun yerine Spotify ve Müzik için AppleScript'i, YouTube için uzantıyı kullanmak isterseniz **Ayarlar > Widget'lar > Medya > Tüm uygulamalardaki medyayı oku** seçeneğini kapatın.
-- **DisplayServices**, yalnızca notch'taki parlaklık düzeyi için. Kullanılmasını istemiyorsanız **Ayarlar > Genel > Parlaklık değişikliklerini notch'ta göster** seçeneğini kapatın.
-
-Özel API'ler herhangi bir macOS güncellemesiyle değişebilir. Çalışmayı bırakırlarsa Cumba yukarıdaki açık yollara geri döner ve çalışmaya devam eder.
-
-## YouTube uzantısı (isteğe bağlı)
-
-Medya her uygulamadan okurken gerekmez. Küçük bir Chrome uzantısı (diğer Chromium tarayıcılarda da çalışır) YouTube sekmelerinde çalanı yerel bir bağlantı üzerinden uygulamaya gönderir; uygulama da oynat, duraklat, sonraki ve sarma komutlarını geri yollar.
-
-1. Cumba'da **Ayarlar > Bağlantılar**'ı açın, **YouTube uzantısını bağla**'yı açın ve **Uzantı Klasörünü Göster**'e tıklayın.
-2. Chrome'da `chrome://extensions` adresini açın, **Geliştirici modu**'nu etkinleştirin ve **Paketlenmemiş öğe yükle**'ye tıklayın. 1. adımdaki klasörü seçin.
-3. Uzantının **Ayrıntılar > Uzantı seçenekleri** sayfasını açın, **Ayarlar > Bağlantılar**'daki portu ve token'ı yapıştırıp kaydedin.
-
-Chrome, uzantının `youtube.com` ve `music.youtube.com` üzerindeki verilerinizi okuyup değiştirebileceğini söyler: uzantı oynatıcıyı okur (başlık, kapak, ilerleme) ve orada oynat, duraklat, sonraki ve sarma düğmelerine basar. Başka hiçbir sitede çalışmaz, tek diğer izni depolamadır (port ve token için) ve yalnızca `127.0.0.1` ile konuşur.
-
-## Claude Code ve Codex
-
-Yapay Zeka Ajanları widget'ı bir oturumun o an ne yaptığını ("Notch.swift düzenleniyor", "Testler çalıştırılıyor"), başlığını ve son yanıtını, bağlam penceresinin ne kadar dolu olduğunu gösterir. Claude Code'un (terminal, IDE uzantıları ve Claude masaüstü uygulaması) izin istekleri **İzin Ver**, **Reddet** ve **Terminalde** seçenekleriyle notch'ta görünür; bir oturum bitince veya hata verince de görürsünüz. Kart, isteğin tamamını gizli karakterleri görünür hale getirerek gösterir. Sorular ve plan onayları izin isteği değildir: onları Claude Code kendisi sorar, notch oturumun sizi beklediğini gösterir. Hook'ları **Ayarlar > Ajanlar**'dan kurun; `~/.claude/settings.json` değişikliğini önce siz görürsünüz ve yedek alınır. Hook'lar uygulamaya yalnızca sizin kullanıcı hesabınızın açabildiği özel bir soket üzerinden ulaşır; böylece başka hiçbir şey Claude Code'a uygulama adına cevap veremez; hook'lar uzantınınkinden ayrı, kendi token'larını kullanır.
-
-**Notch'taki İzin Ver, Claude Code'daki İzin Ver ile aynıdır: araç hemen çalışır.** Varsayılan olarak kabuk komutları terminalde yanıtlanır, geri kalan her şeye notch'tan izin verilebilir; Ayarlar > Ajanlar'dan her şeye izin verilmesini seçebilir ya da İzin Ver'i tamamen kapatıp yalnızca Reddet ve Terminalde seçeneklerini bırakabilirsiniz. Gizli karakter içeren isteklerde İzin Ver düğmesi hiç gösterilmez; kutusuna sığmayan bir istekte İzin Ver, sonuna kadar kaydırana kadar bekler. Ayrıntılar ve elle kurulum için [docs/claude-code-setup.md](docs/claude-code-setup.md) dosyasına bakın.
-
-**Codex** de aynı şekilde çalışır: hook'larını **Ayarlar > Ajanlar > Codex**'ten kurun (`~/.codex/hooks.json` dosyasına yazılır), ardından Codex'te bir kez `/hooks` komutunu çalıştırıp onlara güvenin; Codex yeni hook'ları ancak bundan sonra çalıştırır.
-
-<a name="scriptler"></a>
-
-## Script'ler
-
-Kendi script'lerinizin, Kısayollar'ın veya derleme araçlarınızın notch'un yanında kısa bir durum göstermesi için **Ayarlar > Bağlantılar > Script'ler**'i açın. **Örnek Komutu Kopyala**, token'ınızla çalışmaya hazır bir komut kopyalar:
-
-```bash
-curl -s --unix-socket "$HOME/Library/Application Support/Cumba/hook.sock" \
-  -H "X-Cumba-Token: <token>" -H "Content-Type: application/json" \
-  -d '{"id":"build","title":"Build done","symbol":"hammer","duration":5}' \
-  http://localhost/activity
-```
-
-Alanlar: `id` (harf, rakam, `.`, `_` ve `-`), `title` (en fazla 60 karakter), `symbol` (bir SF Symbol adı), `progress` (0 ile 1 arası, çubuk gösterir), `duration` (saniye, 1–3600) ve bir etkinliği kaldırmak için `"remove": true`. Etkinlikler yalnızca metindir, Claude Code istekleri gibi kaçışlanır ve içlerinde tıklanabilecek bir şey yoktur.
+[Cumba güvenli mi?](docs/safety.tr.md) macOS uyarısını açıklıyor ve bunların hepsini kendiniz doğrulamanız için komutları veriyor. Cumba'nın Mac'inizde nelere erişebildiği [Gizlilik ve izinler](docs/privacy.tr.md) sayfasında. Bir sorunu gizli olarak bildirmek için [SECURITY.md](SECURITY.md) dosyasına bakın.
 
 ## Gizlilik
 
-Telemetri yok. Her şey Mac'inizde kalır. Şu özellikler ağ isteği yapar, yalnızca siz kullanırken:
+Cumba telemetri göndermez. İnternete çıkan özellikler yalnızca bunlar:
 
-| Özellik | İstek |
+| Özellik | Bağlandığı yer |
 |---|---|
-| Spotify ile medya widget'ı | Spotify'ın görsel sunucusundan (`i.scdn.co`) panel ve kapalı notch için kapak görseli |
-| YouTube ile medya widget'ı | YouTube'un görsel sunucularından (`*.ytimg.com`, `*.googleusercontent.com`, `*.ggpht.com`; sayfanın kendi kullandığı adres) panel ve kapalı notch için küçük resim |
-| Hava durumu widget'ı | Yaklaşık 10 km'ye yuvarlanmış konumunuz (ya da seçtiğiniz şehrin koordinatları) `api.open-meteo.com`'a; konumunuzla birlikte şehir adı için aynı yuvarlanmış koordinatlar Apple Haritalar'a; aradığınız şehir adı, dilinizle birlikte `geocoding-api.open-meteo.com`'a. Yalnızca widget ekrandayken, en fazla 15 dakikada bir |
-| Güncelleme denetimi | Açılışta ve günde bir kez `api.github.com`'dan sürüm listesi, kullanıcı aracısı olarak Cumba'nın sürümüyle; Ayarlar > Genel'den kapatılabilir |
+| Medya oynatıcıda Spotify kapakları | `i.scdn.co` |
+| Medya oynatıcıda YouTube küçük resimleri | `*.ytimg.com`, `*.googleusercontent.com`, `*.ggpht.com` |
+| Hava durumu, widget ekrandayken | Yaklaşık 10 km'ye yuvarlanmış konumunuzla (ya da seçtiğiniz şehirle) `api.open-meteo.com`, şehir araması için `geocoding-api.open-meteo.com`, şehir adı için Apple Haritalar |
+| Güncelleme denetimi | Açılışta ve günde bir kez `api.github.com`; Ayarlar > Genel'den kapatabilirsiniz |
 
-Kamera (Ayna widget'ı) yalnızca panel onu gösterirken çalışır ve hiçbir şey kaydedilmez. Raf yalnızca dosya yollarını Mac'inizde tutar. Notlar ve Yapılacaklar, Mac'inizdeki Apple Notlar ve Apple Anımsatıcılar'ı okuyup yazar; hiçbir şey kopyalanmaz ya da gönderilmez. Önceki sürümlerin notu (`notes.txt`) bir kez Apple Notlar'a taşınır, dosya yerinde bırakılır. Pano Geçmişi son 20 kopyanızı (metin, bağlantı, görsel ve dosya) yalnızca bellekte tutar ve uygulamaların parola olarak işaretlediği öğeleri almaz; sekmelerinizden birindeyken, bir kopyayı kaçırmamak için panel kapalıyken de panonun değişip değişmediğini saniyede bir kontrol eder. "Yeni ekran resimlerini ekle" açıksa ekran resmi klasöründeki yeni ekran resimlerini izler ve yalnızca konumlarını tutar. Mikrofon ve kamera göstergesi yalnızca bir cihazın kullanımda olup olmadığını okur; sese veya görüntüye asla erişmez.
+Her isteğin içinde ne olduğu [Gizlilik ve izinler](docs/privacy.tr.md) sayfasında.
 
-Açıldığında uzantı sunucusu yalnızca `127.0.0.1` adresini dinler, yalnızca Cumba uzantısını kabul eder ve Anahtar Zinciri'nde saklanan kendi token'ını ister.
+## Destek
 
-## Kaldırma
-
-1. Claude Code veya Codex hook'larını kurduysanız önce **Ayarlar > Ajanlar > Kaldır…** ile (her ajan için) kaldırın. Uygulama silindikten sonra kalan hook'lar hiçbir şey yapmaz ama `~/.claude/settings.json` ve `~/.codex/hooks.json` içinde kalır.
-2. Ayarlar > Genel'de **Oturum açıldığında başlat**'ı kapatın, menü çubuğundan Cumba'dan çıkın ve uygulamayı Çöp Sepeti'ne taşıyın. Homebrew ile kurduysanız bunun yerine `brew uninstall --cask cumba` çalıştırın; `--zap` ayarlarını, temalarını ve notlarını da siler (4. adımdaki token'ları silmez).
-3. Uzantıyı `chrome://extensions` sayfasından kaldırın.
-4. Verilerini de silmek için (temalar, düzen, notlar, tercihler ve token'lar):
-   ```bash
-   rm -rf ~/Library/Application\ Support/Cumba
-   defaults delete io.github.muazfurkan.ljaspnotch
-   security delete-generic-password -s io.github.muazfurkan.ljaspnotch.server -a token
-   security delete-generic-password -s io.github.muazfurkan.ljaspnotch.server -a extension-token
-   security delete-generic-password -s io.github.muazfurkan.ljaspnotch.server -a scripts-token
-   ```
-   Hook kurulumunda alınan yedekler, yedeklenen dosyanın yanında `~/.claude/settings.json.bak-…` ve `~/.codex/hooks.json.bak-…` adıyla durur; saklayabilir ya da silebilirsiniz.
+Cumba ücretsiz. İşinize yarıyorsa [GitHub Sponsors](https://github.com/sponsors/muazfurkan) ya da [Buy Me a Coffee](https://buymeacoffee.com/ljasp) üzerinden destek olabilirsiniz.
 
 ## Katkı
 
-Sorular ve fikirler için [Discussions](https://github.com/LJASP-studio/Cumba/discussions) bölümünü kullanabilirsiniz. Katkılara da açığız; lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
+Sorular ve fikirler için [Discussions](https://github.com/LJASP-studio/Cumba/discussions) bölümünü kullanabilirsiniz. Kod katkısı yapmak isterseniz lütfen [CONTRIBUTING.md](CONTRIBUTING.md) ve [Davranış Kuralları](CODE_OF_CONDUCT.md) belgelerini okuyun. Güvenlik açıklarını [SECURITY.md](SECURITY.md) dosyasında anlatıldığı gibi gizli olarak bildirin.
 
 ## Lisans
 
