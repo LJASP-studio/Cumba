@@ -86,9 +86,11 @@ final class WidgetHost {
     return tabs.indices.contains(neighbor) ? tabs[neighbor] : nil
   }
 
+  /// Pinning or unpinning the open panel isn't opening it, so the tab stays then.
   func panelOpenChanged(_ isOpen: Bool) {
+    let wasOpen = isPanelOpen
     isPanelOpen = isOpen
-    if isOpen, let tab = tabToOpen {
+    if isOpen, !wasOpen, let tab = tabToOpen {
       selectedTabID = tab
     }
     if !isOpen {
