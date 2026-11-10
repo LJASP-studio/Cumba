@@ -17,6 +17,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Both READMEs have an "Is it safe?" section: how the code is checked and released, what the macOS warning on first launch means, and commands to check each claim yourself.
 - Both READMEs are about a third as long and open with what you get. The full feature tour, install and uninstall steps, the safety answers, and privacy and permissions moved to pages in `docs/`, in English and Turkish.
 
+### Fixed
+
+- When one agent finishes or asks a question while another is still working, its notification now shows. Before, the other agent's working ring took its place right away.
+- Pinning or unpinning the open panel keeps the tab you're on. Before, it jumped to the opening tab, or to the agents' tab while an agent worked, with the other tab's content passing over it.
+- In Settings, a scrolled page passes under the page title instead of showing through it, and the first opening shows the page's name instead of "Untitled".
+
 ## [1.3.0] - 2026-11-03
 
 ### Added
