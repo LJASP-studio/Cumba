@@ -247,7 +247,7 @@ final class ClaudeCodeService {
     }
     liveActivities.show(
       LiveActivity(
-        id: Self.workingActivityID, priority: .claudeStatus,
+        id: Self.workingActivityID, priority: .claudeWorking,
         leading: AnyView(AgentGlyph(agent: working.agent, size: 18)),
         trailing: AnyView(AgentSpinner(agent: working.agent))))
   }

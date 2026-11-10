@@ -195,6 +195,36 @@ struct ClaudeCodeServiceTests {
     #expect(notification.action?.perform() == false)
   }
 
+  @Test func noticesStayInFrontWhileAnotherAgentWorks() async throws {
+    let center = LiveActivityCenter()
+    let service = ClaudeCodeService(liveActivities: center)
+    let codexStep = try #require(
+      HookPayload.decode(
+        Data(
+          #"{"session_id":"codex-1","hook_event_name":"PreToolUse","cwd":"/r/atlas","tool_name":"Bash","tool_input":{"command":"swift test"}}"#
+            .utf8)))
+    service.handle(codexStep, agent: .codex)
+    #expect(center.current?.id == "claude.working")
+    let stop = try #require(
+      HookPayload.decode(
+        Data(
+          #"{"session_id":"s9","hook_event_name":"Stop","cwd":"/r/Cumba","last_assistant_message":"Done."}"#
+            .utf8)))
+    service.handle(stop)
+    #expect(center.current?.notification?.title == AgentNotice.done.title(for: .claude))
+    // Codex's next step doesn't push the notice aside.
+    service.handle(codexStep, agent: .codex)
+    #expect(center.current?.notification?.title == AgentNotice.done.title(for: .claude))
+    // A question stays in front too, until it's answered.
+    let question = try payload("permission-request-question")
+    #expect(await service.requestPermission(question) == .askInTerminal)
+    service.handle(codexStep, agent: .codex)
+    #expect(center.current?.notification?.title == AgentNotice.question.title(for: .claude))
+    // Once the notice is gone, the working ring is back.
+    center.dismiss(ClaudeCodeService.statusActivityID)
+    #expect(center.current?.id == "claude.working")
+  }
+
   @Test func mcpToolNamesAreShortBesideTheNotch() {
     #expect(HookPayload.shortToolName("mcp__github__create_pull_request") == "create_pull_request")
     #expect(HookPayload.shortToolName("Bash") == "Bash")
