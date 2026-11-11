@@ -13,6 +13,9 @@ struct LiveActivity: Identifiable {
     case battery
     case script
     case calendar
+    /// The ring of an agent at work. Below its notices, so a "done" or a question from
+    /// another session stays in front while one keeps working.
+    case claudeWorking
     case claudeStatus
     case privacy
     case timerFinished

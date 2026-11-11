@@ -42,10 +42,8 @@ struct TabSwipeTrackerTests {
 
 @MainActor
 struct TabSwipeHostTests {
-  @Test func stepsBetweenTabsAndStopsAtTheEnds() async throws {
-    let file = FileManager.default.temporaryDirectory
-      .appending(path: "TabSwipeTests-\(UUID().uuidString).json")
-    defer { try? FileManager.default.removeItem(at: file) }
+  /// A host with one tab of a timer, its layout saved in a temporary file.
+  private func makeHost(file: URL) async -> WidgetHost {
     let center = LiveActivityCenter()
     let context = WidgetContext(
       liveActivities: center, media: MediaCoordinator(providers: []),
@@ -56,9 +54,16 @@ struct TabSwipeHostTests {
       fileURL: file, knownKinds: registry.infos.map { ($0.kind, $0.size.units) },
       defaultKinds: [TimerWidget.kind])
     await store.load()
-    let host = WidgetHost(
+    return WidgetHost(
       layoutStore: store, registry: registry, liveActivities: center,
       claude: ClaudeCodeService(liveActivities: center))
+  }
+
+  @Test func stepsBetweenTabsAndStopsAtTheEnds() async throws {
+    let file = FileManager.default.temporaryDirectory
+      .appending(path: "TabSwipeTests-\(UUID().uuidString).json")
+    defer { try? FileManager.default.removeItem(at: file) }
+    let host = await makeHost(file: file)
     host.addTab()
     let first = try #require(host.tabs.first?.id)
     let second = try #require(host.tabs.last?.id)
@@ -94,6 +99,29 @@ struct TabSwipeHostTests {
     #expect(host.swipeNeighbor == nil)
     #expect(host.pageDrag == -20)
     #expect(!host.endPageDrag(travel: -80))
+  }
+
+  /// Pinning or unpinning the open panel isn't opening it: the tab stays.
+  @Test func pinningKeepsTheOpenTab() async throws {
+    let file = FileManager.default.temporaryDirectory
+      .appending(path: "TabSwipeTests-\(UUID().uuidString).json")
+    defer { try? FileManager.default.removeItem(at: file) }
+    let host = await makeHost(file: file)
+    host.addTab()
+    let first = try #require(host.tabs.first?.id)
+    let second = try #require(host.tabs.last?.id)
+    host.openingTab = first
+    host.panelOpenChanged(true)
+    #expect(host.selectedTab?.id == first)
+    host.slide(to: second)
+    // Pinned, then unpinned: still open on the second tab.
+    host.panelOpenChanged(true)
+    host.panelOpenChanged(true)
+    #expect(host.selectedTab?.id == second)
+    // Opening again starts on the chosen tab.
+    host.panelOpenChanged(false)
+    host.panelOpenChanged(true)
+    #expect(host.selectedTab?.id == first)
   }
 }
 

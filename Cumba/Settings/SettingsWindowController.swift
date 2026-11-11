@@ -50,11 +50,15 @@ final class SettingsWindowController {
     // The page title and the sidebar button go into the window's toolbar.
     controller.sceneBridgingOptions = [.title, .toolbars]
     let window = NSWindow(contentViewController: controller)
+    // SwiftUI sets the title only when the page changes; start with the open page's, or
+    // the first opening shows "Untitled".
+    window.title = (navigation.page ?? .general).info(registry: registry).title
     // Settings windows have no minimize button (HIG).
     window.styleMask = [.titled, .closable, .resizable, .fullSizeContentView]
     window.toolbar = NSToolbar(identifier: "Settings")
+    // The title bar keeps its own background: transparent, the page scrolled under the
+    // title and showed through it.
     window.toolbarStyle = .unified
-    window.titlebarAppearsTransparent = true
     window.isReleasedWhenClosed = false
     window.setContentSize(NSSize(width: 820, height: 640))
     window.contentMinSize = NSSize(width: 700, height: 480)
