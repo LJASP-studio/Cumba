@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - When one agent finishes or asks a question while another is still working, its notification now shows. Before, the other agent's working ring took its place right away.
 - Pinning or unpinning the open panel keeps the tab you're on. Before, it jumped to the opening tab, or to the agents' tab while an agent worked, with the other tab's content passing over it.
 - In Settings, a scrolled page passes under the page title instead of showing through it, and the first opening shows the page's name instead of "Untitled".
+- Clipboard History cards no longer cut off the kind of item or how long ago it was copied, as "Captura de pantalla" or "Capture d’écran" were. When the two don't fit on one line, the time goes under the kind on every card of the row.
 
 ## [1.3.0] - 2026-11-03
 

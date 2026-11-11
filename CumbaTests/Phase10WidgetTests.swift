@@ -99,6 +99,18 @@ struct ClipboardHistoryTests {
     #expect(long == .text(String(repeating: "x", count: ClipboardItem.maxLength)))
   }
 
+  @Test func cardTimesGoUnderKindsTooLongForOneLine() {
+    #expect(ClipCardHeader.fitsOnOneLine(title: "Text", time: "26m ago", width: 150))
+    #expect(!ClipCardHeader.fitsOnOneLine(title: "Captura de pantalla", time: "ahora", width: 150))
+    #expect(!ClipCardHeader.fitsOnOneLine(title: "Ekran resmi", time: "26 dk. önce", width: 150))
+    let items = [
+      ClipboardItem(content: .text("one")),
+      ClipboardItem(content: .screenshot(URL(filePath: "/tmp/shot.png"))),
+    ]
+    // Narrow cards show no kind, so their time always fits.
+    #expect(!ClipCardHeader.stacksTime(for: items, width: 118))
+  }
+
   @Test func singleWebAddressesAreLinks() throws {
     let url = try #require(URL(string: "https://example.com/a?b=1"))
     #expect(ClipboardItem.content(of: "  https://example.com/a?b=1 \n") == .link(url))

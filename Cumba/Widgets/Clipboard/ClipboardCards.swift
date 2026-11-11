@@ -16,28 +16,33 @@ struct ClipboardView: View {
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else {
-          ScrollView(.horizontal) {
-            LazyHStack(spacing: 8) {
-              ForEach(widget.items) { item in
-                ClipCard(
-                  item: item, isCopied: widget.lastCopiedID == item.id,
-                  width: isDetailed ? 150 : 118
-                ) {
-                  widget.copy(item)
-                }
-                .contextMenu {
-                  Button("Copy") { widget.copy(item) }
-                  if case .screenshot(let url) = item.content {
-                    Button("Show in Finder") {
-                      NSWorkspace.shared.activateFileViewerSelecting([url])
-                    }
+          let width: CGFloat = isDetailed ? 150 : 118
+          // Checked again every minute, as the times grow longer.
+          TimelineView(.everyMinute) { _ in
+            let stacksTime = ClipCardHeader.stacksTime(for: widget.items, width: width)
+            ScrollView(.horizontal) {
+              LazyHStack(spacing: 8) {
+                ForEach(widget.items) { item in
+                  ClipCard(
+                    item: item, isCopied: widget.lastCopiedID == item.id, width: width,
+                    stacksTime: stacksTime
+                  ) {
+                    widget.copy(item)
                   }
-                  Button("Remove", role: .destructive) { widget.remove(item) }
+                  .contextMenu {
+                    Button("Copy") { widget.copy(item) }
+                    if case .screenshot(let url) = item.content {
+                      Button("Show in Finder") {
+                        NSWorkspace.shared.activateFileViewerSelecting([url])
+                      }
+                    }
+                    Button("Remove", role: .destructive) { widget.remove(item) }
+                  }
                 }
               }
             }
+            .scrollIndicators(.never)
           }
-          .scrollIndicators(.never)
         }
       }
     }
@@ -50,15 +55,20 @@ private struct ClipCard: View {
   let item: ClipboardItem
   let isCopied: Bool
   let width: CGFloat
+  /// The time goes under the kind, on every card of the row alike.
+  let stacksTime: Bool
   let copy: () -> Void
   @State private var isHovered = false
 
   var body: some View {
     Button(action: copy) {
       VStack(alignment: .leading, spacing: 0) {
-        header
-        preview
-          .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        ClipCardHeader(item: item, width: width, stacksTime: stacksTime)
+        // The preview gets the room that's left and is cut at the bottom, so a tall one
+        // never pushes the header out of the card.
+        Color.clear
+          .overlay(alignment: .topLeading) { preview }
+          .clipped()
       }
       .frame(width: width)
       .frame(maxHeight: .infinity)
@@ -83,29 +93,6 @@ private struct ClipCard: View {
     .onHover { isHovered = $0 }
     .animation(.easeOut(duration: 0.12), value: isHovered)
     .help(Text("Copy again"))
-  }
-
-  private var header: some View {
-    HStack(spacing: 5) {
-      AppIcon(bundleID: item.appBundleID, fallback: item.content.symbol)
-        .frame(width: 14, height: 14)
-      // Narrow cards leave the kind to the icon and the color, so the time fits.
-      if width >= 140 {
-        Text(verbatim: item.content.title)
-          .font(.system(size: 10, weight: .semibold))
-          .lineLimit(1)
-      }
-      Spacer(minLength: 2)
-      TimelineView(.everyMinute) { _ in
-        Text(item.date, format: .relative(presentation: .named, unitsStyle: .narrow))
-          .font(.system(size: 9))
-          .foregroundStyle(.secondary)
-          .lineLimit(1)
-      }
-    }
-    .padding(.horizontal, 8)
-    .frame(height: 24)
-    .background(item.content.color.opacity(0.28))
   }
 
   @ViewBuilder private var preview: some View {
@@ -178,25 +165,6 @@ private struct ImagePreview: View {
             .padding(6)
         }
       }
-  }
-}
-
-/// The app an item came from, or a symbol for its kind.
-private struct AppIcon: View {
-  let bundleID: String?
-  let fallback: String
-
-  var body: some View {
-    if let bundleID, let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID)
-    {
-      Image(nsImage: NSWorkspace.shared.icon(forFile: url.path(percentEncoded: false)))
-        .resizable()
-        .accessibilityHidden(true)
-    } else {
-      Image(systemName: fallback)
-        .font(.system(size: 10, weight: .semibold))
-        .accessibilityHidden(true)
-    }
   }
 }
 
