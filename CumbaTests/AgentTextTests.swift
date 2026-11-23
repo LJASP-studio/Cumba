@@ -21,7 +21,7 @@ struct AgentTextTests {
       AgentText.title(fromPrompt: "Look at /Users/x/Desktop/app/Notch.swift please")
         == "Look at Notch.swift please")
     #expect(
-      AgentText.title(fromPrompt: "Read https://github.com/LJASP-studio/Cumba/issues/1")
+      AgentText.title(fromPrompt: "Read https://github.com/example/app/issues/1")
         == "Read github.com")
     #expect(AgentText.title(fromPrompt: "<system-reminder>only</system-reminder>") == nil)
     #expect(AgentText.title(fromPrompt: "  \n ok \n") == nil)
@@ -111,14 +111,14 @@ struct TranscriptTitleTests {
 
 struct ProjectRootTests {
   @Test func findsTheFolderTheSessionStartedIn() {
-    let transcript = "/Users/a/.claude/projects/-Users-a-Desktop-LJASP-studio/s.jsonl"
-    #expect(ProjectRoot.encoded("/Users/a/Desktop/LJASP-studio") == "-Users-a-Desktop-LJASP-studio")
+    let transcript = "/Users/a/.claude/projects/-Users-a-Desktop-Studio/s.jsonl"
+    #expect(ProjectRoot.encoded("/Users/a/Desktop/Studio") == "-Users-a-Desktop-Studio")
     #expect(
-      ProjectRoot.root(of: "/Users/a/Desktop/LJASP-studio/brain/Daily", transcriptPath: transcript)
-        == "/Users/a/Desktop/LJASP-studio")
+      ProjectRoot.root(of: "/Users/a/Desktop/Studio/docs/api", transcriptPath: transcript)
+        == "/Users/a/Desktop/Studio")
     #expect(
-      ProjectRoot.root(of: "/Users/a/Desktop/LJASP-studio", transcriptPath: transcript)
-        == "/Users/a/Desktop/LJASP-studio")
+      ProjectRoot.root(of: "/Users/a/Desktop/Studio", transcriptPath: transcript)
+        == "/Users/a/Desktop/Studio")
     #expect(ProjectRoot.root(of: "/Users/b/other", transcriptPath: transcript) == nil)
     #expect(ProjectRoot.root(of: "/Users/a/x", transcriptPath: nil) == nil)
   }
@@ -132,22 +132,22 @@ struct ProjectRootTests {
 
 @MainActor
 struct AgentTitleTests {
-  private func payload(_ event: String, cwd: String = "/r/LJASP-studio", _ extra: String = "")
+  private func payload(_ event: String, cwd: String = "/r/Studio", _ extra: String = "")
     -> HookPayload?
   {
     HookPayload.decode(
       Data(
-        #"{"session_id":"s1","hook_event_name":"\#(event)","cwd":"\#(cwd)","transcript_path":"/h/.claude/projects/-r-LJASP-studio/s1.jsonl"\#(extra)}"#
+        #"{"session_id":"s1","hook_event_name":"\#(event)","cwd":"\#(cwd)","transcript_path":"/h/.claude/projects/-r-Studio/s1.jsonl"\#(extra)}"#
           .utf8))
   }
 
   @Test func theProjectStaysWhereTheSessionStarted() throws {
     let service = ClaudeCodeService(liveActivities: LiveActivityCenter())
-    service.handle(try #require(payload("UserPromptSubmit", cwd: "/r/LJASP-studio/brain")))
+    service.handle(try #require(payload("UserPromptSubmit", cwd: "/r/Studio/docs")))
     let session = try #require(service.sessions.first)
-    #expect(session.project == "LJASP-studio")
-    #expect(session.subfolder == "brain")
-    #expect(session.place == "LJASP-studio › brain")
+    #expect(session.project == "Studio")
+    #expect(session.subfolder == "docs")
+    #expect(session.place == "Studio › docs")
   }
 
   @Test func aNameTheUserGaveWins() throws {
