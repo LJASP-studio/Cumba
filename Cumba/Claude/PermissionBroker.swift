@@ -19,6 +19,13 @@ final class PermissionBroker {
     /// False when the request is suspicious or Settings turn off Allow for this tool.
     let canAllow: Bool
     let receivedAt: Date
+    var agent = Agent.claude
+    /// The session's title, or its project when it has none.
+    var sessionTitle = ""
+    /// What it asks for in a few words, e.g. "Wants to run a command".
+    var headline = ""
+    /// The agent's own words on what the command does, when it gave them.
+    var note: String?
   }
 
   enum Decision: Equatable, Sendable {

@@ -11,8 +11,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - A Neon Palms theme: a cobalt sky that turns magenta towards the bottom, a turquoise accent, an orange edge and faint palm silhouettes in the bottom corners of the open panel. Any theme can have the palm trees: Appearance > Colors > Palm trees. They're left out when Increase Contrast is on.
 - Install with Homebrew: `brew install --cask ljasp-studio/cumba/cumba`, from the new [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba) tap. The cask installs the release `.dmg` and removes its quarantine flag, so there's no Open Anyway step; it moves to a new version only after the file's checksum and build provenance are verified.
 
+- With several agent sessions running, the AI Agents widget lists them all with their title, what they're doing and their project. Sessions waiting for you come first, and a click opens one. Settings > Agents can turn the list off and bring back "+N".
+- Codex sessions show the title Codex gave them, read from `~/.codex/session_index.jsonl` on this Mac.
+
 ### Changed
 
+- Agent sessions go by the name you gave them, or Claude Code's own title, instead of the start of the first message. Their project is the folder they started in, with the subfolder beside it, instead of the last folder they moved to.
+- An agent's last answer has a label ("Last reply" or "Question"), shows code and bold text, ends on a whole sentence and opens in full with a click.
+- Permission cards say which session asks and what it wants in plain words, with the agent's own note when it wrote one. The full request stays under them, as before.
+- MCP tools show by a readable name, such as "Claude Browser: navigate", and shell commands by their program, such as "git push".
+- Agent notifications show the session's title and the first sentence of the answer.
+- Turkish status lines all read the same way, such as "Düzenliyor: Notch.swift".
 - The Turkish README uses the same setting names as the app.
 - Both READMEs open with a short demo of the panel.
 - Both READMEs have an "Is it safe?" section: how the code is checked and released, what the macOS warning on first launch means, and commands to check each claim yourself.
