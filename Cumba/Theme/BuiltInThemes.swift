@@ -103,7 +103,24 @@ extension Theme {
     return theme
   }()
 
+  /// A coastal sunset: cobalt sky into magenta, turquoise water, an orange edge and palm
+  /// silhouettes in the bottom corners.
+  static let neonPalms: Theme = {
+    var theme = Theme(id: "neon-palms", name: "Neon Palms")
+    theme.background = HexColor(red: 0x0A, green: 0x14, blue: 0x40)
+    theme.gradient = HexColor(red: 0x5C, green: 0x14, blue: 0x52)
+    theme.foreground = HexColor(red: 0xFF, green: 0xF5, blue: 0xEF)
+    theme.secondary = HexColor(red: 0xF2, green: 0xC7, blue: 0x9E)
+    theme.accent = HexColor(red: 0x2F, green: 0xE0, blue: 0xC8)
+    theme.glow = HexColor(red: 0xFF, green: 0x8A, blue: 0x3D)
+    theme.cornerRadius = 24
+    theme.spring = Spring(response: 0.38, damping: 0.86)
+    theme.indicatorColor = .theme
+    theme.scenery = .palms
+    return theme
+  }()
+
   static let builtIns = [
-    classic, glass, midnight, neonTokyo, sakura, synthwave, violetNight, citrus,
+    classic, glass, midnight, neonTokyo, sakura, synthwave, violetNight, citrus, neonPalms,
   ]
 }

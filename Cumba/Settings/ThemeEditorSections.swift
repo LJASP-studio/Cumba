@@ -33,6 +33,8 @@ struct ThemeEditorSections: View {
         ColorPicker("Edge color", selection: color(\.glow), supportsOpacity: false)
           .help(Text("The edge fades from this color into the accent."))
       }
+      Toggle("Palm trees", isOn: palms)
+        .help(Text("Faint palm silhouettes in the bottom corners of the open panel."))
       Picker("Volume and brightness", selection: $theme.indicatorColor) {
         Text("Theme colors").tag(Theme.IndicatorColor.theme)
         Text("White").tag(Theme.IndicatorColor.white)
@@ -91,6 +93,12 @@ struct ThemeEditorSections: View {
     Binding(
       get: { theme[keyPath: keyPath] != nil },
       set: { theme[keyPath: keyPath] = $0 ? value : nil })
+  }
+
+  private var palms: Binding<Bool> {
+    Binding(
+      get: { theme.scenery == .palms },
+      set: { theme.scenery = $0 ? .palms : nil })
   }
 
   /// Damping shown the other way round: 0 means no bounce.

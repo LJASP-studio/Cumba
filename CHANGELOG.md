@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- A Neon Palms theme: a cobalt sky that turns magenta towards the bottom, a turquoise accent, an orange edge and faint palm silhouettes in the bottom corners of the open panel. Any theme can have the palm trees: Appearance > Colors > Palm trees. They're left out when Increase Contrast is on.
 - Install with Homebrew: `brew install --cask ljasp-studio/cumba/cumba`, from the new [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba) tap. The cask installs the release `.dmg` and removes its quarantine flag, so there's no Open Anyway step; it moves to a new version only after the file's checksum and build provenance are verified.
 
 ### Changed

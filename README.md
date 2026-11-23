@@ -29,7 +29,7 @@ A *cumba* is the small bay window that juts out from the upper floor of old Turk
 - A mini player for whatever is playing, in any app: Spotify, Music, YouTube in Safari or Chrome, podcasts. Artwork, seeking and controls, with nothing to set up.
 - Claude Code and Codex in the notch. You see what the agent is doing and answer its permission requests with Allow, Deny or In Terminal without leaving the window you're in. For Claude Code you also see how full the context window is.
 - Widgets in tabs: a calendar with a Join button for calls, Apple Notes, Reminders, clipboard history, timer and Pomodoro, weather, a file tray with AirDrop and more.
-- Eight themes, from plain black and Liquid Glass to Neon Tokyo and Synthwave. You can also make your own with glass, gradients, a neon edge, colors and fonts, and share it as JSON.
+- Nine themes, from plain black and Liquid Glass to Neon Tokyo and Synthwave. You can also make your own with glass, gradients, a neon edge, colors and fonts, and share it as JSON.
 - Live activities beside the closed notch: a running timer, a working agent, charging, the current song, volume and brightness.
 - Cumba lets clicks through to the menu bar, works in full-screen apps and uses next to no CPU while idle.
 - English, Spanish, French and Turkish.
