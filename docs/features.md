@@ -44,7 +44,7 @@ Tabs sit at the bottom or the top and are edited right in the panel (name, symbo
 
 ## Themes
 
-Eight built-in themes, from plain black and Liquid Glass to Neon Tokyo, Sakura, Synthwave and Citrus. Make your own: a glass, solid or tinted surface, a gradient background, a neon edge, colors, font, corner radius, shadow and animation. Panel size and text size stay the same whichever theme you pick. Import and export themes as JSON.
+Nine built-in themes, from plain black and Liquid Glass to Neon Tokyo, Sakura, Synthwave, Citrus and Neon Palms. Make your own: a glass, solid or tinted surface, a gradient background, a neon edge, palm trees, colors, font, corner radius, shadow and animation. Panel size and text size stay the same whichever theme you pick. Import and export themes as JSON.
 
 ## Live activities
 

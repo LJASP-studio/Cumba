@@ -4963,6 +4963,34 @@
         }
       }
     },
+    "Faint palm silhouettes in the bottom corners of the open panel." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siluetas tenues de palmeras en las esquinas inferiores del panel abierto."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siluetas tenues de palmeras en las esquinas inferiores del panel abierto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De discrètes silhouettes de palmiers dans les coins inférieurs du panneau ouvert."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açık panelin alt köşelerinde silik palmiye siluetleri."
+          }
+        }
+      }
+    },
     "Features" : {
       "comment" : "Settings sidebar group",
       "localizations" : {
@@ -7320,6 +7348,35 @@
         }
       }
     },
+    "Neon Palms" : {
+      "comment" : "Built-in theme name",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palmeras de neón"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palmeras de neón"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palmiers néon"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neon Palmiyeler"
+          }
+        }
+      }
+    },
     "Neon Tokyo" : {
       "comment" : "Built-in theme name",
       "localizations" : {
@@ -8710,6 +8767,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güncel değil (token veya biçim değişti)"
+          }
+        }
+      }
+    },
+    "Palm trees" : {
+      "comment" : "Theme editor: faint palm silhouettes in the open panel",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palmeras"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palmeras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palmiers"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palmiyeler"
           }
         }
       }

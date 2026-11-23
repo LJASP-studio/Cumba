@@ -44,7 +44,7 @@ struct ThemeTests {
       #expect(theme.indicatorColor == .white)
       #expect(theme.indicatorColors == [.white])
     }
-    for theme in [Theme.neonTokyo, .sakura, .synthwave, .violetNight, .citrus] {
+    for theme in [Theme.neonTokyo, .sakura, .synthwave, .violetNight, .citrus, .neonPalms] {
       #expect(theme.indicatorColor == .theme)
     }
     #expect(Theme.neonTokyo.indicatorColors.count == 2)
@@ -54,6 +54,26 @@ struct ThemeTests {
     theme.indicatorColor = .pink
     let data = try JSONEncoder().encode(theme)
     #expect(try JSONDecoder().decode(Theme.self, from: data).indicatorColor == .pink)
+  }
+
+  @Test func sceneryIsSavedOnlyWhenSetAndAnUnknownOneIsDropped() throws {
+    let plain = try #require(
+      try JSONSerialization.jsonObject(with: JSONEncoder().encode(Theme.classic))
+        as? [String: Any])
+    #expect(plain["scenery"] == nil)
+    var theme = Theme.classic
+    theme.scenery = .palms
+    let data = try JSONEncoder().encode(theme)
+    #expect(try JSONDecoder().decode(Theme.self, from: data).scenery == .palms)
+    #expect(try decode(#"{ "id": "x", "scenery": "mountains" }"#).scenery == nil)
+    #expect(Theme.neonPalms.scenery == .palms)
+  }
+
+  @Test func contrastRatioMatchesWCAG() throws {
+    let black = try #require(HexColor(hex: "#000000"))
+    let white = try #require(HexColor(hex: "#FFFFFF"))
+    #expect(abs(black.contrast(with: white) - 21) < 0.001)
+    #expect(white.contrast(with: white) == 1)
   }
 
   @Test func decodesTheSpecExample() throws {

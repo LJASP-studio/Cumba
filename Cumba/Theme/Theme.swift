@@ -24,6 +24,11 @@ struct Theme: Codable, Equatable, Identifiable, Sendable {
     case white, blue, green, orange, pink, purple
   }
 
+  /// Faint silhouettes along the bottom of the open panel.
+  enum Scenery: String, Codable, CaseIterable, Sendable {
+    case palms
+  }
+
   struct Spring: Codable, Equatable, Sendable {
     var response: Double
     var damping: Double
@@ -47,6 +52,7 @@ struct Theme: Codable, Equatable, Identifiable, Sendable {
   /// A neon line around the open panel that fades from this color into the accent.
   var glow: HexColor?
   var indicatorColor = IndicatorColor.white
+  var scenery: Scenery?
   /// Panel size from a theme file saved before size became an app setting. Read once to
   /// carry it over; never saved.
   var legacySize: PanelSize?
@@ -74,7 +80,7 @@ struct Theme: Codable, Equatable, Identifiable, Sendable {
 extension Theme {
   private enum CodingKeys: String, CodingKey {
     case id, name, material, tint, background, gradient, foreground, secondary, accent,
-      cornerRadius, fontDesign, shadow, glow, indicatorColor
+      cornerRadius, fontDesign, shadow, glow, indicatorColor, scenery
     case spring = "animation"
   }
 
@@ -111,6 +117,7 @@ extension Theme {
     shadow = value(.shadow, defaults.shadow)
     glow = value(.glow, defaults.glow)
     indicatorColor = value(.indicatorColor, defaults.indicatorColor)
+    scenery = value(.scenery, defaults.scenery)
     legacySize = Self.legacySize(from: decoder)
     self = normalized()
   }

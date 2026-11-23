@@ -49,6 +49,10 @@ struct ThemePreview: View {
         shape
           .fill(fill)
           .overlay {
+            PanelScenery(theme: theme)
+              .clipShape(shape)
+          }
+          .overlay {
             if let glow = theme.glow {
               shape.stroke(
                 LinearGradient(

@@ -46,7 +46,7 @@ Sekmeler altta ya da üstte durur ve doğrudan panelde düzenlenir (ad, simge, s
 
 ## Temalar
 
-Düz siyah ve Liquid Glass'tan Neon Tokyo, Sakura, Synthwave ve Narenciye'ye sekiz hazır tema. Kendi temanızı yapın: cam, düz renk ya da renkli cam, renk geçişli zemin, neon kenar, renkler, font, köşe yuvarlaklığı, gölge ve animasyon. Panel boyutu ve yazı boyutu hangi temayı seçerseniz seçin aynı kalır. Temaları JSON olarak içe/dışa aktarın.
+Düz siyah ve Liquid Glass'tan Neon Tokyo, Sakura, Synthwave, Narenciye ve Neon Palmiyeler'e dokuz hazır tema. Kendi temanızı yapın: cam, düz renk ya da renkli cam, renk geçişli zemin, neon kenar, palmiyeler, renkler, font, köşe yuvarlaklığı, gölge ve animasyon. Panel boyutu ve yazı boyutu hangi temayı seçerseniz seçin aynı kalır. Temaları JSON olarak içe/dışa aktarın.
 
 ## Canlı etkinlikler
 

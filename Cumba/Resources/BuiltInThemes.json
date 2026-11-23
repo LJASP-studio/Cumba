@@ -152,5 +152,26 @@
     "secondary" : "#B5BC86",
     "shadow" : true,
     "tint" : "#1E3A8A"
+  },
+  {
+    "accent" : "#2FE0C8",
+    "animation" : {
+      "damping" : 0.86,
+      "response" : 0.38
+    },
+    "background" : "#0A1440",
+    "cornerRadius" : 24,
+    "fontDesign" : "default",
+    "foreground" : "#FFF5EF",
+    "glow" : "#FF8A3D",
+    "gradient" : "#5C1452",
+    "id" : "neon-palms",
+    "indicatorColor" : "theme",
+    "material" : "solid",
+    "name" : "Neon Palms",
+    "scenery" : "palms",
+    "secondary" : "#F2C79E",
+    "shadow" : true,
+    "tint" : "#1E3A8A"
   }
 ]

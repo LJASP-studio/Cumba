@@ -26,6 +26,11 @@ struct NotchRootView: View {
 
       VStack(spacing: 8) {
         ZStack(alignment: .top) {
+          if state.isOpen, theme.scenery != nil {
+            PanelScenery(theme: theme)
+              .frame(width: canvas.width, height: canvas.height)
+              .transition(.opacity.animation(.easeOut(duration: 0.3)))
+          }
           if isGreeting {
             HelloView()
               .frame(width: 260, height: 120)
