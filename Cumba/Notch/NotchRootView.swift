@@ -79,6 +79,7 @@ struct NotchRootView: View {
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
       .foregroundStyle(theme.foreground.color)
       .tint(theme.accent.color)
+      .environment(\.accentNeedsDarkInk, theme.accent.needsDarkInk)
       .environment(\.indicatorColors, theme.indicatorColors)
       .environment(\.widgetStyle, model.widgetStyle)
       .fontDesign(theme.fontDesign.swiftUI)

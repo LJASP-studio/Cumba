@@ -22,10 +22,14 @@ struct EventRow: View {
       }
       if canJoin, let url = event.meetingURL {
         Spacer(minLength: 4)
-        Button("Join") { NSWorkspace.shared.open(url) }
-          .controlSize(.mini)
-          .buttonStyle(.borderedProminent)
-          .help(Text(url.host() ?? ""))
+        Button {
+          NSWorkspace.shared.open(url)
+        } label: {
+          Text("Join").prominentLabelInk()
+        }
+        .controlSize(.mini)
+        .buttonStyle(.borderedProminent)
+        .help(Text(url.host() ?? ""))
       }
     }
     .opacity(event.end <= .now ? 0.5 : 1)
