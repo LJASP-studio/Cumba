@@ -17,6 +17,8 @@ final class ClaudeCodeWidget: NotchWidget {
   }
 
   let service: ClaudeCodeService
+  /// Which session and page the widget shows; kept here so the height can follow it.
+  let panel = AgentPanelState()
   private let openSettings: @MainActor (SettingsPage) -> Void
 
   required init(context: WidgetContext) {
@@ -25,31 +27,40 @@ final class ClaudeCodeWidget: NotchWidget {
   }
 
   func makeView() -> AnyView {
-    AnyView(ClaudeCodeWidgetView(service: service) { [openSettings] in openSettings(.agents) })
+    AnyView(
+      ClaudeCodeWidgetView(service: service, panel: panel) { [openSettings] in
+        openSettings(.agents)
+      })
   }
 
-  /// Tall enough for the shown session's last answer in its bubble, so a long answer makes
-  /// the tab taller instead of being cut off.
+  /// Tall enough for what the panel shows: the list of sessions, or one session with its
+  /// answer in the bubble, so a long answer makes the tab taller instead of being cut off.
   func preferredContentHeight(width: CGFloat, textScale: CGFloat, isDetailed: Bool) -> CGFloat? {
-    let session =
-      service.sessions.first(where: \.isActive) ?? service.sessions.first
-    guard let detail = session?.detail, !detail.isEmpty else { return nil }
+    if let request = service.permissions.pending.first {
+      return AgentLayout.permissionHeight(request, width: width, textScale: textScale)
+    }
     // The card's padding, the page row and the gap under it.
     let frame: CGFloat = 20 + 24 + 8
+    if panel.isListShown(in: service) {
+      let rows = CGFloat(min(service.sessions.count, AgentLayout.visibleRows))
+      return frame + rows * AgentLayout.rowHeight(textScale: textScale) + (rows - 1) * 2
+    }
+    guard let session = panel.session(in: service), let detail = session.detail,
+      !detail.isEmpty
+    else { return nil }
     // Name, status and project.
     let column = 62 * textScale
-    let bubbleWidth = (isDetailed ? min(260, width * 0.5) : width - 20) - 20
-    let font = NSFont.systemFont(ofSize: PanelFont.pointSize(of: .callout) * textScale)
-    let text = (detail as NSString).boundingRect(
-      with: CGSize(width: max(bubbleWidth, 40), height: .greatestFiniteMagnitude),
-      options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [.font: font])
-    let bubble = ceil(text.height) + 12
+    let bubbleWidth = (isDetailed ? min(AgentLayout.bubbleWidth, width * 0.5) : width - 20) - 20
+    let bubble = AgentLayout.bubbleHeight(
+      detail: detail, isExpanded: panel.isExpanded(session), width: bubbleWidth,
+      textScale: textScale, isDetailed: isDetailed)
     return frame + (isDetailed ? max(column, bubble) : column + 6 + bubble)
   }
 }
 
 private struct ClaudeCodeWidgetView: View {
   let service: ClaudeCodeService
+  let panel: AgentPanelState
   let setUp: () -> Void
 
   var body: some View {
@@ -74,7 +85,7 @@ private struct ClaudeCodeWidgetView: View {
             Button("Set Up…", action: setUp)
               .controlSize(.small)
           } else {
-            AgentPanel(service: service)
+            AgentPanel(service: service, state: panel)
           }
         }
       }
@@ -83,7 +94,9 @@ private struct ClaudeCodeWidgetView: View {
 }
 
 /// A permission request with Allow, Deny and "answer in the terminal". Used in the widget
-/// and as a banner in the panel when the widget isn't in the visible tab.
+/// and as a banner in the panel when the widget isn't in the visible tab. It says which
+/// session asks, what it wants in plain words and, when the agent gave one, its own note on
+/// why; the full request always stays under them, since a note can mislead.
 ///
 /// Safety: the full request is shown, escaped (`SafeText`). Buttons stay disabled for a
 /// moment whenever a new request appears, so a click aimed at something else or a double
@@ -116,11 +129,11 @@ struct PermissionCard: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: compact ? 4 : 6) {
-      HStack(spacing: 6) {
-        Image(systemName: "hand.raised.fill")
-          .foregroundStyle(.orange)
-        Text("\(request.project) wants to use \(request.toolName)", comment: "Permission request")
-          .panelFont(.caption, weight: .semibold)
+      HStack(spacing: 5) {
+        AgentGlyph(agent: request.agent, size: 12)
+        Text(verbatim: asker)
+          .panelFont(.caption2)
+          .foregroundStyle(.secondary)
           .lineLimit(1)
         Spacer(minLength: 0)
         if waiting > 0 {
@@ -130,6 +143,20 @@ struct PermissionCard: View {
             .background(.orange.opacity(0.3), in: Capsule())
             .accessibilityLabel(Text("\(waiting) more requests waiting"))
         }
+      }
+      Label {
+        Text(verbatim: request.headline.isEmpty ? request.toolName : request.headline)
+          .panelFont(.caption, weight: .semibold)
+          .lineLimit(3)
+      } icon: {
+        Image(systemName: "hand.raised.fill")
+          .foregroundStyle(.orange)
+      }
+      if let note = request.note {
+        Text(verbatim: note)
+          .panelFont(.caption)
+          .foregroundStyle(.secondary)
+          .lineLimit(2)
       }
       ScrollView {
         Text(request.detail)
@@ -190,6 +217,17 @@ struct PermissionCard: View {
       try? await Task.sleep(for: Self.armingDelay)
       isArmed = true
     }
+  }
+
+  /// "Claude • Notch texts · LJASP-studio › brain", without the project twice.
+  private var asker: String {
+    var parts = [request.agent.name]
+    let title = request.sessionTitle
+    if !title.isEmpty, !request.project.hasPrefix(title) {
+      parts.append(title)
+    }
+    let place = request.project.isEmpty ? [] : [request.project]
+    return parts.joined(separator: " • ") + place.map { " · \($0)" }.joined()
   }
 
   @ViewBuilder private var allowAndDeny: some View {

@@ -47,8 +47,9 @@ extension ClaudeCodeService {
     var titleSource: TitleSource?
     /// The folder inside the project the session is in now, e.g. "docs/api".
     var subfolder: String?
-    /// The first folder the app saw the session in, for agents without a transcript folder.
-    var firstFolder: String?
+    /// The project's whole path: the folder the transcript is named after or, for agents
+    /// without one, the first folder the app saw the session in.
+    var root: String?
     /// What it's doing now, e.g. "Editing Notch.swift"; nil when not working.
     var step: String?
     /// How full the context window was at the last answer, 0...1.
@@ -78,11 +79,12 @@ extension ClaudeCodeService {
     mutating func locate(in cwd: String?, transcriptPath: String?) {
       guard let cwd, !cwd.isEmpty else { return }
       let folder = (cwd as NSString).standardizingPath
-      if firstFolder == nil {
-        firstFolder = folder
+      if let found = ProjectRoot.root(of: folder, transcriptPath: transcriptPath) {
+        root = found
+      } else if root == nil {
+        root = folder
       }
-      let root =
-        ProjectRoot.root(of: folder, transcriptPath: transcriptPath) ?? firstFolder ?? folder
+      let root = root ?? folder
       let name = (root as NSString).lastPathComponent
       project = name.isEmpty || name == "/" ? (folder as NSString).lastPathComponent : name
       subfolder = folder.hasPrefix(root + "/") ? String(folder.dropFirst(root.count + 1)) : nil

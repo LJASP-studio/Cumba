@@ -122,7 +122,7 @@ enum TranscriptReader {
     return false
   }
 
-  private static func tail(of url: URL, bytes: Int) -> String? {
+  static func tail(of url: URL, bytes: Int) -> String? {
     guard let handle = try? FileHandle(forReadingFrom: url) else { return nil }
     defer { try? handle.close() }
     let size = (try? handle.seekToEnd()) ?? 0

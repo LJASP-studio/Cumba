@@ -73,6 +73,7 @@ struct ClaudeCodeSettingsView: View {
         .font(.callout)
         .foregroundStyle(.secondary)
         .fixedSize(horizontal: false, vertical: true)
+        Toggle("Show a list when several sessions run", isOn: $settings.showsSessionList)
       }
       Section {
         Text(

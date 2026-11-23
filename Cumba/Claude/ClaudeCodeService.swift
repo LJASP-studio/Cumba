@@ -12,10 +12,13 @@ final class ClaudeCodeService {
   let permissions: PermissionBroker
   /// From Settings > Claude Code; applies to requests that arrive afterwards.
   var notchApprovals = NotchApprovals.all
+  /// With several sessions, the widget lists them instead of showing "+N".
+  var showsSessionList = true
 
   @ObservationIgnored let liveActivities: LiveActivityCenter
   @ObservationIgnored private var removalTasks: [String: Task<Void, Never>] = [:]
   @ObservationIgnored private var transcriptReads: [String: Date] = [:]
+  @ObservationIgnored var codexReads: [String: Date] = [:]
   /// For a turn that ends without a hook (QuietTurns.swift).
   @ObservationIgnored var transcripts: [String: URL] = [:]
   @ObservationIgnored var watchers: [String: TranscriptWatcher] = [:]
@@ -85,6 +88,9 @@ final class ClaudeCodeService {
       break
     }
     tag(id, with: agent, app: app)
+    if agent == .codex, event != .sessionEnd {
+      refreshCodexTitle(of: id)
+    }
     updateWorkingActivity()
   }
 
@@ -174,7 +180,7 @@ final class ClaudeCodeService {
 
   /// Keeps the best title so far: one the user gave beats Claude Code's, which beats the
   /// prompt's first line.
-  private func setTitle(_ title: String?, source: Session.TitleSource, of id: String) {
+  func setTitle(_ title: String?, source: Session.TitleSource, of id: String) {
     guard let title, let index = sessions.firstIndex(where: { $0.id == id }) else { return }
     // A later prompt doesn't rename the session; only a better source does.
     if let current = sessions[index].titleSource,
@@ -258,6 +264,8 @@ final class ClaudeCodeService {
       if self.sessions.contains(where: { $0.id == id && $0.state == .ended }) {
         self.sessions.removeAll { $0.id == id }
         self.transcripts[id] = nil
+        self.transcriptReads[id] = nil
+        self.codexReads[id] = nil
       }
       self.removalTasks[id] = nil
     }

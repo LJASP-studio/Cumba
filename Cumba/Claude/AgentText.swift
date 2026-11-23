@@ -104,7 +104,10 @@ enum AgentText {
     if server.count >= 16, server.allSatisfy({ $0.isHexDigit || $0 == "-" }) {
       return readableTool
     }
-    return "\(server.replacingOccurrences(of: "_", with: " ")): \(readableTool)"
+    let readableServer = server.replacingOccurrences(of: "_", with: " ")
+    return String(
+      localized: "\(readableServer): \(readableTool)",
+      comment: "An MCP tool: the server it comes from and the tool's name")
   }
 
   /// Programs whose first argument says what they do, e.g. "git push".

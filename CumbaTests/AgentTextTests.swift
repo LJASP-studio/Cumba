@@ -207,3 +207,85 @@ struct PermissionTextTests {
     #expect(multiline.permissionDetail.text.contains("script: \"one"))
   }
 }
+
+@MainActor
+struct AgentPanelTests {
+  private func handle(
+    _ service: ClaudeCodeService, _ id: String, _ event: String, _ extra: String = ""
+  )
+    throws
+  {
+    service.handle(
+      try #require(
+        HookPayload.decode(
+          Data(
+            #"{"session_id":"\#(id)","hook_event_name":"\#(event)","cwd":"/r/\#(id)"\#(extra)}"#
+              .utf8))))
+  }
+
+  @Test func theListShowsWaitingSessionsFirst() throws {
+    let service = ClaudeCodeService(liveActivities: LiveActivityCenter())
+    try handle(service, "done", "Stop")
+    try handle(service, "working", "UserPromptSubmit")
+    try handle(
+      service, "waiting", "Notification",
+      #","message":"Claude is waiting for your input","notification_type":"idle_prompt""#)
+    #expect(AgentPanelState.listed(service.sessions).map(\.id) == ["waiting", "working", "done"])
+  }
+
+  @Test func theListNeedsTwoSessionsAndTheSetting() throws {
+    let service = ClaudeCodeService(liveActivities: LiveActivityCenter())
+    let state = AgentPanelState()
+    try handle(service, "a", "UserPromptSubmit")
+    #expect(!state.isListShown(in: service))
+    try handle(service, "b", "UserPromptSubmit")
+    #expect(state.isListShown(in: service))
+    state.showsList = false
+    #expect(!state.isListShown(in: service))
+    state.showsList = true
+    service.showsSessionList = false
+    #expect(!state.isListShown(in: service))
+  }
+
+  @Test func anOpenAnswerIsTallerAndANewOneStartsClosed() throws {
+    let service = ClaudeCodeService(liveActivities: LiveActivityCenter())
+    let answer = String(repeating: "The notch now grows with what it shows. ", count: 20)
+    try handle(service, "s", "Stop", #","last_assistant_message":"\#(answer)""#)
+    let state = AgentPanelState()
+    let session = try #require(state.session(in: service))
+    func height(open: Bool) -> CGFloat {
+      AgentLayout.bubbleHeight(
+        detail: answer, isExpanded: open, width: 148, textScale: 1, isDetailed: false)
+    }
+    #expect(height(open: true) > height(open: false))
+    state.toggleExpanded(session)
+    #expect(state.isExpanded(session))
+    try handle(service, "s", "Stop", #","last_assistant_message":"Short.""#)
+    #expect(!state.isExpanded(try #require(state.session(in: service))))
+  }
+}
+
+struct CodexIndexTests {
+  @Test func theLatestNameWins() throws {
+    let index = [
+      #"{"id":"019a-1","thread_name":"Fix the notch","updated_at":"2026-11-20T10:00:00Z"}"#,
+      #"{"id":"019a-2","thread_name":"Other thread","updated_at":"2026-11-20T10:01:00Z"}"#,
+      #"{"id":"019a-1","thread_name":"Notch texts","updated_at":"2026-11-20T10:02:00Z"}"#,
+      "not json",
+    ].joined(separator: "\n")
+    #expect(CodexIndex.title(of: "019a-1", inIndex: index) == "Notch texts")
+    #expect(CodexIndex.title(of: "019a-9", inIndex: index) == nil)
+    #expect(CodexIndex.title(of: "", inIndex: index) == nil)
+  }
+
+  @Test func readsTheFileAndIgnoresAMissingOne() throws {
+    let home = FileManager.default.temporaryDirectory.appending(path: "codex-\(UUID().uuidString)")
+    defer { try? FileManager.default.removeItem(at: home) }
+    let url = CodexIndex.fileURL(home: home)
+    #expect(CodexIndex.title(of: "a", in: url) == nil)
+    try FileManager.default.createDirectory(
+      at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+    try Data(#"{"id":"a","thread_name":"Release notes"}"#.utf8).write(to: url)
+    #expect(CodexIndex.title(of: "a", in: url) == "Release notes")
+  }
+}

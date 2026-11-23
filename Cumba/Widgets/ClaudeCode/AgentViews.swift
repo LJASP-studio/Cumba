@@ -27,56 +27,37 @@ struct AgentSpinner: View {
 
 /// The busiest session on two pages: Progress (what it's doing and its last answer) and
 /// Usage (how full its context window is). Alone in its tab the answer sits beside the
-/// status in a bubble. With several sessions, "+N" steps through them.
+/// status in a bubble. With several sessions, Progress lists them all and a click opens
+/// one; with the list turned off in Settings, "+N" steps through them.
 struct AgentPanel: View {
   let service: ClaudeCodeService
-  @State private var page = Page.progress
-  /// A session picked with "+N"; nil follows the busiest one.
-  @State private var pickedSessionID: String?
+  let state: AgentPanelState
   @Environment(\.showsDetailedWidget) private var isDetailed
 
-  enum Page {
-    case progress
-    case usage
-  }
-
-  private var session: ClaudeCodeService.Session? {
-    service.sessions.first { $0.id == pickedSessionID }
-      ?? service.sessions.first(where: \.isActive) ?? service.sessions.first
-  }
+  private typealias Page = AgentPanelState.Page
 
   /// Shows the next session in the list, round to the first.
   private func showNextSession() {
     let sessions = service.sessions
     guard sessions.count > 1 else { return }
-    let index = sessions.firstIndex { $0.id == session?.id } ?? 0
+    let index = sessions.firstIndex { $0.id == state.session(in: service)?.id } ?? 0
     withAnimation(.easeOut(duration: 0.2)) {
-      pickedSessionID = sessions[(index + 1) % sessions.count].id
+      state.pickedSessionID = sessions[(index + 1) % sessions.count].id
     }
   }
 
   var body: some View {
+    let hasList = service.showsSessionList && service.sessions.count > 1
     VStack(alignment: .leading, spacing: 8) {
       HStack(spacing: 6) {
-        let title = page == .progress ? Text("Progress") : Text("Usage")
-        let icon = Image(
-          systemName: page == .progress ? "list.bullet" : "gauge.with.dots.needle.33percent")
-        // In a narrow widget the name gives way to its symbol instead of wrapping.
-        ViewThatFits(in: .horizontal) {
-          Label {
-            title
-          } icon: {
-            icon
-          }
-          .fixedSize()
-          icon
-            .accessibilityLabel(title)
+        if hasList {
+          sessionCount
+        } else {
+          pageTitle
         }
-        .panelFont(.caption)
-        .foregroundStyle(.secondary)
         Spacer(minLength: 0)
         let others = service.sessions.count - 1
-        if others > 0 {
+        if !service.showsSessionList, others > 0 {
           Button(action: showNextSession) {
             Text("+\(others)", comment: "More AI agent sessions are running")
               .panelFont(.caption2, weight: .semibold)
@@ -88,8 +69,15 @@ struct AgentPanel: View {
         pageButton(.progress, symbol: "list.bullet", label: Text("Progress"))
         pageButton(.usage, symbol: "gauge.with.dots.needle.33percent", label: Text("Usage"))
       }
-      if let session {
-        switch page {
+      if state.isListShown(in: service) {
+        AgentSessionList(sessions: service.sessions) { session in
+          withAnimation(.easeOut(duration: 0.2)) {
+            state.pickedSessionID = session.id
+            state.showsList = false
+          }
+        }
+      } else if let session = state.session(in: service) {
+        switch state.page {
         case .progress: progress(session)
         case .usage: usage(session)
         }
@@ -97,13 +85,72 @@ struct AgentPanel: View {
     }
   }
 
+  private var pageTitle: some View {
+    let title = state.page == .progress ? Text("Progress") : Text("Usage")
+    let icon = Image(
+      systemName: state.page == .progress ? "list.bullet" : "gauge.with.dots.needle.33percent")
+    // In a narrow widget the name gives way to its symbol instead of wrapping.
+    return ViewThatFits(in: .horizontal) {
+      Label {
+        title
+      } icon: {
+        icon
+      }
+      .fixedSize()
+      icon
+        .accessibilityLabel(title)
+    }
+    .panelFont(.caption)
+    .foregroundStyle(.secondary)
+  }
+
+  /// "5 sessions": a title over the list, and the way back to it from one session.
+  @ViewBuilder private var sessionCount: some View {
+    let count = Text(
+      "\(service.sessions.count) sessions", comment: "How many AI agent sessions are running")
+    if state.isListShown(in: service) {
+      Label {
+        count
+      } icon: {
+        Image(systemName: "rectangle.stack")
+      }
+      .panelFont(.caption)
+      .foregroundStyle(.secondary)
+      .lineLimit(1)
+    } else {
+      Button {
+        withAnimation(.easeOut(duration: 0.2)) {
+          state.showsList = true
+          state.page = .progress
+        }
+      } label: {
+        Label {
+          count
+        } icon: {
+          Image(systemName: "chevron.left")
+        }
+        .panelFont(.caption, weight: .medium)
+        .lineLimit(1)
+        .padding(.horizontal, 6)
+      }
+      .buttonStyle(PanelButtonStyle(size: 24))
+      .foregroundStyle(.secondary)
+    }
+  }
+
   private func pageButton(_ target: Page, symbol: String, label: Text) -> some View {
     Button {
-      withAnimation(.easeOut(duration: 0.2)) { page = target }
+      withAnimation(.easeOut(duration: 0.2)) {
+        if target == .progress, state.page == .progress {
+          // Progress again goes back to the list.
+          state.showsList = true
+        }
+        state.page = target
+      }
     } label: {
       Image(systemName: symbol)
     }
-    .buttonStyle(PanelButtonStyle(size: 24, isSelected: page == target))
+    .buttonStyle(PanelButtonStyle(size: 24, isSelected: state.page == target))
     .help(label)
     .accessibilityLabel(label)
   }
@@ -131,33 +178,26 @@ struct AgentPanel: View {
           Image(systemName: Self.symbol(of: session))
             .foregroundStyle(session.agent.color)
         }
-        Text(session.project)
-          .panelFont(.caption)
-          .foregroundStyle(.secondary)
-          .lineLimit(1)
-        if !isDetailed, let detail = session.detail {
-          bubble(detail)
+        Label {
+          Text(session.place)
+            .lineLimit(1)
+            .truncationMode(.middle)
+        } icon: {
+          Image(systemName: "folder")
+        }
+        .panelFont(.caption)
+        .foregroundStyle(.secondary)
+        if !isDetailed, let detail = session.detail, !detail.isEmpty {
+          AgentBubble(session: session, detail: detail, state: state)
         }
       }
-      if isDetailed, let detail = session.detail {
+      if isDetailed, let detail = session.detail, !detail.isEmpty {
         Spacer(minLength: 0)
-        bubble(detail)
-          .frame(maxWidth: 260, alignment: .trailing)
+        AgentBubble(session: session, detail: detail, state: state)
+          .frame(maxWidth: AgentLayout.bubbleWidth, alignment: .trailing)
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
-  }
-
-  /// The answer as tall as the panel allows; the tab grows for it up to a limit, and
-  /// whatever doesn't fit then is cut off at the end.
-  private func bubble(_ text: String) -> some View {
-    Text(text)
-      .panelFont(.callout)
-      .padding(.horizontal, 10)
-      .padding(.vertical, 6)
-      .background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-      .overlay(
-        RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(.white.opacity(0.1)))
   }
 
   private func usage(_ session: ClaudeCodeService.Session) -> some View {
