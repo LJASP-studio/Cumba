@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Pinning or unpinning the open panel keeps the tab you're on. Before, it jumped to the opening tab, or to the agents' tab while an agent worked, with the other tab's content passing over it.
 - In Settings, a scrolled page passes under the page title instead of showing through it, and the first opening shows the page's name instead of "Untitled".
 - Clipboard History cards no longer cut off the kind of item or how long ago it was copied, as "Captura de pantalla" or "Capture d’écran" were. When the two don't fit on one line, the time goes under the kind on every card of the row.
+- The Pomodoro widget no longer breaks today's count in the middle of a word, as it did with "Aujourd’hui : 0" in French. When the count doesn't fit beside the buttons, it goes under them and the panel grows to fit. With large text, a long round name such as "Concentración" drops its symbol instead of breaking.
 
 ## [1.3.0] - 2026-11-03
 

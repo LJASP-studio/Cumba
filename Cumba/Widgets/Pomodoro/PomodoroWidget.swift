@@ -100,6 +100,12 @@ final class PomodoroWidget: NotchWidget {
     AnyView(PomodoroSettingsView(widget: self))
   }
 
+  /// Tall enough for today's count under the buttons when it doesn't fit beside them.
+  func preferredContentHeight(width: CGFloat, textScale: CGFloat, isDetailed: Bool) -> CGFloat? {
+    PomodoroView.heightWithCountBelow(
+      finishedToday: finishedToday, width: width, textScale: textScale)
+  }
+
   func shutdown() {
     reset()
   }
@@ -219,80 +225,6 @@ final class PomodoroWidget: NotchWidget {
     let components = Calendar.current.dateComponents([.year, .month, .day], from: date)
     return Key.countPrefix
       + "\(components.year ?? 0)-\(components.month ?? 0)-\(components.day ?? 0)"
-  }
-}
-
-private struct PomodoroView: View {
-  let widget: PomodoroWidget
-
-  var body: some View {
-    WidgetCard(tint: widget.round.isBreak ? .green : nil) {
-      VStack(alignment: .leading, spacing: 8) {
-        HStack {
-          Label(widget.round.name, systemImage: widget.round.symbol)
-            .panelFont(.caption)
-            .foregroundStyle(.secondary)
-          Spacer()
-          HStack(spacing: 4) {
-            ForEach(0..<PomodoroWidget.roundsPerSet, id: \.self) { index in
-              Circle()
-                .fill(
-                  index < widget.finishedInSet ? AnyShapeStyle(.tint) : AnyShapeStyle(.quaternary)
-                )
-                .frame(width: 6, height: 6)
-            }
-          }
-          .accessibilityElement()
-          .accessibilityLabel(
-            Text(
-              "\(widget.finishedInSet) of \(PomodoroWidget.roundsPerSet) rounds",
-              comment: "Pomodoro progress"))
-        }
-        countdown
-          .panelFont(size: 30, weight: .semibold, monospacedDigit: true)
-        HStack(spacing: 6) {
-          controlButton(
-            isRunning ? "pause.fill" : "play.fill",
-            label: isRunning ? Text("Pause") : Text("Start")
-          ) {
-            isRunning ? widget.pause() : widget.start()
-          }
-          controlButton("forward.end.fill", label: Text("Skip")) { widget.skip() }
-          controlButton("arrow.counterclockwise", label: Text("Reset")) { widget.reset() }
-          Spacer()
-          Text("Today: \(widget.finishedToday)", comment: "Finished pomodoro rounds today")
-            .panelFont(.caption, monospacedDigit: true)
-            .foregroundStyle(.secondary)
-        }
-      }
-    }
-  }
-
-  private var isRunning: Bool {
-    if case .running = widget.state { true } else { false }
-  }
-
-  @ViewBuilder private var countdown: some View {
-    switch widget.state {
-    case .running(let endsAt):
-      Text(timerInterval: Date()...endsAt, countsDown: true)
-    case .paused(let remaining):
-      Text(Duration.seconds(remaining), format: .time(pattern: .minuteSecond))
-    case .idle:
-      Text(Duration.seconds(widget.length), format: .time(pattern: .minuteSecond))
-    }
-  }
-
-  private func controlButton(_ symbol: String, label: Text, action: @escaping () -> Void)
-    -> some View
-  {
-    Button(action: action) {
-      Image(systemName: symbol)
-        .contentTransition(.symbolEffect(.replace))
-    }
-    .buttonStyle(PanelButtonStyle(isSelected: true))
-    .accessibilityLabel(label)
-    .help(label)
   }
 }
 
