@@ -27,6 +27,7 @@ docs/manual-tests.md
 docs/icon.png
 scripts/make-banner.swift
 scripts/make-icon.swift
+scripts/make-palms.py
 scripts/perf-cycle.swift
 
 # macOS
