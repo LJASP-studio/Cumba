@@ -67,4 +67,4 @@ Choose Codex in **Settings > Agents** and click **Install…**. The hooks go to 
 
 ## Privacy
 
-Hook payloads (commands, file paths, messages) stay in memory and are never written to disk or logged. For the context use and the session title, Cumba reads the last 256 KB of the session's transcript, and only transcripts under `~/.claude/projects`.
+Hook payloads (commands, file paths, messages) stay in memory and are never written to disk or logged. For the context use and the session title, Cumba reads the last 256 KB of the session's transcript, and only transcripts under `~/.claude/projects`. For a Codex session's title, it reads the last 128 KB of `~/.codex/session_index.jsonl`. Neither file is ever written.

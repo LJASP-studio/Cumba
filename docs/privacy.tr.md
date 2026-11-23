@@ -42,6 +42,7 @@ Açıldığında uzantı sunucusu yalnızca `127.0.0.1` adresini dinler, yalnız
 | Özel Unix soketi | Claude Code ve Codex hook'ları ve [script etkinlikleri](features.tr.md#scriptler) | Yalnızca hook'lar kuruluyken veya script etkinlikleri açıkken |
 | `~/.claude/settings.json`, `~/.codex/hooks.json` | Claude Code ve Codex hook'larını kurmak ve kaldırmak | Yalnızca değişikliği gözden geçirdikten sonra; yedek alınır |
 | `~/.claude/projects` içindeki Claude Code oturum kayıtları | Yapay Zeka Ajanları widget'ında bağlam kullanımı ve oturum başlığı | Yalnızca bu Mac'te, son 256 KB, oturum sürerken okunur |
+| Codex'in oturum dizini, `~/.codex/session_index.jsonl` | Yapay Zeka Ajanları widget'ında Codex oturumlarının başlığı | Yalnızca bu Mac'te, son 128 KB, Codex oturumu sürerken okunur |
 | Erişilebilirlik | Ses veya parlaklık tuşlarını yönetmek | Yalnızca "Sistemin ses göstergesinin yerine geç" veya "…parlaklık göstergesinin…" açıksa |
 | Pano | Pano Geçmişi widget'ı | Yalnızca o widget sekmelerinizden birindeyken |
 | Dosyalar ve Klasörler (Masaüstü ya da ekran resimlerinin kaydedildiği yer) | Yeni ekran resimlerini Pano Geçmişi'ne ekleme | Yalnızca "Yeni ekran resimlerini ekle" açıksa |
