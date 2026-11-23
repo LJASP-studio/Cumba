@@ -47,6 +47,19 @@ struct PomodoroTests {
     #expect(
       PomodoroWidget(defaults: defaults, liveActivities: LiveActivityCenter()).focusMinutes == 50)
   }
+
+  @Test func asksForRoomOnlyWhenTodaysCountMovesUnderTheButtons() throws {
+    let (widget, defaults, suite) = try makeWidget()
+    defer { defaults.removePersistentDomain(forName: suite) }
+    // Wide enough for the count beside the buttons in every language.
+    #expect(widget.preferredContentHeight(width: 400, textScale: 1.2, isDetailed: false) == nil)
+    let narrow = try #require(
+      widget.preferredContentHeight(width: 120, textScale: 1.2, isDetailed: false))
+    let largeText = try #require(
+      widget.preferredContentHeight(width: 120, textScale: 1.6, isDetailed: false))
+    #expect(narrow > 120)
+    #expect(largeText > narrow)
+  }
 }
 
 @MainActor
