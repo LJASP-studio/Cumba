@@ -12,12 +12,11 @@ extension ClaudeCodeService {
     }
     let count = permissions.pending.count
     let agent = sessions.first { $0.id == first.sessionID }?.agent ?? .claude
-    let tool = HookPayload.shortToolName(first.toolName)
     let notification = LiveNotification(
       icon: AnyView(AgentNoticeIcon(agent: agent, notice: .permission)),
       title: AgentNotice.permission.title(for: agent),
-      message: Self.oneLine(first.detail.isEmpty ? tool : "\(tool): \(first.detail)"),
-      context: first.project,
+      message: Self.oneLine(first.detail.isEmpty ? first.headline : first.detail),
+      context: first.sessionTitle.isEmpty ? first.project : first.sessionTitle,
       // Answered in the panel, which this opens.
       action: LiveNotification.Action(
         title: String(localized: "Review", comment: "Notification button: opens the request")
@@ -38,15 +37,15 @@ extension ClaudeCodeService {
   }
 
   /// A notification under the notch that then folds into the agent's mark and a badge.
-  /// Questions stay until answered; the rest go away a few seconds after folding.
-  func notify(
-    _ notice: AgentNotice, session id: String, agent: Agent, project: String, message: String?
-  ) {
+  /// Questions stay until answered; the rest go away a few seconds after folding. Beside
+  /// the title it names the session; under it, the first sentence of the message.
+  func notify(_ notice: AgentNotice, session id: String, agent: Agent, message: String?) {
+    let session = sessions.first { $0.id == id }
     let notification = LiveNotification(
       icon: AnyView(AgentNoticeIcon(agent: agent, notice: notice)),
       title: notice.title(for: agent),
-      message: message.map(Self.oneLine),
-      context: project,
+      message: message.map { Self.oneLine(AgentText.sentence($0)) },
+      context: session?.displayTitle,
       action: LiveNotification.Action(
         title: String(localized: "Open", comment: "Notification button: shows the agent's app")
       ) { [weak self] in self?.openApp(of: id) ?? false },

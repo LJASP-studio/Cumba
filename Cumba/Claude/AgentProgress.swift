@@ -32,9 +32,12 @@ enum AgentStep {
       .map { URL(filePath: $0).lastPathComponent }
     switch toolName {
     case "Bash":
-      let command = input?["description"]?.string ?? input?["command"]?.string ?? ""
+      // The agent's own description when it gave one, otherwise the program it runs.
+      let command =
+        input?["description"]?.string.flatMap(AgentText.cleanTitle)
+        ?? AgentText.command(input?["command"]?.string ?? "")
       return String(
-        localized: "Running \(HookPayload.truncate(command, to: 48))",
+        localized: "Running \(AgentText.clipped(command, to: 48))",
         comment: "An AI agent runs a shell command")
     case "Edit", "MultiEdit", "Write", "NotebookEdit":
       return String(localized: "Editing \(file ?? "")", comment: "An AI agent edits a file")
@@ -49,7 +52,8 @@ enum AgentStep {
     case "TodoWrite":
       return String(localized: "Planning", comment: "An AI agent updates its plan")
     case let tool?:
-      return String(localized: "Using \(tool)", comment: "An AI agent uses a tool")
+      return String(
+        localized: "Using \(AgentText.toolName(tool))", comment: "An AI agent uses a tool")
     case nil:
       return thinking
     }
@@ -57,15 +61,20 @@ enum AgentStep {
 }
 
 /// Reads what the notch needs from a Claude Code transcript: how full the context window was
-/// at the last answer, the session's summary title, and whether the last turn was
-/// interrupted. It reads only the end of the file, only files under ~/.claude/projects, and
-/// never on the main thread.
+/// at the last answer, the session's title, and whether the last turn was interrupted. It
+/// reads only the end of the file, only files under ~/.claude/projects, and never on the
+/// main thread. Claude Code repeats its title lines through the file, so the end has them.
 enum TranscriptReader {
   struct Summary: Equatable, Sendable {
     /// Tokens in the context at the last answer.
     var contextTokens: Int?
     var contextLimit = 200_000
-    var title: String?
+    /// The name the user gave the session: the Claude app's sidebar name or `/rename`.
+    var customTitle: String?
+    /// The title Claude Code wrote for the session from its first prompt.
+    var generatedTitle: String?
+
+    var title: String? { customTitle ?? generatedTitle }
 
     var contextFraction: Double? {
       contextTokens.map { min(1, Double($0) / Double(contextLimit)) }
@@ -128,10 +137,16 @@ enum TranscriptReader {
       guard let data = line.data(using: .utf8),
         let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
       else { continue }
-      if summary.title == nil, object["type"] as? String == "summary",
-        let title = object["summary"] as? String
-      {
-        summary.title = title
+      switch object["type"] as? String {
+      case "custom-title":
+        summary.customTitle = summary.customTitle ?? object["customTitle"] as? String
+      case "ai-title":
+        summary.generatedTitle = summary.generatedTitle ?? object["aiTitle"] as? String
+      case "summary":
+        // Older versions of Claude Code.
+        summary.generatedTitle = summary.generatedTitle ?? object["summary"] as? String
+      default:
+        break
       }
       if summary.contextTokens == nil, object["type"] as? String == "assistant",
         let usage = (object["message"] as? [String: Any])?["usage"] as? [String: Any]
@@ -142,7 +157,7 @@ enum TranscriptReader {
           summary.contextTokens = tokens
         }
       }
-      if summary.contextTokens != nil && summary.title != nil {
+      if summary.contextTokens != nil && summary.customTitle != nil {
         break
       }
     }

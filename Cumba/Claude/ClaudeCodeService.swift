@@ -7,39 +7,6 @@ import SwiftUI
 @MainActor
 @Observable
 final class ClaudeCodeService {
-  struct Session: Identifiable, Equatable, Sendable {
-    enum State: Equatable, Sendable {
-      case working
-      case waitingPermission
-      case waitingInput
-      case done
-      case failed(String)
-      /// The turn ended without a Stop: interrupted, or silent too long.
-      case stopped
-      case ended
-    }
-
-    let id: String
-    var project: String
-    var state: State
-    /// Short summary of the last answer or error.
-    var detail: String?
-    var updatedAt: Date
-    /// The session's summary from its transcript, or its first prompt.
-    var title: String?
-    /// What it's doing now, e.g. "Editing Notch.swift"; nil when not working.
-    var step: String?
-    /// How full the context window was at the last answer, 0...1.
-    var contextFraction: Double?
-    var agent = Agent.claude
-    /// Bundle identifier of the app the session runs in, from its hooks.
-    var app: String?
-
-    var isActive: Bool {
-      state == .working || state == .waitingPermission
-    }
-  }
-
   /// Most recently updated first.
   private(set) var sessions: [Session] = []
   let permissions: PermissionBroker
@@ -77,9 +44,8 @@ final class ClaudeCodeService {
     case .userPromptSubmit:
       permissions.resolveAll(in: id)
       update(id, payload, state: .working, step: AgentStep.thinking)
-      if sessions.first?.title == nil, let prompt = payload.prompt {
-        sessions[0].title = HookPayload.truncate(prompt, to: 60)
-      }
+      setTitle(payload.sessionTitle.flatMap(AgentText.cleanTitle), source: .custom, of: id)
+      setTitle(payload.prompt.flatMap(AgentText.title(fromPrompt:)), source: .prompt, of: id)
       refreshTranscript(of: id, path: payload.transcriptPath, force: true)
     case .preToolUse:
       update(
@@ -97,20 +63,20 @@ final class ClaudeCodeService {
       {
         return
       }
-      update(id, payload, state: .waitingInput, detail: payload.message)
-      notify(
-        .waiting, session: id, agent: agent, project: payload.project, message: payload.message)
+      // Claude Code's own line ("waiting for your input") would hide the answer it's about.
+      update(id, payload, state: .waitingInput)
+      notify(.waiting, session: id, agent: agent, message: payload.message)
     case .stop:
       permissions.resolveAll(in: id)
-      let summary = payload.lastAssistantMessage.map { HookPayload.truncate($0, to: 280) }
-      update(id, payload, state: .done, detail: summary)
+      update(id, payload, state: .done, detail: payload.lastAssistantMessage, kind: .reply)
       refreshTranscript(of: id, path: payload.transcriptPath, force: true)
-      notify(.done, session: id, agent: agent, project: payload.project, message: summary)
+      notify(.done, session: id, agent: agent, message: payload.lastAssistantMessage)
     case .stopFailure:
       permissions.resolveAll(in: id)
       let error = payload.error ?? "unknown"
-      update(id, payload, state: .failed(error), detail: payload.lastAssistantMessage)
-      notify(.failed, session: id, agent: agent, project: payload.project, message: error)
+      update(
+        id, payload, state: .failed(error), detail: payload.lastAssistantMessage, kind: .reply)
+      notify(.failed, session: id, agent: agent, message: error)
     case .sessionEnd:
       permissions.resolveAll(in: id)
       update(id, payload, state: .ended)
@@ -130,18 +96,25 @@ final class ClaudeCodeService {
       showQuestion(payload, agent: agent, app: app)
       return .askInTerminal
     }
+    update(payload.sessionID, payload, state: .waitingPermission)
+    tag(payload.sessionID, with: agent, app: app)
+    let session = sessions.first { $0.id == payload.sessionID }
     let detail = payload.permissionDetail
-    // The folder and tool names are shown above the Allow button too.
-    let project = SafeText(payload.project)
+    // Everything shown above the Allow button is checked the same way.
+    let project = SafeText(session?.place ?? payload.project)
+    let title = SafeText(session?.displayTitle ?? payload.project)
     let tool = SafeText(payload.toolName ?? "?")
-    let isSuspicious = detail.isSuspicious || project.isSuspicious || tool.isSuspicious
+    let headline = payload.permissionHeadline
+    let note = payload.permissionNote
+    let isSuspicious =
+      [detail, project, title, tool, headline].contains(where: \.isSuspicious)
+      || note?.isSuspicious == true
     let request = PermissionBroker.Request(
       id: UUID(), sessionID: payload.sessionID, project: project.text, toolName: tool.text,
       detail: detail.text, isSuspicious: isSuspicious,
       canAllow: !isSuspicious && notchApprovals.allows(toolName: tool.text),
-      receivedAt: Date())
-    update(payload.sessionID, payload, state: .waitingPermission)
-    tag(payload.sessionID, with: agent, app: app)
+      receivedAt: Date(), agent: agent, sessionTitle: title.text, headline: headline.text,
+      note: note?.text)
     updateWorkingActivity()
     let decision = await permissions.decide(request)
     // A session stopped meanwhile stays stopped.
@@ -158,11 +131,11 @@ final class ClaudeCodeService {
   /// says so until it's answered.
   private func showQuestion(_ payload: HookPayload, agent: Agent, app: String?) {
     let question = payload.questionText.map { SafeText($0).text }
-    update(payload.sessionID, payload, state: .waitingInput, detail: question)
+    update(payload.sessionID, payload, state: .waitingInput, detail: question, kind: .question)
     tag(payload.sessionID, with: agent, app: app)
     notify(
       payload.toolName == "ExitPlanMode" ? .plan : .question, session: payload.sessionID,
-      agent: agent, project: payload.project, message: question)
+      agent: agent, message: question)
     updateWorkingActivity()
   }
 
@@ -172,16 +145,19 @@ final class ClaudeCodeService {
 
   private func update(
     _ id: String, _ payload: HookPayload, state: Session.State, detail: String? = nil,
-    step: String? = nil
+    kind: Session.DetailKind = .reply, step: String? = nil
   ) {
     removalTasks[id]?.cancel()
+    let existing = sessions.first { $0.id == id }
     var session =
-      sessions.first { $0.id == id }
-      ?? Session(id: id, project: payload.project, state: state, updatedAt: Date())
-    session.project = payload.project
+      existing ?? Session(id: id, project: payload.project, state: state, updatedAt: Date())
+    session.locate(in: payload.cwd, transcriptPath: payload.transcriptPath)
     // A tool runs while a permission request is open only after it's answered.
     session.state = state
-    session.detail = detail ?? session.detail
+    if let detail {
+      session.detail = String(detail.prefix(Session.maxDetailLength))
+      session.detailKind = kind
+    }
     session.step = state == .working ? (step ?? session.step) : nil
     session.updatedAt = Date()
     sessions.removeAll { $0.id == id }
@@ -190,6 +166,24 @@ final class ClaudeCodeService {
       transcripts[id] = url
     }
     followTurn(of: id)
+    // A session first seen mid-turn gets its title without waiting for the next prompt.
+    if existing == nil {
+      refreshTranscript(of: id, path: payload.transcriptPath, force: true)
+    }
+  }
+
+  /// Keeps the best title so far: one the user gave beats Claude Code's, which beats the
+  /// prompt's first line.
+  private func setTitle(_ title: String?, source: Session.TitleSource, of id: String) {
+    guard let title, let index = sessions.firstIndex(where: { $0.id == id }) else { return }
+    // A later prompt doesn't rename the session; only a better source does.
+    if let current = sessions[index].titleSource,
+      current > source || (current == .prompt && source == .prompt)
+    {
+      return
+    }
+    sessions[index].title = title
+    sessions[index].titleSource = source
   }
 
   /// The turn ended without telling the app (QuietTurns.swift).
@@ -219,9 +213,9 @@ final class ClaudeCodeService {
       if let fraction = summary.contextFraction {
         self.sessions[index].contextFraction = fraction
       }
-      if let title = summary.title {
-        self.sessions[index].title = title
-      }
+      self.setTitle(
+        summary.generatedTitle.flatMap(AgentText.cleanTitle), source: .generated, of: id)
+      self.setTitle(summary.customTitle.flatMap(AgentText.cleanTitle), source: .custom, of: id)
     }
   }
 
