@@ -6,11 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-11-23
+
 ### Added
 
 - A Neon Palms theme: a cobalt sky that turns magenta towards the bottom, a turquoise accent, an orange edge and faint palm silhouettes in the bottom corners of the open panel. Any theme can have the palm trees: Appearance > Colors > Palm trees. They're left out when Increase Contrast is on.
 - Install with Homebrew: `brew install --cask ljasp-studio/cumba/cumba`, from the new [LJASP-studio/homebrew-cumba](https://github.com/LJASP-studio/homebrew-cumba) tap. The cask installs the release `.dmg` and removes its quarantine flag, so there's no Open Anyway step; it moves to a new version only after the file's checksum and build provenance are verified.
-
 - With several agent sessions running, the AI Agents widget lists them all with their title, what they're doing and their project. Sessions waiting for you come first, and a click opens one. Settings > Agents can turn the list off and bring back "+N".
 - Codex sessions show the title Codex gave them, read from `~/.codex/session_index.jsonl` on this Mac.
 
@@ -279,7 +280,8 @@ Fixes from a security review of the code, done with AI assistance (not an extern
 - CI workflow (build, test, swift-format lint) and a release workflow that publishes an ad-hoc signed zip.
 - Contributor docs: README in Turkish, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue and pull request templates.
 
-[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/LJASP-studio/Cumba/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/LJASP-studio/Cumba/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/LJASP-studio/Cumba/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/LJASP-studio/Cumba/compare/v1.0.0...v1.1.0
