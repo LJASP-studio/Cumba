@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Join in the calendar and Allow on a permission card are readable on light colors. While the panel has keyboard focus, these buttons take the theme's accent (Allow is green), and macOS left their label white on the pink, orange, violet and green ones, at about 2:1. The label is now dark there; the blue themes keep the system's white label.
 - When one agent finishes or asks a question while another is still working, its notification now shows. Before, the other agent's working ring took its place right away.
 - Pinning or unpinning the open panel keeps the tab you're on. Before, it jumped to the opening tab, or to the agents' tab while an agent worked, with the other tab's content passing over it.
 - In Settings, a scrolled page passes under the page title instead of showing through it, and the first opening shows the page's name instead of "Untitled".

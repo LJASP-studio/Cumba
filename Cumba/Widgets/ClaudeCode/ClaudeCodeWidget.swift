@@ -232,10 +232,14 @@ struct PermissionCard: View {
 
   @ViewBuilder private var allowAndDeny: some View {
     if request.canAllow {
-      Button("Allow") { answer(.allow) }
-        .buttonStyle(.borderedProminent)
-        .tint(.green)
-        .disabled(mustScrollToEnd)
+      Button {
+        answer(.allow)
+      } label: {
+        Text("Allow").prominentLabelInk(on: .green)
+      }
+      .buttonStyle(.borderedProminent)
+      .tint(.green)
+      .disabled(mustScrollToEnd)
     }
     Button("Deny") { answer(.deny) }
       .buttonStyle(.bordered)
