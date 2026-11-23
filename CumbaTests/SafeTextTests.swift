@@ -73,7 +73,8 @@ struct SafeTextTests {
       """#
     let payload = try #require(HookPayload.decode(Data(json.utf8)))
     let detail = payload.permissionDetail.text
-    #expect(detail.contains("\"script\": \"danger\""))
+    #expect(detail.contains("script: danger"))
     #expect(detail.contains("true"))
+    #expect(detail.contains("null"))
   }
 }

@@ -20,6 +20,7 @@ final class AppSettings {
     static let hasSeenWelcome = "hasSeenWelcome"
     static let browserExtensionEnabled = "browserExtensionEnabled"
     static let notchApprovals = "notchApprovals"
+    static let showsSessionList = "showsSessionList"
     static let panelScreen = "panelScreen"
     static let tabBarStyle = "tabBarStyle"
     static let openingTab = "openingTab"
@@ -164,6 +165,11 @@ final class AppSettings {
     didSet { defaults.set(notchApprovals.rawValue, forKey: Key.notchApprovals) }
   }
 
+  /// With several AI agent sessions, the widget lists them instead of showing "+N".
+  var showsSessionList: Bool {
+    didSet { defaults.set(showsSessionList, forKey: Key.showsSessionList) }
+  }
+
   /// Shows the level beside the notch when the volume changes.
   var showsVolumeChanges: Bool {
     didSet { defaults.set(showsVolumeChanges, forKey: Key.showsVolumeChanges) }
@@ -236,6 +242,7 @@ final class AppSettings {
     notchApprovals =
       defaults.string(forKey: Key.notchApprovals).flatMap(NotchApprovals.init(rawValue:))
       ?? .exceptShell
+    showsSessionList = defaults.object(forKey: Key.showsSessionList) as? Bool ?? true
     panelScreen =
       defaults.string(forKey: Key.panelScreen).flatMap(PanelScreen.init(rawValue:)) ?? .notched
     tabBarStyle =

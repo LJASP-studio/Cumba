@@ -27,6 +27,8 @@ struct HookPayload: Decodable, Sendable {
   var prompt: String?
   /// The session transcript (JSON lines under ~/.claude/projects).
   var transcriptPath: String?
+  /// The name the user gave the session (`/rename`, the Claude app's sidebar), when set.
+  var sessionTitle: String?
   var error: String?
   var reason: String?
 
@@ -49,6 +51,7 @@ struct HookPayload: Decodable, Sendable {
     case lastAssistantMessage = "last_assistant_message"
     case prompt
     case transcriptPath = "transcript_path"
+    case sessionTitle = "session_title"
     case error
     case reason
   }
@@ -108,7 +111,7 @@ struct HookPayload: Decodable, Sendable {
       case "WebSearch": toolInput?["query"]?.string
       default: nil
       }
-    return SafeText(known ?? JSONValue.object(toolInput ?? [:]).rendered())
+    return SafeText(known ?? JSONValue.object(toolInput ?? [:]).fieldLines())
   }
 
   static func truncate(_ text: String, to length: Int) -> String {
@@ -159,6 +162,25 @@ enum JSONValue: Decodable, Equatable, Sendable {
 
   var string: String? {
     if case .string(let value) = self { value } else { nil }
+  }
+
+  /// An object as "name: value" lines, easier to read than JSON: strings as they are, other
+  /// values as JSON. Keys that aren't plain names, and strings with line breaks, keep their
+  /// quotes, so no value can pass for another field.
+  func fieldLines() -> String {
+    guard case .object(let fields) = self, !fields.isEmpty else { return rendered() }
+    let plainKey = { (key: String) in
+      !key.isEmpty
+        && key.allSatisfy { $0.isASCII && ($0.isLetter || $0.isNumber || "_.-".contains($0)) }
+    }
+    guard fields.keys.allSatisfy(plainKey) else { return rendered() }
+    return fields.keys.sorted().map { key in
+      let value = fields[key] ?? .null
+      if case .string(let text) = value, !text.contains(where: \.isNewline) {
+        return "\(key): \(text)"
+      }
+      return "\(key): \(value.rendered())"
+    }.joined(separator: "\n")
   }
 
   /// Indented JSON with sorted keys, for showing unknown tool inputs.

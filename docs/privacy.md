@@ -38,6 +38,7 @@ Except for the Now Playing helper and the update check, everything below is off 
 | Private Unix socket | Claude Code and Codex hooks, and [script activities](features.md#scripts) | Only while hooks are installed or script activities are on |
 | `~/.claude/settings.json`, `~/.codex/hooks.json` | Installing and removing the Claude Code and Codex hooks | Only after you review the change; a backup is kept |
 | Claude Code transcripts in `~/.claude/projects` | Context use and session title in the AI Agents widget | Read on this Mac only, the last 256 KB, while a session runs |
+| Codex's session index, `~/.codex/session_index.jsonl` | Codex session titles in the AI Agents widget | Read on this Mac only, the last 128 KB, while a Codex session runs |
 | Accessibility | Handling the volume or brightness keys | Only if you turn on "Replace the system volume indicator" or "…brightness indicator" |
 | Clipboard | Clipboard History widget | Only while that widget is in one of your tabs |
 | Files and Folders (Desktop, or wherever screenshots go) | Adding new screenshots to Clipboard History | Only if you turn on "Add new screenshots" |
