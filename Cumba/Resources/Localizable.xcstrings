@@ -11105,6 +11105,34 @@
         }
       }
     },
+    "Scroll to the end to approve it." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onaylamak için sonuna kadar kaydırın."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desplázate hasta el final para aprobarlo."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desplázate hasta el final para aprobarlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites défiler jusqu’à la fin pour l’approuver."
+          }
+        }
+      }
+    },
     "Scrolls your script under the camera while you talk" : {
       "localizations" : {
         "es" : {

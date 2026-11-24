@@ -132,7 +132,9 @@ enum AgentLayout {
     height += 4 + 44 + 12
     height += 4 + 2 * lineHeight(.caption2, textScale: textScale)
     let button = 22 * textScale
-    height += 4 + (inner < 260 ? 2 * button + 4 : button)
+    // A plan's longer labels can take a row each.
+    let rows: CGFloat = inner < 260 ? (request.kind == .plan ? 3 : 2) : 1
+    height += 4 + rows * button + (rows - 1) * 4
     return height
   }
 

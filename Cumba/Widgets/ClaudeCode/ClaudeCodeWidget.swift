@@ -193,10 +193,13 @@ struct PermissionCard: View {
           .foregroundStyle(.secondary)
           .fixedSize(horizontal: false, vertical: true)
       } else if mustScrollToEnd && box.request == request.id {
-        Label("Scroll to the end to allow it.", systemImage: "arrow.down")
-          .panelFont(.caption2)
-          .foregroundStyle(.secondary)
-          .fixedSize(horizontal: false, vertical: true)
+        Label(
+          isPlan ? "Scroll to the end to approve it." : "Scroll to the end to allow it.",
+          systemImage: "arrow.down"
+        )
+        .panelFont(.caption2)
+        .foregroundStyle(.secondary)
+        .fixedSize(horizontal: false, vertical: true)
       }
       // In a narrow widget, In Terminal moves to a second row instead of being cut off.
       ViewThatFits(in: .horizontal) {
@@ -206,6 +209,11 @@ struct PermissionCard: View {
         }
         VStack(alignment: .leading, spacing: 4) {
           HStack(spacing: 6) { allowAndDeny }
+          inTerminal
+        }
+        // Longer labels (a plan's, in French or Spanish) get a row each.
+        VStack(alignment: .leading, spacing: 4) {
+          allowAndDeny
           inTerminal
         }
       }

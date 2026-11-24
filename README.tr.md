@@ -27,7 +27,7 @@ Cumba, macOS için ücretsiz ve açık kaynaklı bir notch uygulaması. İmleci 
 ## Neler var
 
 - Hangi uygulamada ne çalıyorsa tek bir mini oynatıcıda: Spotify, Müzik, Safari ya da Chrome'da YouTube, podcast'ler. Kapak görseli, sarma ve kontroller; kurulacak bir şey yok.
-- Notch'ta Claude Code ve Codex. Ajanın ne yaptığını görür, izin isteklerini İzin Ver, Reddet ya da Terminalde ile bulunduğunuz pencereden ayrılmadan yanıtlarsınız. Claude Code'da bağlam penceresinin ne kadar dolduğunu da görürsünüz.
+- Notch'ta Claude Code ve Codex. Ajanın ne yaptığını görür, izin isteklerini İzin Ver, Reddet ya da Terminalde ile bulunduğunuz pencereden ayrılmadan yanıtlarsınız. Claude'un soruları ve planları da orada yanıtlanır. Bağlam penceresinin ne kadar dolduğunu ve isterseniz kullanım sınırlarınızdan ne kadarının kaldığını görürsünüz; Aç, oturumun kendi Terminal ya da iTerm2 sekmesini öne getirir.
 - Sekmelerde widget'lar: görüşmeler için Katıl düğmeli takvim, Notlar, Anımsatıcılar, pano geçmişi, zamanlayıcı ve Pomodoro, hava durumu, AirDrop destekli dosya rafı ve daha fazlası.
 - Düz siyah ve Liquid Glass'tan Neon Tokyo ve Synthwave'e dokuz tema. Cam, renk geçişi, neon kenar, renkler ve fontlarla kendi temanızı da yapıp JSON olarak paylaşabilirsiniz.
 - Kapalı notch'un iki yanında canlı etkinlikler: işleyen zamanlayıcı, çalışan bir ajan, şarj, çalan şarkı, ses ve parlaklık.

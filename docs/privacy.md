@@ -29,6 +29,7 @@ Except for the Now Playing helper and the update check, everything below is off 
 |---|---|---|
 | System Now Playing helper | Media from every app, and its controls | Runs while the app runs; turn off "Read media from every app" to use AppleScript instead. See [below](#media-brightness-and-private-apis) |
 | Automation (Apple Events) for Spotify and Music | Read the current track; play, pause, skip, seek | Only with "Read media from every app" off; asked from Settings, scripts are sent only while that app is already running |
+| Automation (Apple Events) for Terminal and iTerm2 | AI Agents: Open selects the session's own tab | Asked from Settings > Permissions while that app is running; scripts are sent only when you click Open |
 | Automation (Apple Events) for Notes | Notes widget: list your recent notes, open one, make new ones | Asked when you connect Notes in the widget or in Settings; Cumba starts Notes in the background and never changes an existing note |
 | Calendar (full access) | Calendar widget | Asked when you click Allow in the widget or in Settings |
 | Reminders (full access) | To-dos widget: show, tick off and add reminders | Asked when you click Allow in the widget or in Settings |
@@ -39,6 +40,8 @@ Except for the Now Playing helper and the update check, everything below is off 
 | `~/.claude/settings.json`, `~/.codex/hooks.json` | Installing and removing the Claude Code and Codex hooks | Only after you review the change; a backup is kept |
 | Claude Code transcripts in `~/.claude/projects` | Context use and session title in the AI Agents widget | Read on this Mac only, the last 256 KB, while a session runs |
 | Codex's session index, `~/.codex/session_index.jsonl` | Codex session titles in the AI Agents widget | Read on this Mac only, the last 128 KB, while a Codex session runs |
+| Codex session files in `~/.codex/sessions` | Context use and usage limits of a Codex session | Read on this Mac only, the last 256 KB, while a Codex session runs |
+| Claude Code's status line (`statusLine` in `~/.claude/settings.json`) | Exact context use and usage limits | Only after you install it in Settings > Agents and review the diff; your own status line command keeps running |
 | Accessibility | Handling the volume or brightness keys | Only if you turn on "Replace the system volume indicator" or "…brightness indicator" |
 | Clipboard | Clipboard History widget | Only while that widget is in one of your tabs |
 | Files and Folders (Desktop, or wherever screenshots go) | Adding new screenshots to Clipboard History | Only if you turn on "Add new screenshots" |
