@@ -635,6 +635,35 @@
         }
       }
     },
+    "%lld of %lld" : {
+      "comment" : "Which question of how many",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld/%2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld sur %2$lld"
+          }
+        }
+      }
+    },
     "%lld of %lld rounds" : {
       "localizations" : {
         "es" : {
@@ -1896,6 +1925,34 @@
         }
       }
     },
+    "Answer questions and plans in the notch" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soruları ve planları notch'ta yanıtla"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Responder preguntas y planes en la muesca"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Responder preguntas y planes en la muesca"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répondre aux questions et aux plans dans l’encoche"
+          }
+        }
+      }
+    },
     "Appearance" : {
       "comment" : "Settings tab",
       "localizations" : {
@@ -1949,6 +2006,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uygula"
+          }
+        }
+      }
+    },
+    "Approve" : {
+      "comment" : "Button: approves an AI agent's plan",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onayla"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprobar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprobar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approuver"
           }
         }
       }
@@ -2064,6 +2150,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notlar için Otomasyon izni kapalı."
+          }
+        }
+      }
+    },
+    "Back" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour"
           }
         }
       }
@@ -2578,6 +2692,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Narenciye"
+          }
+        }
+      }
+    },
+    "Claude's questions show their choices in the notch, and a plan can be approved or sent back for changes there. Approving a plan doesn't change the permission mode." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude'un soruları seçenekleriyle notch'ta görünür; plan da orada onaylanabilir ya da değişiklik için geri gönderilebilir. Planı onaylamak izin modunu değiştirmez."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las preguntas de Claude muestran sus opciones en la muesca, y un plan se puede aprobar o devolver para cambios desde allí. Aprobar un plan no cambia el modo de permisos."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las preguntas de Claude muestran sus opciones en la muesca, y un plan se puede aprobar o devolver para cambios desde allí. Aprobar un plan no cambia el modo de permisos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les questions de Claude affichent leurs choix dans l’encoche, et un plan peut y être approuvé ou renvoyé pour modification. Approuver un plan ne change pas le mode d'autorisation."
           }
         }
       }
@@ -6409,6 +6551,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bırakılan dosyaları elinizin altında tutun veya AirDrop ile gönderin"
+          }
+        }
+      }
+    },
+    "Keep Planning" : {
+      "comment" : "Button: sends an AI agent's plan back for changes",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planlamaya devam"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguir planificando"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguir planificando"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer à planifier"
           }
         }
       }
@@ -10933,6 +11104,35 @@
         }
       }
     },
+    "Send" : {
+      "comment" : "Button: sends the answers to an AI agent's questions",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gönder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer"
+          }
+        }
+      }
+    },
     "Send All with AirDrop" : {
       "localizations" : {
         "es" : {
@@ -13027,6 +13227,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düşünüyor…"
+          }
+        }
+      }
+    },
+    "This question has hidden characters or is too long to show safely. Answer it in the terminal." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu soruda gizli karakterler var ya da güvenle gösterilemeyecek kadar uzun. Terminalde yanıtlayın."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta pregunta tiene caracteres ocultos o es demasiado larga para mostrarla con seguridad. Respóndela en la terminal."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta pregunta tiene caracteres ocultos o es demasiado larga para mostrarla con seguridad. Respóndela en la terminal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette question contient des caractères cachés ou est trop longue pour être affichée sans risque. Répondez-y dans le terminal."
           }
         }
       }

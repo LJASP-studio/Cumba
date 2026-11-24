@@ -111,9 +111,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   private func observeApprovals() {
     claude.notchApprovals = settings.notchApprovals
     claude.showsSessionList = settings.showsSessionList
+    claude.answersInNotch = settings.answersInNotch
     withObservationTracking {
       _ = settings.notchApprovals
       _ = settings.showsSessionList
+      _ = settings.answersInNotch
     } onChange: { [weak self] in
       Task { @MainActor in self?.observeApprovals() }
     }

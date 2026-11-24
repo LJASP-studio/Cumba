@@ -14,6 +14,8 @@ final class ClaudeCodeService {
   var notchApprovals = NotchApprovals.all
   /// With several sessions, the widget lists them instead of showing "+N".
   var showsSessionList = true
+  /// Questions and plans can be answered in the notch; otherwise only in Claude Code.
+  var answersInNotch = true
 
   @ObservationIgnored let liveActivities: LiveActivityCenter
   @ObservationIgnored private var removalTasks: [String: Task<Void, Never>] = [:]
@@ -56,6 +58,7 @@ final class ClaudeCodeService {
         step: AgentStep.describe(
           toolName: payload.toolName, input: payload.toolInput, cwd: payload.cwd))
     case .postToolUse:
+      permissions.resolveQuestions(in: id, toolName: payload.toolName)
       update(id, payload, state: .working, step: AgentStep.thinking)
       refreshTranscript(of: id, path: payload.transcriptPath, force: false)
     case .notification:
@@ -100,7 +103,18 @@ final class ClaudeCodeService {
   {
     if payload.isQuestion {
       showQuestion(payload, agent: agent, app: app)
-      return .askInTerminal
+      guard answersInNotch, let request = questionRequest(payload, agent: agent) else {
+        return .askInTerminal
+      }
+      let decision = await permissions.decide(request)
+      if !permissions.hasPending(in: payload.sessionID),
+        sessions.first(where: { $0.id == payload.sessionID })?.state == .waitingInput,
+        decision != .askInTerminal
+      {
+        update(payload.sessionID, payload, state: .working, step: AgentStep.thinking)
+        updateWorkingActivity()
+      }
+      return decision
     }
     update(payload.sessionID, payload, state: .waitingPermission)
     tag(payload.sessionID, with: agent, app: app)

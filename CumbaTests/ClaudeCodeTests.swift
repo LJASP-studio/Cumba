@@ -154,6 +154,7 @@ struct ClaudeCodeServiceTests {
   @Test func questionsGoToClaudeCodeAndTheNotchSaysItWaits() async throws {
     let center = LiveActivityCenter()
     let service = ClaudeCodeService(liveActivities: center)
+    service.answersInNotch = false
     let question = try payload("permission-request-question")
     #expect(question.isQuestion)
     #expect(await service.requestPermission(question) == .askInTerminal)
@@ -198,6 +199,7 @@ struct ClaudeCodeServiceTests {
   @Test func noticesStayInFrontWhileAnotherAgentWorks() async throws {
     let center = LiveActivityCenter()
     let service = ClaudeCodeService(liveActivities: center)
+    service.answersInNotch = false
     let codexStep = try #require(
       HookPayload.decode(
         Data(

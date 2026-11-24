@@ -42,7 +42,8 @@ struct ClaudeHookRoute: HTTPHandler {
     switch event {
     case .permissionRequest:
       let decision = await service.requestPermission(payload, agent: agent, app: app)
-      let body = PermissionBroker.responseBody(for: decision)
+      let body = PermissionBroker.responseBody(
+        for: decision, toolName: payload.toolName, input: payload.toolInput)
       // An empty 200 lets Claude Code show its own dialog.
       return HTTPResponse(
         statusCode: .ok, headers: body.isEmpty ? [:] : [.contentType: "application/json"],

@@ -87,6 +87,29 @@ enum AgentLayout {
     return ceil(bounds.height)
   }
 
+  /// The compact card for any request: a question's card, or the permission card.
+  static func requestHeight(
+    _ request: PermissionBroker.Request, width: CGFloat, textScale: CGFloat
+  ) -> CGFloat {
+    guard case .questions(let questions) = request.kind else {
+      return permissionHeight(request, width: width, textScale: textScale)
+    }
+    let inner = width - 20
+    let question = questions[0]
+    var height = 20 + lineHeight(.caption2, textScale: textScale)
+    height +=
+      4
+      + min(
+        textHeight(
+          question.shownQuestion, style: .caption1, weight: .semibold, width: inner - 22,
+          textScale: textScale),
+        3 * lineHeight(.caption1, textScale: textScale))
+    // The options' box at its largest, then the buttons.
+    height += 4 + 66
+    height += 4 + 22 * textScale
+    return height
+  }
+
   /// The compact permission card in the widget: who asks, what, the agent's note, the
   /// request's box, one line for a hint and the buttons, which take two rows when narrow.
   static func permissionHeight(

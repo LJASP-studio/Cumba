@@ -21,6 +21,7 @@ final class AppSettings {
     static let browserExtensionEnabled = "browserExtensionEnabled"
     static let notchApprovals = "notchApprovals"
     static let showsSessionList = "showsSessionList"
+    static let answersInNotch = "answersInNotch"
     static let panelScreen = "panelScreen"
     static let tabBarStyle = "tabBarStyle"
     static let openingTab = "openingTab"
@@ -170,6 +171,11 @@ final class AppSettings {
     didSet { defaults.set(showsSessionList, forKey: Key.showsSessionList) }
   }
 
+  /// Claude Code's questions and plans can be answered in the notch.
+  var answersInNotch: Bool {
+    didSet { defaults.set(answersInNotch, forKey: Key.answersInNotch) }
+  }
+
   /// Shows the level beside the notch when the volume changes.
   var showsVolumeChanges: Bool {
     didSet { defaults.set(showsVolumeChanges, forKey: Key.showsVolumeChanges) }
@@ -243,6 +249,7 @@ final class AppSettings {
       defaults.string(forKey: Key.notchApprovals).flatMap(NotchApprovals.init(rawValue:))
       ?? .exceptShell
     showsSessionList = defaults.object(forKey: Key.showsSessionList) as? Bool ?? true
+    answersInNotch = defaults.object(forKey: Key.answersInNotch) as? Bool ?? true
     panelScreen =
       defaults.string(forKey: Key.panelScreen).flatMap(PanelScreen.init(rawValue:)) ?? .notched
     tabBarStyle =

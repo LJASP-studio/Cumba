@@ -74,6 +74,15 @@ struct ClaudeCodeSettingsView: View {
         .foregroundStyle(.secondary)
         .fixedSize(horizontal: false, vertical: true)
         Toggle("Show a list when several sessions run", isOn: $settings.showsSessionList)
+        if agent == .claude {
+          Toggle("Answer questions and plans in the notch", isOn: $settings.answersInNotch)
+          Text(
+            "Claude's questions show their choices in the notch, and a plan can be approved or sent back for changes there. Approving a plan doesn't change the permission mode."
+          )
+          .font(.callout)
+          .foregroundStyle(.secondary)
+          .fixedSize(horizontal: false, vertical: true)
+        }
       }
       Section {
         Text(
