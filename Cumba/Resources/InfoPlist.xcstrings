@@ -8,31 +8,31 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Cumba reads what Spotify and Music are playing and sends play, pause, next and seek commands to them, and shows your recent Apple Notes and makes new ones."
+            "value" : "Cumba reads what Spotify and Music are playing and sends play, pause, next and seek commands to them, shows your recent Apple Notes and makes new ones, and brings an AI agent session's Terminal or iTerm2 tab forward."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba lee lo que suena en Spotify y Música y les envía comandos para reproducir, pausar, pasar a la siguiente canción y saltar a otro punto. También muestra tus notas recientes de Apple y crea otras nuevas."
+            "value" : "Cumba lee lo que suena en Spotify y Música y les envía comandos para reproducir, pausar, pasar a la siguiente canción y saltar a otro punto. También muestra tus notas recientes de Apple y crea otras nuevas, y trae al frente la pestaña de Terminal o iTerm2 de una sesión de agente de IA."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba lee lo que suena en Spotify y Música y les envía comandos para reproducir, pausar, pasar a la siguiente canción y saltar a otro punto. También muestra tus notas recientes de Apple y crea otras nuevas."
+            "value" : "Cumba lee lo que suena en Spotify y Música y les envía comandos para reproducir, pausar, pasar a la siguiente canción y saltar a otro punto. También muestra tus notas recientes de Apple y crea otras nuevas, y trae al frente la pestaña de Terminal o iTerm2 de una sesión de agente de IA."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba récupère le morceau en cours de lecture dans Spotify et Musique et leur envoie les commandes lecture, pause, morceau suivant et déplacement dans le morceau. Il affiche aussi vos notes Apple récentes et en crée de nouvelles."
+            "value" : "Cumba récupère le morceau en cours de lecture dans Spotify et Musique et leur envoie les commandes lecture, pause, morceau suivant et déplacement dans le morceau. Il affiche aussi vos notes Apple récentes et en crée de nouvelles, et met au premier plan l’onglet Terminal ou iTerm2 d’une session d’agent IA."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cumba, Spotify ve Müzik'te çalanı okur ve onlara oynat, duraklat, sonraki ve sarma komutlarını gönderir; ayrıca Notlar'daki son notlarınızı gösterir ve yeni not oluşturur."
+            "value" : "Cumba, Spotify ve Müzik'te çalanı okur ve onlara oynat, duraklat, sonraki ve sarma komutlarını gönderir; Notlar'daki son notlarınızı gösterir ve yeni not oluşturur; bir yapay zeka ajanı oturumunun Terminal ya da iTerm2 sekmesini öne getirir."
           }
         }
       }

@@ -61,6 +61,8 @@ extension ClaudeCodeService {
     var agent = Agent.claude
     /// Bundle identifier of the app the session runs in, from its hooks.
     var app: String?
+    /// The terminal device the session runs in, e.g. "/dev/ttys003", from its hooks.
+    var tty: String?
 
     var isActive: Bool {
       state == .working || state == .waitingPermission

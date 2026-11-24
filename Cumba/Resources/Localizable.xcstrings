@@ -1534,6 +1534,34 @@
         }
       }
     },
+    "AI Agents: Open brings the session's own tab forward" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapay Zeka Ajanları: Aç, oturumun kendi sekmesini öne getirir"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agentes de IA: Abrir trae al frente la pestaña de la sesión"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agentes de IA: Abrir trae al frente la pestaña de la sesión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agents IA : Ouvrir met au premier plan l’onglet de la session"
+          }
+        }
+      }
+    },
     "All except shell commands" : {
       "localizations" : {
         "es" : {
@@ -8827,6 +8855,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aç"
+          }
+        }
+      }
+    },
+    "Open %@ first" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önce %@ uygulamasını açın"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre %@ primero"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre %@ primero"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrez d’abord %@"
           }
         }
       }

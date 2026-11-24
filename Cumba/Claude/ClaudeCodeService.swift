@@ -42,7 +42,10 @@ final class ClaudeCodeService {
 
   /// Handles every event except permission requests, which `requestPermission` handles.
   /// - Parameter app: Bundle identifier of the app the agent runs in, when the hook sent it.
-  func handle(_ payload: HookPayload, agent: Agent = .claude, app: String? = nil) {
+  /// - Parameter tty: The terminal device of the agent's process, e.g. "/dev/ttys003".
+  func handle(
+    _ payload: HookPayload, agent: Agent = .claude, app: String? = nil, tty: String? = nil
+  ) {
     guard let event = payload.event else { return }
     let id = payload.sessionID
     switch event {
@@ -90,7 +93,7 @@ final class ClaudeCodeService {
     case .permissionRequest:
       break
     }
-    tag(id, with: agent, app: app)
+    tag(id, with: agent, app: app, tty: tty)
     if agent == .codex, event != .sessionEnd {
       refreshCodex(of: id, path: payload.transcriptPath)
     }
@@ -98,11 +101,11 @@ final class ClaudeCodeService {
   }
 
   /// Shows the request in the notch and waits for the user's decision.
-  func requestPermission(_ payload: HookPayload, agent: Agent = .claude, app: String? = nil)
-    async -> PermissionBroker.Decision
-  {
+  func requestPermission(
+    _ payload: HookPayload, agent: Agent = .claude, app: String? = nil, tty: String? = nil
+  ) async -> PermissionBroker.Decision {
     if payload.isQuestion {
-      showQuestion(payload, agent: agent, app: app)
+      showQuestion(payload, agent: agent, app: app, tty: tty)
       guard answersInNotch, let request = questionRequest(payload, agent: agent) else {
         return .askInTerminal
       }
@@ -117,7 +120,7 @@ final class ClaudeCodeService {
       return decision
     }
     update(payload.sessionID, payload, state: .waitingPermission)
-    tag(payload.sessionID, with: agent, app: app)
+    tag(payload.sessionID, with: agent, app: app, tty: tty)
     let session = sessions.first { $0.id == payload.sessionID }
     let detail = payload.permissionDetail
     // Everything shown above the Allow button is checked the same way.
@@ -149,10 +152,10 @@ final class ClaudeCodeService {
 
   /// A question or a plan to approve: Claude Code asks it in its own window, and the notch
   /// says so until it's answered.
-  private func showQuestion(_ payload: HookPayload, agent: Agent, app: String?) {
+  private func showQuestion(_ payload: HookPayload, agent: Agent, app: String?, tty: String?) {
     let question = payload.questionText.map { SafeText($0).text }
     update(payload.sessionID, payload, state: .waitingInput, detail: question, kind: .question)
-    tag(payload.sessionID, with: agent, app: app)
+    tag(payload.sessionID, with: agent, app: app, tty: tty)
     notify(
       payload.toolName == "ExitPlanMode" ? .plan : .question, session: payload.sessionID,
       agent: agent, message: question)
@@ -250,10 +253,11 @@ final class ClaudeCodeService {
     if !limits.isEmpty { sessions[index].limits = limits }
   }
 
-  private func tag(_ id: String, with agent: Agent, app: String?) {
+  private func tag(_ id: String, with agent: Agent, app: String?, tty: String?) {
     if let index = sessions.firstIndex(where: { $0.id == id }) {
       sessions[index].agent = agent
       sessions[index].app = app ?? sessions[index].app
+      sessions[index].tty = tty ?? sessions[index].tty
     }
   }
 

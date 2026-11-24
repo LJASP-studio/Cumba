@@ -70,11 +70,17 @@ extension ClaudeCodeService {
   }
 
   /// Brings the app the session runs in to the front if it's running; never launches one.
+  /// In Terminal and iTerm2 it also selects the session's tab.
   /// False when it isn't known or isn't running.
   func openApp(of id: String) -> Bool {
-    guard let bundleID = sessions.first(where: { $0.id == id })?.app,
+    let session = sessions.first { $0.id == id }
+    guard let bundleID = session?.app,
       let app = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).first
     else { return false }
+    // In Terminal and iTerm2, the session's own tab comes forward too, when allowed.
+    if let tty = session?.tty, TerminalTabs.supported.contains(bundleID) {
+      Task { _ = await TerminalTabs.select(tty: tty, in: bundleID) }
+    }
     return app.activate()
   }
 

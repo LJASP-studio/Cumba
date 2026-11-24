@@ -14,6 +14,8 @@ struct ClaudeHookRoute: HTTPHandler {
 
   /// The bundle identifier of the app the agent runs in, sent by our hook command.
   static let appHeader = "X-Cumba-App"
+  /// The tty of the agent's process ("ttys003"), sent by our hook command.
+  static let ttyHeader = "X-Cumba-TTY"
 
   /// A bundle identifier, or nil for anything that doesn't look like one.
   static func appIdentifier(_ value: String?) -> String? {
@@ -38,10 +40,12 @@ struct ClaudeHookRoute: HTTPHandler {
     }
     Log.claude.info("Hook event: \(event.rawValue, privacy: .public)")
     let app = Self.appIdentifier(request.headers[HTTPHeader(Self.appHeader)])
+    let tty = TerminalTabs.device(request.headers[HTTPHeader(Self.ttyHeader)])
 
     switch event {
     case .permissionRequest:
-      let decision = await service.requestPermission(payload, agent: agent, app: app)
+      let decision = await service.requestPermission(
+        payload, agent: agent, app: app, tty: tty)
       let body = PermissionBroker.responseBody(
         for: decision, toolName: payload.toolName, input: payload.toolInput)
       // An empty 200 lets Claude Code show its own dialog.
@@ -50,7 +54,7 @@ struct ClaudeHookRoute: HTTPHandler {
         body: body)
     default:
       // UserPromptSubmit blocks the model, so answer before doing any work.
-      Task { @MainActor [agent] in service.handle(payload, agent: agent, app: app) }
+      Task { @MainActor [agent] in service.handle(payload, agent: agent, app: app, tty: tty) }
       return HTTPResponse(statusCode: .ok)
     }
   }
