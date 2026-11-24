@@ -2783,6 +2783,34 @@
         }
       }
     },
+    "Claude Code tells only its status line how full the context is and how much of your plan's limits you've used. Installing adds a small command to the status line that passes these to Cumba and then runs your own status line command, so it looks as before. Terminal sessions only; limits show for Claude subscriptions." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code bağlamın ne kadar dolduğunu ve planınızın sınırlarından ne kadarını kullandığınızı yalnızca durum satırına söyler. Kurulum, durum satırına bunları Cumba'ya ileten küçük bir komut ekler, sonra sizin durum satırı komutunuzu çalıştırır; durum satırınız eskisi gibi görünür. Yalnızca terminal oturumlarında çalışır; sınırlar Claude aboneliklerinde görünür."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code solo le indica a su línea de estado cuánto contexto se ha llenado y cuánto has usado de los límites de tu plan. Al instalarlo, se añade a la línea de estado un pequeño comando que se lo pasa a Cumba y luego ejecuta tu propio comando de línea de estado, así que se ve igual que antes. Solo en sesiones de terminal; los límites aparecen con las suscripciones de Claude."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code solo le indica a su línea de estado cuánto contexto se llenó y cuánto usaste de los límites de tu plan. Al instalarlo, se agrega a la línea de estado un pequeño comando que se lo pasa a Cumba y luego ejecuta tu propio comando de línea de estado, así que se ve igual que antes. Solo en sesiones de terminal; los límites aparecen con las suscripciones de Claude."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code n’indique qu’à sa ligne d’état le remplissage du contexte et la part utilisée des limites de votre forfait. L’installation ajoute à la ligne d’état une petite commande qui transmet ces chiffres à Cumba puis exécute votre propre commande de ligne d’état, qui reste donc identique. Sessions de terminal uniquement ; les limites s’affichent avec les abonnements Claude."
+          }
+        }
+      }
+    },
     "Claude's questions show their choices in the notch, and a plan can be approved or sent back for changes there. Approving a plan doesn't change the permission mode." : {
       "localizations" : {
         "tr" : {
@@ -3094,6 +3122,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notlar'a bağlı"
+          }
+        }
+      }
+    },
+    "Context and Limits" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlam ve sınırlar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contexto y límites"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contexto y límites"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contexte et limites"
           }
         }
       }
@@ -12293,6 +12349,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durum"
+          }
+        }
+      }
+    },
+    "Status line" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durum satırı"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Línea de estado"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Línea de estado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligne d’état"
           }
         }
       }

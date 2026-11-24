@@ -144,13 +144,13 @@ struct HookInstaller: Sendable {
     }
   }
 
-  private func readSettings() throws(Failure) -> [String: Any] {
+  func readSettings() throws(Failure) -> [String: Any] {
     try readFile().object
   }
 
   /// The file's text and parsed content. A missing file counts as empty; any other read
   /// error is a failure, so a file we can't read (e.g. owned by root) is never replaced.
-  private func readFile() throws(Failure) -> (text: String, object: [String: Any]) {
+  func readFile() throws(Failure) -> (text: String, object: [String: Any]) {
     let url = resolvedURL
     guard FileManager.default.fileExists(atPath: url.path(percentEncoded: false)) else {
       return ("", [:])

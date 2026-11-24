@@ -230,7 +230,7 @@ final class ClaudeCodeService {
       let summary = await Task.detached { TranscriptReader.read(url) }.value
       guard let self, let summary, let index = self.sessions.firstIndex(where: { $0.id == id })
       else { return }
-      if let fraction = summary.contextFraction {
+      if let fraction = summary.contextFraction, !self.sessions[index].hasStatusLine {
         self.sessions[index].contextFraction = fraction
       }
       self.setTitle(
@@ -240,8 +240,12 @@ final class ClaudeCodeService {
   }
 
   /// The context's fill and the limits, when a source reported them.
-  func setUsage(of id: String, context: Double?, limits: [UsageLimit]) {
+  /// The status line's numbers are exact, so the transcript's estimate doesn't replace them.
+  func setUsage(
+    of id: String, context: Double?, limits: [UsageLimit], fromStatusLine: Bool = false
+  ) {
     guard let index = sessions.firstIndex(where: { $0.id == id }) else { return }
+    if fromStatusLine { sessions[index].hasStatusLine = true }
     if let context { sessions[index].contextFraction = context }
     if !limits.isEmpty { sessions[index].limits = limits }
   }

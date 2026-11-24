@@ -127,6 +127,8 @@ final class LocalServer {
       await server.appendRoute(
         "POST /claude/hook", to: ClaudeHookRoute(token: token, service: claude))
       await server.appendRoute(
+        "POST /claude/status", to: StatusLineRoute(token: token, service: claude))
+      await server.appendRoute(
         "POST /codex/hook", to: ClaudeHookRoute(token: token, service: claude, agent: .codex))
       await server.appendRoute(
         "POST /activity",
