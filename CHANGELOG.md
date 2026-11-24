@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-11-24
+
+### Fixed
+
+- Join in the calendar and Allow on a permission card are readable on light colors. While the panel has keyboard focus, these buttons take the theme's accent (Allow is green), and macOS left their label white on the pink, orange, violet and green ones, at about 2:1. The label is now dark there; the blue themes keep the system's white label.
+
 ## [1.4.0] - 2026-11-23
 
 ### Added
@@ -30,7 +36,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
-- Join in the calendar and Allow on a permission card are readable on light colors. While the panel has keyboard focus, these buttons take the theme's accent (Allow is green), and macOS left their label white on the pink, orange, violet and green ones, at about 2:1. The label is now dark there; the blue themes keep the system's white label.
 - When one agent finishes or asks a question while another is still working, its notification now shows. Before, the other agent's working ring took its place right away.
 - Pinning or unpinning the open panel keeps the tab you're on. Before, it jumped to the opening tab, or to the agents' tab while an agent worked, with the other tab's content passing over it.
 - In Settings, a scrolled page passes under the page title instead of showing through it, and the first opening shows the page's name instead of "Untitled".
@@ -281,7 +286,8 @@ Fixes from a security review of the code, done with AI assistance (not an extern
 - CI workflow (build, test, swift-format lint) and a release workflow that publishes an ad-hoc signed zip.
 - Contributor docs: README in Turkish, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue and pull request templates.
 
-[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.4.1...HEAD
+[1.4.1]: https://github.com/LJASP-studio/Cumba/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/LJASP-studio/Cumba/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/LJASP-studio/Cumba/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/LJASP-studio/Cumba/compare/v1.1.0...v1.2.0
