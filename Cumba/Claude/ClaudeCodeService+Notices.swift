@@ -6,11 +6,13 @@ extension ClaudeCodeService {
   /// A request waiting in the panel: a notification that leads to it, then the agent's mark
   /// and a raised hand beside the notch until it's answered.
   func updatePermissionActivity() {
-    guard let first = permissions.pending.first else {
+    // Questions and plans have their own notice (`notify`).
+    let requests = permissions.pending.filter { $0.kind == .permission }
+    guard let first = requests.first else {
       liveActivities.dismiss(Self.permissionActivityID)
       return
     }
-    let count = permissions.pending.count
+    let count = requests.count
     let agent = sessions.first { $0.id == first.sessionID }?.agent ?? .claude
     let notification = LiveNotification(
       icon: AnyView(AgentNoticeIcon(agent: agent, notice: .permission)),
@@ -48,7 +50,13 @@ extension ClaudeCodeService {
       context: session?.displayTitle,
       action: LiveNotification.Action(
         title: String(localized: "Open", comment: "Notification button: shows the agent's app")
-      ) { [weak self] in self?.openApp(of: id) ?? false },
+      ) { [weak self] in
+        // A question the notch can answer opens the panel, which shows it.
+        guard let self, !permissions.pending.contains(where: { $0.sessionID == id }) else {
+          return false
+        }
+        return openApp(of: id)
+      },
       tint: agent.color,
       duration: notice.waitsForUser ? .seconds(10) : .seconds(6))
     liveActivities.show(
@@ -62,11 +70,17 @@ extension ClaudeCodeService {
   }
 
   /// Brings the app the session runs in to the front if it's running; never launches one.
+  /// In Terminal and iTerm2 it also selects the session's tab.
   /// False when it isn't known or isn't running.
   func openApp(of id: String) -> Bool {
-    guard let bundleID = sessions.first(where: { $0.id == id })?.app,
+    let session = sessions.first { $0.id == id }
+    guard let bundleID = session?.app,
       let app = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).first
     else { return false }
+    // In Terminal and iTerm2, the session's own tab comes forward too, when allowed.
+    if let tty = session?.tty, TerminalTabs.supported.contains(bundleID) {
+      Task { _ = await TerminalTabs.select(tty: tty, in: bundleID) }
+    }
     return app.activate()
   }
 

@@ -61,6 +61,9 @@ struct ClaudeCodeSettingsView: View {
             .fixedSize(horizontal: false, vertical: true)
         }
       }
+      if agent == .claude {
+        StatusLineSection(server: server)
+      }
       Section("In the Notch") {
         Picker("Allow from the notch", selection: $settings.notchApprovals) {
           Text("All requests").tag(NotchApprovals.all)
@@ -74,6 +77,15 @@ struct ClaudeCodeSettingsView: View {
         .foregroundStyle(.secondary)
         .fixedSize(horizontal: false, vertical: true)
         Toggle("Show a list when several sessions run", isOn: $settings.showsSessionList)
+        if agent == .claude {
+          Toggle("Answer questions and plans in the notch", isOn: $settings.answersInNotch)
+          Text(
+            "Claude's questions show their choices in the notch, and a plan can be approved or sent back for changes there. Approving a plan doesn't change the permission mode."
+          )
+          .font(.callout)
+          .foregroundStyle(.secondary)
+          .fixedSize(horizontal: false, vertical: true)
+        }
       }
       Section {
         Text(
@@ -173,7 +185,7 @@ struct ClaudeCodeSettingsView: View {
       }.value
       switch result {
       case .success(let reviewed): plan = reviewed
-      case .failure(let failure): message = describe(failure)
+      case .failure(let failure): message = Self.describe(failure)
       }
     }
   }
@@ -198,13 +210,13 @@ struct ClaudeCodeSettingsView: View {
             String(localized: "Saved. The previous file was backed up to \($0.lastPathComponent).")
           } ?? String(localized: "Saved.")
       case .failure(let failure):
-        message = describe(failure)
+        message = Self.describe(failure)
       }
       await refresh()
     }
   }
 
-  private func describe(_ failure: HookInstaller.Failure) -> String {
+  static func describe(_ failure: HookInstaller.Failure) -> String {
     switch failure {
     case .unreadable:
       String(
@@ -216,84 +228,6 @@ struct ClaudeCodeSettingsView: View {
       )
     case .writeFailed(let reason):
       String(localized: "Couldn't write settings.json: \(reason)")
-    }
-  }
-}
-
-extension HookInstaller.Plan: Identifiable {
-  var id: String { newText }
-}
-
-/// Shows the planned change line by line before anything is written.
-private struct DiffSheet: View {
-  let plan: HookInstaller.Plan
-  let confirm: () -> Void
-  let cancel: () -> Void
-
-  var body: some View {
-    VStack(alignment: .leading, spacing: 12) {
-      Text("Review changes to ~/.claude/settings.json")
-        .font(.headline)
-      Text("A backup of the current file is made before saving.")
-        .font(.callout)
-        .foregroundStyle(.secondary)
-      if plan.reformats {
-        Label(
-          "Saving also rewrites the file in a standard format (keys sorted, two-space indents). Its contents change only as shown below.",
-          systemImage: "info.circle"
-        )
-        .font(.callout)
-        .foregroundStyle(.secondary)
-        .fixedSize(horizontal: false, vertical: true)
-      }
-      ScrollView {
-        VStack(alignment: .leading, spacing: 0) {
-          ForEach(plan.diff) { line in
-            Text(prefix(line.kind) + line.text)
-              .font(.system(.caption, design: .monospaced))
-              .foregroundStyle(color(line.kind))
-              .frame(maxWidth: .infinity, alignment: .leading)
-              .background(background(line.kind))
-          }
-        }
-        .textSelection(.enabled)
-        .padding(8)
-      }
-      .background(.background.secondary, in: RoundedRectangle(cornerRadius: 8))
-      HStack {
-        Spacer()
-        Button("Cancel", role: .cancel, action: cancel)
-          .keyboardShortcut(.cancelAction)
-        Button("Save", action: confirm)
-          .keyboardShortcut(.defaultAction)
-          .disabled(!plan.hasChanges)
-      }
-    }
-    .padding(20)
-    .frame(width: 600, height: 460)
-  }
-
-  private func prefix(_ kind: DiffLine.Kind) -> String {
-    switch kind {
-    case .added: "+ "
-    case .removed: "- "
-    case .context: "  "
-    }
-  }
-
-  private func color(_ kind: DiffLine.Kind) -> Color {
-    switch kind {
-    case .added: .green
-    case .removed: .red
-    case .context: .primary
-    }
-  }
-
-  private func background(_ kind: DiffLine.Kind) -> Color {
-    switch kind {
-    case .added: .green.opacity(0.08)
-    case .removed: .red.opacity(0.08)
-    case .context: .clear
     }
   }
 }

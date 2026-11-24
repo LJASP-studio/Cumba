@@ -14,6 +14,8 @@ final class ClaudeCodeService {
   var notchApprovals = NotchApprovals.all
   /// With several sessions, the widget lists them instead of showing "+N".
   var showsSessionList = true
+  /// Questions and plans can be answered in the notch; otherwise only in Claude Code.
+  var answersInNotch = true
 
   @ObservationIgnored let liveActivities: LiveActivityCenter
   @ObservationIgnored private var removalTasks: [String: Task<Void, Never>] = [:]
@@ -40,7 +42,10 @@ final class ClaudeCodeService {
 
   /// Handles every event except permission requests, which `requestPermission` handles.
   /// - Parameter app: Bundle identifier of the app the agent runs in, when the hook sent it.
-  func handle(_ payload: HookPayload, agent: Agent = .claude, app: String? = nil) {
+  /// - Parameter tty: The terminal device of the agent's process, e.g. "/dev/ttys003".
+  func handle(
+    _ payload: HookPayload, agent: Agent = .claude, app: String? = nil, tty: String? = nil
+  ) {
     guard let event = payload.event else { return }
     let id = payload.sessionID
     switch event {
@@ -56,6 +61,7 @@ final class ClaudeCodeService {
         step: AgentStep.describe(
           toolName: payload.toolName, input: payload.toolInput, cwd: payload.cwd))
     case .postToolUse:
+      permissions.resolveQuestions(in: id, toolName: payload.toolName)
       update(id, payload, state: .working, step: AgentStep.thinking)
       refreshTranscript(of: id, path: payload.transcriptPath, force: false)
     case .notification:
@@ -87,23 +93,34 @@ final class ClaudeCodeService {
     case .permissionRequest:
       break
     }
-    tag(id, with: agent, app: app)
+    tag(id, with: agent, app: app, tty: tty)
     if agent == .codex, event != .sessionEnd {
-      refreshCodexTitle(of: id)
+      refreshCodex(of: id, path: payload.transcriptPath)
     }
     updateWorkingActivity()
   }
 
   /// Shows the request in the notch and waits for the user's decision.
-  func requestPermission(_ payload: HookPayload, agent: Agent = .claude, app: String? = nil)
-    async -> PermissionBroker.Decision
-  {
+  func requestPermission(
+    _ payload: HookPayload, agent: Agent = .claude, app: String? = nil, tty: String? = nil
+  ) async -> PermissionBroker.Decision {
     if payload.isQuestion {
-      showQuestion(payload, agent: agent, app: app)
-      return .askInTerminal
+      showQuestion(payload, agent: agent, app: app, tty: tty)
+      guard answersInNotch, let request = questionRequest(payload, agent: agent) else {
+        return .askInTerminal
+      }
+      let decision = await permissions.decide(request)
+      if !permissions.hasPending(in: payload.sessionID),
+        sessions.first(where: { $0.id == payload.sessionID })?.state == .waitingInput,
+        decision != .askInTerminal
+      {
+        update(payload.sessionID, payload, state: .working, step: AgentStep.thinking)
+        updateWorkingActivity()
+      }
+      return decision
     }
     update(payload.sessionID, payload, state: .waitingPermission)
-    tag(payload.sessionID, with: agent, app: app)
+    tag(payload.sessionID, with: agent, app: app, tty: tty)
     let session = sessions.first { $0.id == payload.sessionID }
     let detail = payload.permissionDetail
     // Everything shown above the Allow button is checked the same way.
@@ -135,10 +152,10 @@ final class ClaudeCodeService {
 
   /// A question or a plan to approve: Claude Code asks it in its own window, and the notch
   /// says so until it's answered.
-  private func showQuestion(_ payload: HookPayload, agent: Agent, app: String?) {
+  private func showQuestion(_ payload: HookPayload, agent: Agent, app: String?, tty: String?) {
     let question = payload.questionText.map { SafeText($0).text }
     update(payload.sessionID, payload, state: .waitingInput, detail: question, kind: .question)
-    tag(payload.sessionID, with: agent, app: app)
+    tag(payload.sessionID, with: agent, app: app, tty: tty)
     notify(
       payload.toolName == "ExitPlanMode" ? .plan : .question, session: payload.sessionID,
       agent: agent, message: question)
@@ -216,7 +233,7 @@ final class ClaudeCodeService {
       let summary = await Task.detached { TranscriptReader.read(url) }.value
       guard let self, let summary, let index = self.sessions.firstIndex(where: { $0.id == id })
       else { return }
-      if let fraction = summary.contextFraction {
+      if let fraction = summary.contextFraction, !self.sessions[index].hasStatusLine {
         self.sessions[index].contextFraction = fraction
       }
       self.setTitle(
@@ -225,10 +242,22 @@ final class ClaudeCodeService {
     }
   }
 
-  private func tag(_ id: String, with agent: Agent, app: String?) {
+  /// The context's fill and the limits, when a source reported them.
+  /// The status line's numbers are exact, so the transcript's estimate doesn't replace them.
+  func setUsage(
+    of id: String, context: Double?, limits: [UsageLimit], fromStatusLine: Bool = false
+  ) {
+    guard let index = sessions.firstIndex(where: { $0.id == id }) else { return }
+    if fromStatusLine { sessions[index].hasStatusLine = true }
+    if let context { sessions[index].contextFraction = context }
+    if !limits.isEmpty { sessions[index].limits = limits }
+  }
+
+  private func tag(_ id: String, with agent: Agent, app: String?, tty: String?) {
     if let index = sessions.firstIndex(where: { $0.id == id }) {
       sessions[index].agent = agent
       sessions[index].app = app ?? sessions[index].app
+      sessions[index].tty = tty ?? sessions[index].tty
     }
   }
 

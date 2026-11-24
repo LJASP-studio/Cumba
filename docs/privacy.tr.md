@@ -33,6 +33,7 @@ Açıldığında uzantı sunucusu yalnızca `127.0.0.1` adresini dinler, yalnız
 |---|---|---|
 | Sistemin Şu An Çalan yardımcısı | Her uygulamadaki medya ve kontrolleri | Uygulama açıkken çalışır; yerine AppleScript kullanmak için "Tüm uygulamalardaki medyayı oku" seçeneğini kapatın. [Ayrıntılar aşağıda](#medya-ve-ozel-apiler) |
 | Spotify ve Müzik için Otomasyon (Apple Events) | Çalan parçayı okumak; oynat, duraklat, atla, sar | Yalnızca "Tüm uygulamalardaki medyayı oku" kapalıyken; Ayarlar'dan istenir, komutlar yalnızca o uygulama zaten açıkken gönderilir |
+| Terminal ve iTerm2 için Otomasyon (Apple Events) | Yapay Zeka Ajanları: Aç, oturumun kendi sekmesini seçer | O uygulama açıkken Ayarlar > İzinler'den istenir; komut yalnızca Aç'a tıkladığınızda gönderilir |
 | Notlar için Otomasyon (Apple Events) | Notlar widget'ı: son notları listelemek, açmak, yeni not oluşturmak | Notlar'ı widget'ta ya da Ayarlar'da bağladığınızda istenir; Cumba Notlar'ı arka planda başlatır ve var olan hiçbir notu değiştirmez |
 | Takvim (tam erişim) | Takvim widget'ı | Widget'ta veya Ayarlar'da İzin Ver'e tıkladığınızda istenir |
 | Anımsatıcılar (tam erişim) | Yapılacaklar widget'ı: anımsatıcıları göstermek, işaretlemek ve eklemek | Widget'ta veya Ayarlar'da İzin Ver'e tıkladığınızda istenir |
@@ -43,6 +44,8 @@ Açıldığında uzantı sunucusu yalnızca `127.0.0.1` adresini dinler, yalnız
 | `~/.claude/settings.json`, `~/.codex/hooks.json` | Claude Code ve Codex hook'larını kurmak ve kaldırmak | Yalnızca değişikliği gözden geçirdikten sonra; yedek alınır |
 | `~/.claude/projects` içindeki Claude Code oturum kayıtları | Yapay Zeka Ajanları widget'ında bağlam kullanımı ve oturum başlığı | Yalnızca bu Mac'te, son 256 KB, oturum sürerken okunur |
 | Codex'in oturum dizini, `~/.codex/session_index.jsonl` | Yapay Zeka Ajanları widget'ında Codex oturumlarının başlığı | Yalnızca bu Mac'te, son 128 KB, Codex oturumu sürerken okunur |
+| `~/.codex/sessions` içindeki Codex oturum dosyaları | Codex oturumunun bağlam kullanımı ve kullanım sınırları | Yalnızca bu Mac'te, son 256 KB, Codex oturumu sürerken okunur |
+| Claude Code'un durum satırı (`~/.claude/settings.json` içindeki `statusLine`) | Kesin bağlam kullanımı ve kullanım sınırları | Yalnızca Ayarlar > Ajanlar'dan kurup farkı gözden geçirdikten sonra; kendi durum satırı komutunuz çalışmaya devam eder |
 | Erişilebilirlik | Ses veya parlaklık tuşlarını yönetmek | Yalnızca "Sistemin ses göstergesinin yerine geç" veya "…parlaklık göstergesinin…" açıksa |
 | Pano | Pano Geçmişi widget'ı | Yalnızca o widget sekmelerinizden birindeyken |
 | Dosyalar ve Klasörler (Masaüstü ya da ekran resimlerinin kaydedildiği yer) | Yeni ekran resimlerini Pano Geçmişi'ne ekleme | Yalnızca "Yeni ekran resimlerini ekle" açıksa |

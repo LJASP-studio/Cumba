@@ -27,6 +27,8 @@ struct PermissionsSettingsView: View {
       Section("Automation") {
         MediaPermissionsView()
         NotesPermissionRow()
+        TerminalPermissionRow(bundleID: TerminalTabs.terminal, name: "Terminal")
+        TerminalPermissionRow(bundleID: TerminalTabs.iTerm, name: "iTerm2")
       }
       Section {
         LabeledContent {

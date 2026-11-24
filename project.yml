@@ -72,7 +72,7 @@ targets:
         NSPrincipalClass: NSApplication
         # Translations live in InfoPlist.xcstrings.
         NSCalendarsFullAccessUsageDescription: Cumba shows your upcoming events in the notch. Nothing leaves your Mac.
-        NSAppleEventsUsageDescription: Cumba reads what Spotify and Music are playing and sends play, pause, next and seek commands to them, and shows your recent Apple Notes and makes new ones.
+        NSAppleEventsUsageDescription: Cumba reads what Spotify and Music are playing and sends play, pause, next and seek commands to them, shows your recent Apple Notes and makes new ones, and brings an AI agent session's Terminal or iTerm2 tab forward.
         NSRemindersFullAccessUsageDescription: The To-dos widget shows your reminders and lets you tick them off and add new ones. Nothing leaves your Mac.
         NSRemindersUsageDescription: The To-dos widget shows your reminders and lets you tick them off and add new ones. Nothing leaves your Mac.
         NSDesktopFolderUsageDescription: The Clipboard History widget shows new screenshots saved to your Desktop, and the Tray widget shows files you put on it. Nothing leaves your Mac.

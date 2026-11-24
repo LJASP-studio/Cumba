@@ -54,9 +54,15 @@ extension ClaudeCodeService {
     var step: String?
     /// How full the context window was at the last answer, 0...1.
     var contextFraction: Double?
+    /// The account's usage limits as last reported, e.g. five hours and a week.
+    var limits: [UsageLimit] = []
+    /// Claude Code's status line reports this session (`StatusLineBridge`).
+    var hasStatusLine = false
     var agent = Agent.claude
     /// Bundle identifier of the app the session runs in, from its hooks.
     var app: String?
+    /// The terminal device the session runs in, e.g. "/dev/ttys003", from its hooks.
+    var tty: String?
 
     var isActive: Bool {
       state == .working || state == .waitingPermission

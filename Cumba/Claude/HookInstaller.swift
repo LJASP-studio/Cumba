@@ -144,13 +144,13 @@ struct HookInstaller: Sendable {
     }
   }
 
-  private func readSettings() throws(Failure) -> [String: Any] {
+  func readSettings() throws(Failure) -> [String: Any] {
     try readFile().object
   }
 
   /// The file's text and parsed content. A missing file counts as empty; any other read
   /// error is a failure, so a file we can't read (e.g. owned by root) is never replaced.
-  private func readFile() throws(Failure) -> (text: String, object: [String: Any]) {
+  func readFile() throws(Failure) -> (text: String, object: [String: Any]) {
     let url = resolvedURL
     guard FileManager.default.fileExists(atPath: url.path(percentEncoded: false)) else {
       return ("", [:])
@@ -172,7 +172,8 @@ struct HookInstaller: Sendable {
   /// running, and gives up a second before Claude Code's own timeout. It also sends the
   /// bundle identifier of the app the agent runs in (`__CFBundleIdentifier`, set by macOS),
   /// so a notification's Open button can bring that app forward; without it curl sends no
-  /// such header.
+  /// such header. It also sends the tty of the agent's process (the hook shell's parent), so
+  /// Open can pick the right Terminal or iTerm2 tab.
   static func command(
     socketPath: String, token: String, timeout: Int, agent: Agent = .claude
   ) -> String {
@@ -182,6 +183,7 @@ struct HookInstaller: Sendable {
       "--unix-socket \(shellQuoted(socketPath))",
       "-H \(shellQuoted(header)) -H 'Content-Type: application/json'",
       "-H \"\(ClaudeHookRoute.appHeader): ${__CFBundleIdentifier:-}\"",
+      "-H \"\(ClaudeHookRoute.ttyHeader): $(/bin/ps -o tty= -p $PPID 2>/dev/null)\"",
       "--data-binary @- http://localhost\(agent.hookRoute) || true",
     ].joined(separator: " ")
   }

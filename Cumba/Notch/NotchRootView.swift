@@ -236,7 +236,7 @@ private struct ExpandedPanelView: View {
 
   @ViewBuilder private var content: some View {
     if let request = host.permissionBanner {
-      PermissionCard(request: request, waiting: host.claude.permissions.pending.count - 1) {
+      AgentRequestCard(request: request, waiting: host.claude.permissions.pending.count - 1) {
         decision in
         host.claude.answer(request, with: decision)
       }

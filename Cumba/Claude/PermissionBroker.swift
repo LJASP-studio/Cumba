@@ -26,6 +26,16 @@ final class PermissionBroker {
     var headline = ""
     /// The agent's own words on what the command does, when it gave them.
     var note: String?
+    /// A permission, or something Claude Code asks the user (Faz 15).
+    var kind = Kind.permission
+  }
+
+  enum Kind: Equatable, Sendable {
+    case permission
+    /// AskUserQuestion: answered with the chosen options.
+    case questions([AgentQuestion])
+    /// ExitPlanMode: Allow approves the plan, Deny sends it back for more planning.
+    case plan
   }
 
   enum Decision: Equatable, Sendable {
@@ -33,6 +43,8 @@ final class PermissionBroker {
     case deny
     /// Empty response: Claude Code continues with its own permission dialog.
     case askInTerminal
+    /// AskUserQuestion's answers: question text → chosen label(s).
+    case answers([String: String])
   }
 
   /// Oldest first; the notch shows the first one and the count.
@@ -69,9 +81,16 @@ final class PermissionBroker {
   }
 
   func resolve(_ id: UUID, with decision: Decision) {
-    // Allow reaches Claude Code only for a request that offered it.
-    let canAllow = pending.first { $0.id == id }?.canAllow == true
-    let decision = decision == .allow && !canAllow ? .askInTerminal : decision
+    // Allow and answers reach Claude Code only for a request that offered them.
+    let request = pending.first { $0.id == id }
+    let canAllow = request?.canAllow == true
+    let decision: Decision =
+      switch decision {
+      case .allow where !canAllow: .askInTerminal
+      case .answers(let answers):
+        canAllow && Self.answersFit(answers, request?.kind) ? decision : .askInTerminal
+      default: decision
+      }
     pending.removeAll { $0.id == id }
     continuations.removeValue(forKey: id)?.resume(returning: decision)
   }
@@ -83,21 +102,61 @@ final class PermissionBroker {
     }
   }
 
+  /// The session moved past a question or a plan: it was answered in Claude Code.
+  func resolveQuestions(in sessionID: String, toolName: String?) {
+    for request in pending
+    where request.sessionID == sessionID && request.kind != .permission
+      && request.toolName == toolName
+    {
+      resolve(request.id, with: .askInTerminal)
+    }
+  }
+
   func hasPending(in sessionID: String) -> Bool {
     pending.contains { $0.sessionID == sessionID }
   }
 
-  /// Body of the HTTP response for a decision.
-  nonisolated static func responseBody(for decision: Decision) -> Data {
-    let behavior: String
-    switch decision {
-    case .allow: behavior = "allow"
-    case .deny: behavior = "deny"
-    case .askInTerminal: return Data()
+  /// One answer per question, each made of that question's own labels.
+  private static func answersFit(_ answers: [String: String], _ kind: Kind?) -> Bool {
+    guard case .questions(let questions)? = kind, answers.count == questions.count else {
+      return false
     }
-    var decisionObject: [String: Any] = ["behavior": behavior]
-    if decision == .deny {
-      decisionObject["message"] = "Denied in Cumba."
+    return questions.allSatisfy { question in
+      guard let answer = answers[question.question] else { return false }
+      let labels = question.options.map(\.label)
+      return labels.contains(answer)
+        || (question.multiSelect
+          && answer.components(separatedBy: ", ").allSatisfy(labels.contains))
+    }
+  }
+
+  /// Body of the HTTP response for a decision. Claude Code's question tools need their
+  /// input back with an allow: the plan as it was, or the questions plus the answers.
+  nonisolated static func responseBody(
+    for decision: Decision, toolName: String? = nil, input: [String: JSONValue]? = nil
+  ) -> Data {
+    let isQuestionTool = toolName.map(HookPayload.questionTools.contains) ?? false
+    var decisionObject: [String: Any]
+    switch decision {
+    case .allow:
+      decisionObject = ["behavior": "allow"]
+      if isQuestionTool {
+        decisionObject["updatedInput"] = JSONValue.object(input ?? [:]).foundationValue
+      }
+    case .answers(let answers):
+      guard toolName == "AskUserQuestion" else { return Data() }
+      var fields = JSONValue.object(input ?? [:]).foundationValue as? [String: Any] ?? [:]
+      fields["answers"] = answers
+      decisionObject = ["behavior": "allow", "updatedInput": fields]
+    case .deny:
+      decisionObject = [
+        "behavior": "deny",
+        "message": toolName == "ExitPlanMode"
+          ? "The user wants changes to the plan. Keep planning and ask again."
+          : "Denied in Cumba.",
+      ]
+    case .askInTerminal:
+      return Data()
     }
     let object: [String: Any] = [
       "hookSpecificOutput": [

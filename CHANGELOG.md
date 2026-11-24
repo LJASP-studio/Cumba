@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Answer Claude's questions in the notch. When Claude asks you something, its options appear as buttons: click one, or tick several and click Send; several questions come one at a time. A question with hidden characters gets no options, only In Terminal. Turn it off in Settings > Agents.
+- Approve a plan in the notch. A finished plan shows in full with Approve and Keep Planning, which sends it back with a request for changes. Approving doesn't change the permission mode, and it follows the same rules as Allow.
+- Context use and usage limits for Codex, read from its session file: how full the context is and how much of the 5-hour and weekly limits is used.
+- An optional status line bridge for Claude Code (Settings > Agents > Context and Limits). It makes the context number exact and adds your 5-hour and weekly limits, and it keeps running your own status line command, so the status line looks as before. Remove puts your command back. Terminal sessions only.
+- Open in a notification selects the session's own tab in Terminal and iTerm2, once you allow it in Settings > Permissions > Automation. Installed hooks show as out of date once, since they now send the terminal's tty; click Update.
+
 ## [1.4.1] - 2026-11-24
 
 ### Fixed

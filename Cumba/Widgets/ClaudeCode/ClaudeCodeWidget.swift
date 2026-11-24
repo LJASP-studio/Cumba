@@ -37,7 +37,7 @@ final class ClaudeCodeWidget: NotchWidget {
   /// answer in the bubble, so a long answer makes the tab taller instead of being cut off.
   func preferredContentHeight(width: CGFloat, textScale: CGFloat, isDetailed: Bool) -> CGFloat? {
     if let request = service.permissions.pending.first {
-      return AgentLayout.permissionHeight(request, width: width, textScale: textScale)
+      return AgentLayout.requestHeight(request, width: width, textScale: textScale)
     }
     // The card's padding, the page row and the gap under it.
     let frame: CGFloat = 20 + 24 + 8
@@ -66,7 +66,7 @@ private struct ClaudeCodeWidgetView: View {
   var body: some View {
     WidgetCard {
       if let request = service.permissions.pending.first {
-        PermissionCard(
+        AgentRequestCard(
           request: request, waiting: service.permissions.pending.count - 1, compact: true
         ) { decision in
           service.answer(request, with: decision)
@@ -131,7 +131,7 @@ struct PermissionCard: View {
     VStack(alignment: .leading, spacing: compact ? 4 : 6) {
       HStack(spacing: 5) {
         AgentGlyph(agent: request.agent, size: 12)
-        Text(verbatim: asker)
+        Text(verbatim: Self.asker(of: request))
           .panelFont(.caption2)
           .foregroundStyle(.secondary)
           .lineLimit(1)
@@ -149,8 +149,8 @@ struct PermissionCard: View {
           .panelFont(.caption, weight: .semibold)
           .lineLimit(3)
       } icon: {
-        Image(systemName: "hand.raised.fill")
-          .foregroundStyle(.orange)
+        Image(systemName: isPlan ? "list.bullet.clipboard.fill" : "hand.raised.fill")
+          .foregroundStyle(isPlan ? .blue : .orange)
       }
       if let note = request.note {
         Text(verbatim: note)
@@ -160,7 +160,7 @@ struct PermissionCard: View {
       }
       ScrollView {
         Text(request.detail)
-          .panelFont(.caption, design: .monospaced)
+          .panelFont(.caption, design: isPlan ? .default : .monospaced)
           .textSelection(.enabled)
           .frame(maxWidth: .infinity, alignment: .leading)
       }
@@ -193,10 +193,13 @@ struct PermissionCard: View {
           .foregroundStyle(.secondary)
           .fixedSize(horizontal: false, vertical: true)
       } else if mustScrollToEnd && box.request == request.id {
-        Label("Scroll to the end to allow it.", systemImage: "arrow.down")
-          .panelFont(.caption2)
-          .foregroundStyle(.secondary)
-          .fixedSize(horizontal: false, vertical: true)
+        Label(
+          isPlan ? "Scroll to the end to approve it." : "Scroll to the end to allow it.",
+          systemImage: "arrow.down"
+        )
+        .panelFont(.caption2)
+        .foregroundStyle(.secondary)
+        .fixedSize(horizontal: false, vertical: true)
       }
       // In a narrow widget, In Terminal moves to a second row instead of being cut off.
       ViewThatFits(in: .horizontal) {
@@ -206,6 +209,11 @@ struct PermissionCard: View {
         }
         VStack(alignment: .leading, spacing: 4) {
           HStack(spacing: 6) { allowAndDeny }
+          inTerminal
+        }
+        // Longer labels (a plan's, in French or Spanish) get a row each.
+        VStack(alignment: .leading, spacing: 4) {
+          allowAndDeny
           inTerminal
         }
       }
@@ -219,8 +227,10 @@ struct PermissionCard: View {
     }
   }
 
+  private var isPlan: Bool { request.kind == .plan }
+
   /// "Claude • Notch texts · LJASP-studio › brain", without the project twice.
-  private var asker: String {
+  static func asker(of request: PermissionBroker.Request) -> String {
     var parts = [request.agent.name]
     let title = request.sessionTitle
     if !title.isEmpty, !request.project.hasPrefix(title) {
@@ -235,14 +245,27 @@ struct PermissionCard: View {
       Button {
         answer(.allow)
       } label: {
-        Text("Allow").prominentLabelInk(on: .green)
+        if isPlan {
+          Text("Approve", comment: "Button: approves an AI agent's plan").prominentLabelInk(
+            on: .green)
+        } else {
+          Text("Allow").prominentLabelInk(on: .green)
+        }
       }
       .buttonStyle(.borderedProminent)
       .tint(.green)
       .disabled(mustScrollToEnd)
     }
-    Button("Deny") { answer(.deny) }
-      .buttonStyle(.bordered)
+    Button {
+      answer(.deny)
+    } label: {
+      if isPlan {
+        Text("Keep Planning", comment: "Button: sends an AI agent's plan back for changes")
+      } else {
+        Text("Deny")
+      }
+    }
+    .buttonStyle(.bordered)
   }
 
   private var inTerminal: some View {

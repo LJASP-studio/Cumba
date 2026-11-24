@@ -406,6 +406,35 @@
         }
       }
     },
+    "%lld d" : {
+      "comment" : "Short length of a usage limit in days",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gün"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld d"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld d"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld j"
+          }
+        }
+      }
+    },
     "%lld Files" : {
       "comment" : "Clipboard item kind",
       "localizations" : {
@@ -503,6 +532,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld Dosya"
+          }
+        }
+      }
+    },
+    "%lld h" : {
+      "comment" : "Short length of a usage limit in hours",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld sa"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld h"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld h"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld h"
+          }
+        }
+      }
+    },
+    "%lld min" : {
+      "comment" : "Short length of a usage limit in minutes",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dk"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
           }
         }
       }
@@ -631,6 +718,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld istek daha bekliyor"
+          }
+        }
+      }
+    },
+    "%lld of %lld" : {
+      "comment" : "Which question of how many",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld/%2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld de %2$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld sur %2$lld"
           }
         }
       }
@@ -1418,6 +1534,34 @@
         }
       }
     },
+    "AI Agents: Open brings the session's own tab forward" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapay Zeka Ajanları: Aç, oturumun kendi sekmesini öne getirir"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agentes de IA: Abrir trae al frente la pestaña de la sesión"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agentes de IA: Abrir trae al frente la pestaña de la sesión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agents IA : Ouvrir met au premier plan l’onglet de la session"
+          }
+        }
+      }
+    },
     "All except shell commands" : {
       "localizations" : {
         "es" : {
@@ -1896,6 +2040,34 @@
         }
       }
     },
+    "Answer questions and plans in the notch" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soruları ve planları notch'ta yanıtla"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Responder preguntas y planes en la muesca"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Responder preguntas y planes en la muesca"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répondre aux questions et aux plans dans l’encoche"
+          }
+        }
+      }
+    },
     "Appearance" : {
       "comment" : "Settings tab",
       "localizations" : {
@@ -1949,6 +2121,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uygula"
+          }
+        }
+      }
+    },
+    "Approve" : {
+      "comment" : "Button: approves an AI agent's plan",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onayla"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprobar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprobar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approuver"
           }
         }
       }
@@ -2064,6 +2265,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notlar için Otomasyon izni kapalı."
+          }
+        }
+      }
+    },
+    "Back" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour"
           }
         }
       }
@@ -2582,6 +2811,62 @@
         }
       }
     },
+    "Claude Code tells only its status line how full the context is and how much of your plan's limits you've used. Installing adds a small command to the status line that passes these to Cumba and then runs your own status line command, so it looks as before. Terminal sessions only; limits show for Claude subscriptions." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code bağlamın ne kadar dolduğunu ve planınızın sınırlarından ne kadarını kullandığınızı yalnızca durum satırına söyler. Kurulum, durum satırına bunları Cumba'ya ileten küçük bir komut ekler, sonra sizin durum satırı komutunuzu çalıştırır; durum satırınız eskisi gibi görünür. Yalnızca terminal oturumlarında çalışır; sınırlar Claude aboneliklerinde görünür."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code solo le indica a su línea de estado cuánto contexto se ha llenado y cuánto has usado de los límites de tu plan. Al instalarlo, se añade a la línea de estado un pequeño comando que se lo pasa a Cumba y luego ejecuta tu propio comando de línea de estado, así que se ve igual que antes. Solo en sesiones de terminal; los límites aparecen con las suscripciones de Claude."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code solo le indica a su línea de estado cuánto contexto se llenó y cuánto usaste de los límites de tu plan. Al instalarlo, se agrega a la línea de estado un pequeño comando que se lo pasa a Cumba y luego ejecuta tu propio comando de línea de estado, así que se ve igual que antes. Solo en sesiones de terminal; los límites aparecen con las suscripciones de Claude."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude Code n’indique qu’à sa ligne d’état le remplissage du contexte et la part utilisée des limites de votre forfait. L’installation ajoute à la ligne d’état une petite commande qui transmet ces chiffres à Cumba puis exécute votre propre commande de ligne d’état, qui reste donc identique. Sessions de terminal uniquement ; les limites s’affichent avec les abonnements Claude."
+          }
+        }
+      }
+    },
+    "Claude's questions show their choices in the notch, and a plan can be approved or sent back for changes there. Approving a plan doesn't change the permission mode." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude'un soruları seçenekleriyle notch'ta görünür; plan da orada onaylanabilir ya da değişiklik için geri gönderilebilir. Planı onaylamak izin modunu değiştirmez."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las preguntas de Claude muestran sus opciones en la muesca, y un plan se puede aprobar o devolver para cambios desde allí. Aprobar un plan no cambia el modo de permisos."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las preguntas de Claude muestran sus opciones en la muesca, y un plan se puede aprobar o devolver para cambios desde allí. Aprobar un plan no cambia el modo de permisos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les questions de Claude affichent leurs choix dans l’encoche, et un plan peut y être approuvé ou renvoyé pour modification. Approuver un plan ne change pas le mode d'autorisation."
+          }
+        }
+      }
+    },
     "Click to Show the Camera" : {
       "localizations" : {
         "es" : {
@@ -2865,6 +3150,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notlar'a bağlı"
+          }
+        }
+      }
+    },
+    "Context and Limits" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlam ve sınırlar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contexto y límites"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contexto y límites"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contexte et limites"
           }
         }
       }
@@ -6413,6 +6726,35 @@
         }
       }
     },
+    "Keep Planning" : {
+      "comment" : "Button: sends an AI agent's plan back for changes",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planlamaya devam"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguir planificando"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguir planificando"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer à planifier"
+          }
+        }
+      }
+    },
     "Last reply" : {
       "comment" : "Label over an AI agent's last answer",
       "localizations" : {
@@ -6494,6 +6836,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Script'lerin notch'ta etkinlik göstermesine izin ver"
+          }
+        }
+      }
+    },
+    "Limit" : {
+      "comment" : "A usage limit of unknown length",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınır"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límite"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite"
+          }
+        }
+      }
+    },
+    "Limits: %@" : {
+      "comment" : "An AI agent account's usage limits, e.g. \"5 h 34% · Week 12%\"",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınırlar: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límites: %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límites: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limites : %@"
           }
         }
       }
@@ -8455,6 +8855,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aç"
+          }
+        }
+      }
+    },
+    "Open %@ first" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önce %@ uygulamasını açın"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre %@ primero"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abre %@ primero"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrez d’abord %@"
           }
         }
       }
@@ -10677,6 +11105,34 @@
         }
       }
     },
+    "Scroll to the end to approve it." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onaylamak için sonuna kadar kaydırın."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desplázate hasta el final para aprobarlo."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desplázate hasta el final para aprobarlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites défiler jusqu’à la fin pour l’approuver."
+          }
+        }
+      }
+    },
     "Scrolls your script under the camera while you talk" : {
       "localizations" : {
         "es" : {
@@ -10929,6 +11385,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tümünü Seç"
+          }
+        }
+      }
+    },
+    "Send" : {
+      "comment" : "Button: sends the answers to an AI agent's questions",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gönder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer"
           }
         }
       }
@@ -11948,6 +12433,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durum"
+          }
+        }
+      }
+    },
+    "Status line" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durum satırı"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Línea de estado"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Línea de estado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligne d’état"
           }
         }
       }
@@ -13027,6 +13540,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düşünüyor…"
+          }
+        }
+      }
+    },
+    "This question has hidden characters or is too long to show safely. Answer it in the terminal." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu soruda gizli karakterler var ya da güvenle gösterilemeyecek kadar uzun. Terminalde yanıtlayın."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta pregunta tiene caracteres ocultos o es demasiado larga para mostrarla con seguridad. Respóndela en la terminal."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta pregunta tiene caracteres ocultos o es demasiado larga para mostrarla con seguridad. Respóndela en la terminal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette question contient des caractères cachés ou est trop longue pour être affichée sans risque. Répondez-y dans le terminal."
           }
         }
       }
@@ -14537,6 +15078,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hava Durumu widget'ı: bulunduğunuz yerin havası, yaklaşık 10 km'ye yuvarlanmış konumla"
+          }
+        }
+      }
+    },
+    "Week" : {
+      "comment" : "Short name of a weekly usage limit",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hafta"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semana"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semaine"
           }
         }
       }
