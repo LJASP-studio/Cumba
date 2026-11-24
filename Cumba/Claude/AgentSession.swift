@@ -54,6 +54,8 @@ extension ClaudeCodeService {
     var step: String?
     /// How full the context window was at the last answer, 0...1.
     var contextFraction: Double?
+    /// The account's usage limits as last reported, e.g. five hours and a week.
+    var limits: [UsageLimit] = []
     var agent = Agent.claude
     /// Bundle identifier of the app the session runs in, from its hooks.
     var app: String?

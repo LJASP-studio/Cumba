@@ -230,6 +230,16 @@ struct AgentPanel: View {
             .panelFont(.caption)
             .foregroundStyle(.secondary)
         }
+        if !session.limits.isEmpty {
+          Text(
+            "Limits: \(AgentLimitText.line(session.limits))",
+            comment: "An AI agent account's usage limits, e.g. \"5 h 34% · Week 12%\""
+          )
+          .panelFont(.caption)
+          .foregroundStyle(.secondary)
+          .lineLimit(1)
+          .minimumScaleFactor(0.8)
+        }
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)

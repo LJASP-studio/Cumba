@@ -30,8 +30,9 @@ enum CodexIndex {
 }
 
 extension ClaudeCodeService {
-  /// Codex's name for the session, at most every 5 seconds per session.
-  func refreshCodexTitle(of id: String) {
+  /// Codex's name for the session, its context and its limits, at most every 5 seconds per
+  /// session.
+  func refreshCodex(of id: String, path: String?) {
     let now = Date()
     if let last = codexReads[id], now.timeIntervalSince(last) < 5 {
       return
@@ -40,6 +41,12 @@ extension ClaudeCodeService {
     Task { [weak self] in
       let name = await Task.detached { CodexIndex.title(of: id) }.value
       self?.setTitle(name.flatMap(AgentText.cleanTitle), source: .generated, of: id)
+      let usage = await Task.detached {
+        CodexRollout.url(for: id, path: path).flatMap(CodexRollout.read)
+      }.value
+      if let usage {
+        self?.setUsage(of: id, context: usage.contextFraction, limits: usage.limits)
+      }
     }
   }
 }

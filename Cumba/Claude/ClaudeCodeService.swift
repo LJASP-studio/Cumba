@@ -92,7 +92,7 @@ final class ClaudeCodeService {
     }
     tag(id, with: agent, app: app)
     if agent == .codex, event != .sessionEnd {
-      refreshCodexTitle(of: id)
+      refreshCodex(of: id, path: payload.transcriptPath)
     }
     updateWorkingActivity()
   }
@@ -237,6 +237,13 @@ final class ClaudeCodeService {
         summary.generatedTitle.flatMap(AgentText.cleanTitle), source: .generated, of: id)
       self.setTitle(summary.customTitle.flatMap(AgentText.cleanTitle), source: .custom, of: id)
     }
+  }
+
+  /// The context's fill and the limits, when a source reported them.
+  func setUsage(of id: String, context: Double?, limits: [UsageLimit]) {
+    guard let index = sessions.firstIndex(where: { $0.id == id }) else { return }
+    if let context { sessions[index].contextFraction = context }
+    if !limits.isEmpty { sessions[index].limits = limits }
   }
 
   private func tag(_ id: String, with agent: Agent, app: String?) {
