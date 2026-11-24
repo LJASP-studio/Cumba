@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-11-25
+
 ### Added
 
 - Answer Claude's questions in the notch. When Claude asks you something, its options appear as buttons: click one, or tick several and click Send; several questions come one at a time. A question with hidden characters gets no options, only In Terminal. Turn it off in Settings > Agents.
@@ -294,7 +296,8 @@ Fixes from a security review of the code, done with AI assistance (not an extern
 - CI workflow (build, test, swift-format lint) and a release workflow that publishes an ad-hoc signed zip.
 - Contributor docs: README in Turkish, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue and pull request templates.
 
-[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.4.1...HEAD
+[Unreleased]: https://github.com/LJASP-studio/Cumba/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/LJASP-studio/Cumba/compare/v1.4.1...v1.5.0
 [1.4.1]: https://github.com/LJASP-studio/Cumba/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/LJASP-studio/Cumba/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/LJASP-studio/Cumba/compare/v1.2.0...v1.3.0
